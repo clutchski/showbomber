@@ -1,4 +1,6 @@
 Radio::Application.routes.draw do |map|
+  resources :venues
+
   resources :artists
 
   # The priority is based upon order of creation:

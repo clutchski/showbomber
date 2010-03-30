@@ -17,4 +17,13 @@ ActiveRecord::Schema.define(:version => 20100329031415) do
     t.datetime "updated_at"
   end
 
+  create_table "venues", :force => true do |t|
+    t.string   "name"
+    t.string   "address1"
+    t.string   "city"
+    t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end
