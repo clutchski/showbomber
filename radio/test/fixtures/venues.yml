@@ -1,13 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: MyString
-  address1: MyString
-  city: MyString
-  state: MyString
+  name: My House
+  address1: 122 Kent Street
+  city: New York
+  state: NY
 
 two:
-  name: MyString
-  address1: MyString
-  city: MyString
-  state: MyString
+  name: Bowery Ballroom
+  address1: 16 Delancey Street
+  city: New York
+  state: NY

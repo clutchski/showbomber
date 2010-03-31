@@ -20,6 +20,24 @@ class VenuesControllerTest < ActionController::TestCase
     assert_redirected_to venue_path(assigns(:venue))
   end
 
+  test "invalid parameters venue" do
+    params = { :name => 'Some Venue',
+               :address1 => "123 Fake Street",
+               :city => "New York",
+               :state => "NY"
+             }
+    # assert that each field is required by excluding each one
+    # from a post
+    params.keys.each do |key|
+      invalid_params = params.dup
+      invalid_params[key] = ''
+      assert_no_difference('Venue.count') do
+        post :create, :venue => invalid_params
+      end
+    end
+  end
+
+
   test "should show venue" do
     get :show, :id => venues(:one).to_param
     assert_response :success
