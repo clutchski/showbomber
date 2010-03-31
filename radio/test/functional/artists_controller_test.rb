@@ -16,8 +16,13 @@ class ArtistsControllerTest < ActionController::TestCase
     assert_difference('Artist.count') do
       post :create, :artist => artists(:one).attributes
     end
-
     assert_redirected_to artist_path(assigns(:artist))
+  end
+
+  test "shouldn't create artist" do
+    assert_no_difference('Artist.count') do
+      post :create, :artist => {'name'=>''}
+    end
   end
 
   test "should show artist" do
