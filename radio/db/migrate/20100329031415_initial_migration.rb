@@ -2,18 +2,16 @@ class InitialMigration < ActiveRecord::Migration
   def self.up
     create_table :artists do |t|
       t.string :name
-
       t.timestamps
     end
+    add_index(:artists, :name)
 
     create_table :venues do |t|
       t.string :name
       t.string :address1
       t.string :city
       t.string :state
-
       t.timestamps
-
     end
   end
 
