@@ -17,6 +17,16 @@ ActiveRecord::Schema.define(:version => 20100329031415) do
     t.datetime "updated_at"
   end
 
+  add_index "artists", ["name"], :name => "index_artists_on_name"
+
+  create_table "events", :force => true do |t|
+    t.integer  "venue_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "venues", :force => true do |t|
     t.string   "name"
     t.string   "address1"
