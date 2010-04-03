@@ -1,0 +1,7 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+bob_at_mercury_lounge:
+  venue: mercury_lounge
+
+neil_at_bowery_ballroom:
+  venue: bowery_ballroom

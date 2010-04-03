@@ -1,7 +1,7 @@
 Radio::Application.routes.draw do |map|
   resources :venues
-
   resources :artists
+  resources :events
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

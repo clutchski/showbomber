@@ -22,10 +22,12 @@ ActiveRecord::Schema.define(:version => 20100329031415) do
   create_table "events", :force => true do |t|
     t.integer  "venue_id"
     t.datetime "start_date"
-    t.datetime "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "events", ["start_date"], :name => "index_events_on_start_date"
+  add_index "events", ["venue_id"], :name => "index_events_on_venue_id"
 
   create_table "venues", :force => true do |t|
     t.string   "name"
@@ -35,5 +37,7 @@ ActiveRecord::Schema.define(:version => 20100329031415) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "venues", ["city"], :name => "index_venues_on_city"
 
 end

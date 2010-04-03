@@ -1,13 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: My House
-  address1: 122 Kent Street
+bowery_ballroom:
+  name: Bowery Ballroom
+  address1: 6 Delancey Street
   city: New York
   state: NY
 
-two:
-  name: Bowery Ballroom
-  address1: 16 Delancey Street
+mercury_lounge:
+  name: Mercury Lounge
+  address1: 217 East Houston Street
   city: New York
   state: NY

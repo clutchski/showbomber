@@ -1,0 +1,18 @@
+<h1>Listing Events</h1>
+
+<table>
+  <tr>
+    <th>Venue</th>
+    <th>Date</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td><%= events.venue.name %></td>
+    <td><%= events.start_date %></td>
+    <td><%= events.cost %></td>
+  </tr>
+<% end %>
+</table>
