@@ -2,6 +2,8 @@
 
 bob_at_mercury_lounge:
   venue: mercury_lounge
+  start_date: <%= 5.days.from_now.to_s :db %>
 
 neil_at_bowery_ballroom:
   venue: bowery_ballroom
+  start_date: <%= 1.days.from_now.to_s :db %>
