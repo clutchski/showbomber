@@ -4,15 +4,12 @@
   <tr>
     <th>Venue</th>
     <th>Date</th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @events.each do |event| %>
   <tr>
-    <td><%= events.venue.name %></td>
-    <td><%= events.start_date %></td>
-    <td><%= events.cost %></td>
+    <td><%= event.venue.name %></td>
+    <td><%= event.start_date %></td>
   </tr>
 <% end %>
 </table>
