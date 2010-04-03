@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(:version => 20100329031415) do
 
   add_index "artists", ["name"], :name => "index_artists_on_name"
 
+  create_table "artists_events", :id => false, :force => true do |t|
+    t.integer "event_id"
+    t.integer "artist_id"
+  end
+
+  add_index "artists_events", ["event_id", "artist_id"], :name => "index_artists_events_on_event_id_and_artist_id", :unique => true
+
   create_table "events", :force => true do |t|
     t.integer  "venue_id"
     t.datetime "start_date"
