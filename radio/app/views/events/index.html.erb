@@ -2,15 +2,15 @@
 
 <table>
   <tr>
-    <th>Venue</th>
     <th>Artists</th>
+    <th>Venue</th>
     <th>Date</th>
   </tr>
 
 <% @events.each do |event| %>
   <tr>
-    <td><%= event.venue.name %></td>
     <td><%= event.artists.collect{|a| a.name}.join(', ') %></td>
+    <td><%= event.venue.name %></td>
     <td><%= event.start_date %></td>
   </tr>
 <% end %>
