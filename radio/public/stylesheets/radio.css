@@ -36,3 +36,37 @@ html, body {
   font-size:90%;
   color:#CCC;
 }
+
+#events {
+  margin:2em;
+}
+
+div.event {
+  margin-bottom:1em;
+}
+
+div.event .date {
+  font-size:120%;
+  color: #CCC;
+  text-transform:uppercase;
+  font-weight:bold;
+  width:6em;
+}
+
+div.event .artist {
+  color:#586C78;
+  text-decoration:none;
+  font-size:120%;
+  padding-right:0.3em;
+  font-weight:bold;
+  text-transform:uppercase;
+}
+
+div.event .venue {
+  clear:both;
+  margin-left:4.5em;
+  text-decoration:none;
+  display:block;
+  color:#586C78;
+  font-style:italic;
+}

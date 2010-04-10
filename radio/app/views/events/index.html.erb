@@ -1,11 +1,13 @@
-<h1>Listing Events</h1>
-
-<% @events.each do |event| %>
-<div class="event">
-  <div class="artists">
-    <%= event.artists.collect{|a| a.name}.join(', ') %>
+<div id="events">
+  <% @events.each do |event| %>
+  <div class="event">
+    <span class="date">
+      <%= event.start_date.strftime("%b %d") %>
+    </span>
+    <% event.artists.collect do |artist| %>
+      <%= link_to artist.name, artist, {:class=> "artist"} %>
+    <% end %>
+    <%= link_to event.venue.name, event.venue, {:class => "venue"}%>
   </div>
-    <%= link_to event.venue.name, event.venue %>
-    <%= event.start_date %>
+  <% end %>
 </div>
-<% end %>
