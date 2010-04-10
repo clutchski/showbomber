@@ -5,7 +5,8 @@ html, body {
 }
 
 #logo {
-  background-color:#D1EFC2;
+  background-color:#ABB9C1;
+  /*background-color:#D1EFC2;*/
   color:white;
   font-size:300%;
   padding:0.1em 0.4em 0.1em 0.4em;
@@ -57,7 +58,7 @@ div.event .artist {
   color:#586C78;
   text-decoration:none;
   font-size:120%;
-  padding-right:0.3em;
+  margin-right:0.3em;
   font-weight:bold;
   text-transform:uppercase;
 }
@@ -69,4 +70,10 @@ div.event .venue {
   display:block;
   color:#ABB9C1;
   font-style:italic;
+}
+
+div.event a:hover {
+  color: #bd1550;
+  text-decoration:none;
+  border-bottom: 2px solid #bd1550;
 }
