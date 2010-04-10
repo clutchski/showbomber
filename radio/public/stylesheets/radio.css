@@ -63,11 +63,10 @@ div.event .artist {
   text-transform:uppercase;
 }
 
-div.event .venue {
+div.event .venue, div.event .cost {
   clear:both;
-  margin-left:4.5em;
   text-decoration:none;
-  display:block;
+  display:inline;
   color:#ABB9C1;
   font-style:italic;
 }

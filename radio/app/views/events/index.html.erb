@@ -8,6 +8,9 @@
       <%= link_to artist.name, artist, {:class=> "artist"} %>
     <% end %>
     <%= link_to event.venue.name, event.venue, {:class => "venue"}%>
+    <span class="cost">
+      <%= event.price_range_in_words %>
+    </span>
   </div>
   <% end %>
 </div>
