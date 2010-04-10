@@ -36,6 +36,13 @@ ActiveRecord::Schema.define(:version => 20100329031415) do
   add_index "events", ["start_date"], :name => "index_events_on_start_date"
   add_index "events", ["venue_id"], :name => "index_events_on_venue_id"
 
+  create_table "songs", :force => true do |t|
+    t.integer "artist_id"
+    t.string  "url"
+  end
+
+  add_index "songs", ["artist_id"], :name => "index_songs_on_artist_id"
+
   create_table "venues", :force => true do |t|
     t.string   "name"
     t.string   "address1"

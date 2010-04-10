@@ -30,11 +30,17 @@ class InitialMigration < ActiveRecord::Migration
     end
     add_index(:artists_events, [:event_id, :artist_id], {:unique=>true})
 
+    create_table :songs do |t|
+      t.integer :artist_id
+      t.string  :url
+    end
+    add_index(:songs, :artist_id)
 
   end #up
 
   def self.down
 
+    drop_table :songs
     drop_table :artists_events
     drop_table :events
     drop_table :artists
