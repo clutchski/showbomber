@@ -1,17 +1,11 @@
 <h1>Listing Events</h1>
 
-<table>
-  <tr>
-    <th>Artists</th>
-    <th>Venue</th>
-    <th>Date</th>
-  </tr>
-
 <% @events.each do |event| %>
-  <tr>
-    <td><%= event.artists.collect{|a| a.name}.join(', ') %></td>
-    <td><%= event.venue.name %></td>
-    <td><%= event.start_date %></td>
-  </tr>
+<div class="event">
+  <div class="artists">
+    <%= event.artists.collect{|a| a.name}.join(', ') %>
+  </div>
+    <%= link_to event.venue.name, event.venue %>
+    <%= event.start_date %>
+</div>
 <% end %>
-</table>
