@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(:version => 20100329031415) do
   create_table "events", :force => true do |t|
     t.integer  "venue_id"
     t.datetime "start_date"
+    t.integer  "min_cost"
+    t.integer  "max_cost"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
