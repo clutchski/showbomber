@@ -4,7 +4,7 @@
     <span class="date">
       <%= event.start_date.strftime("%b %d") %>
     </span>
-    <% event.artists.collect do |artist| %>
+    <% event.artists.each do |artist| %>
       <%= link_to artist.name, artist, {:class=> "artist"} %>
     <% end %>
     <%= link_to event.venue.name, event.venue, {:class => "venue"}%>
