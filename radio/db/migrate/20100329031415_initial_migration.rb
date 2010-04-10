@@ -19,6 +19,8 @@ class InitialMigration < ActiveRecord::Migration
     create_table :events do |t|
       t.integer     :venue_id
       t.datetime    :start_date
+      t.integer     :min_cost
+      t.integer     :max_cost
       t.timestamps
     end
     add_index(:events, :venue_id)

@@ -16,8 +16,12 @@ class EventTest < ActiveSupport::TestCase
     assert event.errors.has_key? :start_date
   end
 
-
-  test "test ticket cost" do
-    assert true
+  test "test create min cost is lower than max" do
+    now = DateTime::now
+    event = Event.new(
+      :venue_id=>101, :start_date=>now, :min_cost=>10, :max_cost=>8)
+    assert !event.save, "no save when max cost is less than min cost"
+    assert event.errors.has_key? :max_cost
   end
+
 end
