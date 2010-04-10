@@ -23,6 +23,14 @@ html, body {
   display:inline;
 }
 
+#header ul#nav li a{
+  color:white;
+  background-color:gray;
+  font-size:200%;
+  padding:0.1em 0.4em 0.1em 0.4em;
+  text-decoration:none;
+}
+
 #footer {
   margin-top:1em;
   font-size:90%;
