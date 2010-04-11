@@ -79,6 +79,10 @@ div.event .venue, div.event .cost {
   font-style:italic;
 }
 
+div.event .cost {
+  margin-left:0.5em;
+}
+
 div.event a:hover {
   color: #bd1550;
   text-decoration:none;
