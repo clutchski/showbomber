@@ -9,6 +9,7 @@ class InitialMigration < ActiveRecord::Migration
 
     create_table :venues do |t|
       t.string :name
+      t.string :phone
       t.string :address1
       t.string :city
       t.string :state

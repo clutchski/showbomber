@@ -93,6 +93,9 @@ div.event .venue, div.event .cost, div.venue {
   font-size:95%;
 }
 
+div.venue .phone {
+}
+
 div.event .cost {
   margin-left:0.5em;
 }
