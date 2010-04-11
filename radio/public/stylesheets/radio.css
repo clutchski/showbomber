@@ -1,12 +1,10 @@
 html, body {
   font-family:Palatino,Georgia,"Times New Roman",Times,serif;
-/*  background-color:#FCFCFC; */
   margin:1em;
 }
 
 #logo {
   background-color:#ABB9C1;
-  /*background-color:#D1EFC2;*/
   color:white;
   font-size:300%;
   padding:0.1em 0.4em 0.1em 0.4em;
