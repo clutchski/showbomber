@@ -45,4 +45,10 @@ class ArtistsController < ApplicationController
     @artist.destroy
     redirect_to(artists_url, :notice => 'Artist was deleted')
   end
+
+  def songs
+    @artist = Artist.find(params[:id])
+    respond_with(@artist)
+  end
+
 end

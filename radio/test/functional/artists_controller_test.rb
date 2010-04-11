@@ -49,4 +49,11 @@ class ArtistsControllerTest < ActionController::TestCase
 
     assert_redirected_to artists_path
   end
+
+  test "should get artist's songs" do
+    get :songs, :id => artists(:neil_young).to_param
+    assert_response :success
+  end
+
 end
+
