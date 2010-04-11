@@ -18,6 +18,13 @@
   <%= @venue.state %>
 </p>
 
+<% @venue.events.each do |event| %>
+  
+  <%= event.artists.collect{ |a| a.name }.join(',') %>
+  <br>
+
+<% end %>
+
 
 <%= link_to 'Edit', edit_venue_path(@venue) %> |
 <%= link_to 'Back', venues_path %>

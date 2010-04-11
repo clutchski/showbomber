@@ -39,8 +39,17 @@ class VenuesControllerTest < ActionController::TestCase
 
 
   test "should show venue" do
-    get :show, :id => venues(:mercury_lounge).to_param
+    venue = venues(:bowery_ballroom)
+    get :show, :id => venue.to_param
+
     assert_response :success
+    actual_venue = assigns(:venue)
+    assert_equal actual_venue, venue
+
+    event_keys = [:neil_at_bowery_ballroom, :wolf_parade_at_bowery_ballroom]
+    expected_events = event_keys.collect{|e| events(e)}
+
+    assert_equal expected_events, actual_venue.events
   end
 
   test "should get edit" do
