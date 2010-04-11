@@ -3,7 +3,7 @@ class ArtistsController < ApplicationController
   respond_to :html
 
   def index
-    @artists = Artist.all
+    @artists = Artist.all(:order => :name)
     respond_with(@artists)
   end
 
