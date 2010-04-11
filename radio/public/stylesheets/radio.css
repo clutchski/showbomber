@@ -11,18 +11,13 @@ html, body {
   text-decoration:none;
 }
 
-#header ul#nav {
+#nav, #nav li {
   list-style:none;
   text-decoration:none;
   display:inline;
 }
 
-#header ul#nav li {
-  text-decoration:none;
-  display:inline;
-}
-
-#header ul#nav li a{
+#nav li a{
   color:white;
   background-color:gray;
   font-size:200%;
@@ -48,12 +43,12 @@ div.event {
 
 div.event .date {
   position:fixed;
-  font-size:120%;
+  font-size:110%;
   color: #CCC;
   text-transform:uppercase;
   font-weight:bold;
   text-align:right;
-  width:125px;
+  width:120px;
 }
 
 ul.artists, ul.artists li {
@@ -65,13 +60,13 @@ ul.artists, ul.artists li {
 
 div.show_info, ul.artists {
   position:relative;
-  left:135px;
+  left:125px;
 }
 
 div.event .artist {
   color:#586C78;
   text-decoration:none;
-  font-size:120%;
+  font-size:110%;
   margin-right:0.2em;
   font-weight:bold;
   text-transform:uppercase;
@@ -81,6 +76,7 @@ div.event .venue, div.event .cost {
   text-decoration:none;
   color:#ABB9C1;
   font-style:italic;
+  font-size:95%;
 }
 
 div.event .cost {
