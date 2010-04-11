@@ -11,3 +11,10 @@ neil_at_bowery_ballroom:
   venue: bowery_ballroom
   start_date: <%= 1.days.from_now.to_s :db %>
   artists: neil_young
+
+wolf_parade_at_bowery_ballroom:
+  venue: bowery_ballroom
+  start_date: <%= 4.days.from_now.to_s :db %>
+  artists: wolf_parade, handsome_furs
+  min_cost: 0
+  max_cost: 0
