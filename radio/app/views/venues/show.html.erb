@@ -1,22 +1,13 @@
-<p>
-  <b>Name:</b>
-  <%= @venue.name %>
-</p>
 
-<p>
-  <b>Address1:</b>
-  <%= @venue.address1 %>
-</p>
+<div class="venue">
 
-<p>
-  <b>City:</b>
-  <%= @venue.city %>
-</p>
+  <div class="name">    <%= @venue.name %>      </div>
+  <div class="address"> <%= @venue.address1 %>   </div>
+  <span class="city"><%= @venue.city %></span>, 
+  <span class="state">   <%= @venue.state %>     </span>
+</div>
 
-<p>
-  <b>State:</b>
-  <%= @venue.state %>
-</p>
+<h3>Events</h3>
 
 <% @venue.events.each do |event| %>
   
