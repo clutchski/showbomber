@@ -45,11 +45,23 @@ div.event {
 }
 
 div.event .date {
+  position:fixed;
   font-size:120%;
   color: #CCC;
   text-transform:uppercase;
   font-weight:bold;
-  width:6em;
+}
+
+ul.artists, ul.artists li {
+  display:inline;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+div.show_info, ul.artists {
+  position:relative;
+  left:80px;
 }
 
 div.event .artist {
@@ -62,9 +74,7 @@ div.event .artist {
 }
 
 div.event .venue, div.event .cost {
-  clear:both;
   text-decoration:none;
-  display:inline;
   color:#ABB9C1;
   font-style:italic;
 }

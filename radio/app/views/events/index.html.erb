@@ -1,16 +1,20 @@
+
 <div id="events">
   <% @events.each do |event| %>
   <div class="event">
-    <span class="date">
-      <%= event.start_date.strftime("%b %d") %>
-    </span>
+    <span class="date"><%= event.start_date.strftime("%b %d") %></span>
+
+    <ul class="artists">
     <% event.artists.each do |artist| %>
-      <%= link_to artist.name, artist, {:class=> "artist"} %>
+      <li><%= link_to artist.name, artist, {:class=> "artist"} %></li>
     <% end %>
-    <%= link_to event.venue.name, event.venue, {:class => "venue"}%>
-    <span class="cost">
-      <%= event.price_range_in_words %>
-    </span>
+    </ul>
+    <div class="show_info">
+      <%= link_to event.venue.name, event.venue, {:class => "venue"}%>
+      <span class="cost"><%= event.price_range_in_words %></span>
+    </div>
   </div>
+
   <% end %>
+<!-- end .events -->  
 </div>
