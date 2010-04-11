@@ -76,7 +76,7 @@ div.show_info, ul.artists {
   left:125px;
 }
 
-div.event .artist, div.venue .name {
+div.event .artist, div.venue .name, div.artist .name {
   color:#586C78;
   text-decoration:none;
   font-size:110%;

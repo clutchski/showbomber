@@ -1,8 +1,20 @@
+
+<div class="artist">
+  <div class="name">    <%= @artist.name %>      </div>
+</div>
+
+<h3>Events</h3>
+<% @artist.events.each do |event| %>
+  
+  <%= event.venue.name %>
+  <br>
+
+<% end %>
+
 <p>
-  <b>Name:</b>
-  <%= @artist.name %>
-</p>
 
 
 <%= link_to 'Edit', edit_artist_path(@artist) %> |
 <%= link_to 'Back', artists_path %>
+
+</p>
