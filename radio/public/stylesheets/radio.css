@@ -37,7 +37,9 @@ html, body {
 }
 
 #events {
-  margin:2em;
+
+  margin:0.5em;
+  margin-top:2em;
 }
 
 div.event {
@@ -61,7 +63,7 @@ ul.artists, ul.artists li {
 
 div.show_info, ul.artists {
   position:relative;
-  left:80px;
+  left:140px;
 }
 
 div.event .artist {
