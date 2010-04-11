@@ -6,7 +6,7 @@ html, body {
 #logo {
   background-color:#ABB9C1;
   color:white;
-  font-size:300%;
+  font-size:250%;
   padding:0.1em 0.4em 0.1em 0.4em;
   text-decoration:none;
   position:fixed;
@@ -15,8 +15,8 @@ html, body {
 
 #nav {
   position:relative;
-  left:250px;
-  top:10px;
+  left:203px;
+  top:11px;
 }
 
 #nav, #nav li {
@@ -28,7 +28,7 @@ html, body {
 #nav li a{
   color:white;
   background-color:gray;
-  font-size:200%;
+  font-size:150%;
   padding:0.1em 0.4em 0.1em 0.4em;
   text-decoration:none;
 }
