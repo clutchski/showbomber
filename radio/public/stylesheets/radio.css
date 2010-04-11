@@ -9,6 +9,14 @@ html, body {
   font-size:300%;
   padding:0.1em 0.4em 0.1em 0.4em;
   text-decoration:none;
+  position:fixed;
+  top:16px;
+}
+
+#nav {
+  position:relative;
+  left:250px;
+  top:10px;
 }
 
 #nav, #nav li {
@@ -23,6 +31,11 @@ html, body {
   font-size:200%;
   padding:0.1em 0.4em 0.1em 0.4em;
   text-decoration:none;
+}
+
+#nav li a:hover {
+  /*  FIXME: choose a nice header link background color */
+  background-color:blue;
 }
 
 #footer {
