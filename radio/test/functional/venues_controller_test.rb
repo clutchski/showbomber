@@ -1,6 +1,17 @@
 require 'test_helper'
 
 class VenuesControllerTest < ActionController::TestCase
+
+  #FIXME replace this with a built-in?
+  def assert_arrays_equal(array1, array2)
+    expected = array1.dup
+    array2.each do |e|
+      assert expected.member?(e)
+      expected.delete(e)
+    end
+    assert expected.empty?
+  end
+
   test "should get index" do
     get :index
     assert_response :success
@@ -49,7 +60,7 @@ class VenuesControllerTest < ActionController::TestCase
     event_keys = [:neil_at_bowery_ballroom, :wolf_parade_at_bowery_ballroom]
     expected_events = event_keys.collect{|e| events(e)}
 
-    assert_equal expected_events, actual_venue.events
+    assert_arrays_equal expected_events, actual_venue.events
   end
 
   test "should get edit" do
