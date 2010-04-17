@@ -1,28 +1,13 @@
-<h1>Listing venues</h1>
+<h1>Venues</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Address1</th>
-    <th>City</th>
-    <th>State</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<ul id="venues">
 <% @venues.each do |venue| %>
-  <tr>
-    <td><%= venue.name %></td>
-    <td><%= venue.address1 %></td>
-    <td><%= venue.city %></td>
-    <td><%= venue.state %></td>
-    <td><%= link_to 'Show', venue %></td>
-    <td><%= link_to 'Edit', edit_venue_path(venue) %></td>
-    <td><%= link_to 'Destroy', venue, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <li class="venue">
+    <%= link_to venue.name, venue, :class=>"name" %>
+  </li>
+
 <% end %>
-</table>
+</ul>
 
 <br />
 
