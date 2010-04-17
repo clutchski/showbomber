@@ -76,7 +76,7 @@ div.show_info, ul.artists {
   left:125px;
 }
 
-div.event .artist, #venue .name, div.artist .name {
+div.event .artist, #venue .name, div.artist .name, #artists a.name {
   color:#586C78;
   text-decoration:none;
   font-size:110%;
@@ -113,4 +113,10 @@ div.event a:hover, #footer a:hover {
 
 #venue {
   margin-bottom:1em;
+}
+
+ul#artists {
+  list-style:none;
+  margin:0;
+  padding:0;
 }

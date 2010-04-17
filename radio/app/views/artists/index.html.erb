@@ -1,23 +1,12 @@
-<h1>Listing artists</h1>
+<h1>Artists</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<ul id="artists">
 <% @artists.each do |artist| %>
-  <tr>
-    <td><%= artist.name %></td>
-    <td><%= link_to 'Show', artist %></td>
-    <td><%= link_to 'Edit', edit_artist_path(artist) %></td>
-    <td><%= link_to 'Destroy', artist, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <li class="artist">
+    <%= link_to artist.name, artist, :class=>"name" %>
+  </li>
 <% end %>
-</table>
 
-<br />
-
+<p>
 <%= link_to 'New artist', new_artist_path %>
+</p>
