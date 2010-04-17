@@ -8,15 +8,8 @@
   <div class="phone">   <%= @venue.phone %>     </div>
 </div>
 
-<h3>Events</h3>
-
-<% @venue.events.each do |event| %>
-  
-  <%= event.artists.collect{ |a| a.name }.join(',') %>
-  <br>
-
-<% end %>
-
+<%= render( :partial => "events/events",
+            :locals => {:events => @venue.events}) %>
 
 <%= link_to 'Edit', edit_venue_path(@venue) %> |
 <%= link_to 'Back', venues_path %>
