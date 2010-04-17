@@ -1,21 +1,2 @@
 
-<div id="events">
-  <% @events.each do |event| %>
-  <div class="event">
-
-    <span class="date"><%= event.start_date.strftime("%a %b %d") %></span>
-
-    <ul class="artists">
-    <% event.artists.each do |artist| %>
-      <li><%= link_to artist.name, artist, {:class=> "artist"} %></li>
-    <% end %>
-    </ul>
-    <div class="show_info">
-      <%= link_to event.venue.name, event.venue, {:class => "venue"}%>
-      <span class="cost"><%= event.price_range_in_words %></span>
-    </div>
-  </div>
-
-  <% end %>
-<!-- end .events -->  
-</div>
+<%= render :partial => "events", :locals => {:events => @events} %>
