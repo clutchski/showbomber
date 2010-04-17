@@ -55,8 +55,6 @@ class EventTest < ActiveSupport::TestCase
     event.max_cost = 20
     assert_equal "$10 - $20", event.price_range_in_words
 
-
-
   end
 
 end
