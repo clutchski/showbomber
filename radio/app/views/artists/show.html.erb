@@ -4,13 +4,9 @@
 </div>
 
 <h3>Events</h3>
-<% @artist.events.each do |event| %>
-  
-  <%= event.venue.name %>
-  <br>
 
-<% end %>
-
+<%= render( 
+     :partial => "events/events", :locals => { :events => @artist.events}) %>
 <p>
 
 
