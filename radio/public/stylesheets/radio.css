@@ -81,7 +81,6 @@ a.name {
   color:#586C78;
   text-decoration:none;
   font-size:110%;
-  margin-right:0.2em;
   font-weight:bold;
   text-transform:uppercase;
   font-style:normal;
@@ -120,4 +119,10 @@ ul#artists, ul#venues{
   list-style:none;
   margin:0;
   padding:0;
+}
+
+img.play {
+  height:15px;
+  width:15px;
+  margin-right:0.3em;
 }

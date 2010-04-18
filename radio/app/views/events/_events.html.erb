@@ -7,7 +7,11 @@
 
     <ul class="artists">
     <% event.artists.each do |artist| %>
-      <li><%= link_to artist.name, artist, {:class=> "artist"} %></li>
+      <li>
+        <%= link_to artist.name, artist, {:class=> "artist"} %>
+        <%= get_play_link(artist) %>
+       </li>
+      
     <% end %>
     </ul>
     <div class="show_info">
