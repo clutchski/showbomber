@@ -26,8 +26,10 @@ class ArtistsControllerTest < ActionController::TestCase
   end
 
   test "should show artist" do
-    get :show, :id => artists(:bob_dylan).to_param
+    bob_dylan = artists(:bob_dylan)
+    get :show, :id => bob_dylan.to_param
     assert_response :success
+    assert assigns(:artist) == bob_dylan
   end
 
   test "should get edit" do
