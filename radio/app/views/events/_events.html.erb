@@ -9,7 +9,9 @@
     <% event.artists.each do |artist| %>
       <li>
         <%= link_to artist.name, artist, {:class=> "artist"} %>
-        <%= get_play_link(artist) %>
+        <span>
+          <%= get_play_link(artist) %>
+        </span>
        </li>
       
     <% end %>

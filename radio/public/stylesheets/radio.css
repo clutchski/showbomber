@@ -121,8 +121,9 @@ ul#artists, ul#venues{
   padding:0;
 }
 
-img.play {
-  height:15px;
-  width:15px;
-  margin-right:0.3em;
+a.play_embed {
+  height:24px;
+  width:24px;
+  display:block;
+  background-image:url(/images/70-tv.png)
 }
