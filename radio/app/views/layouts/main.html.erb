@@ -5,8 +5,9 @@
   <title>My Page</title>
   <%= stylesheet_link_tag 'radio' %>
 
-  <%= javascript_include_tag '3p/prototype' %>
-  <%= javascript_include_tag '3p/jquery-1.4.2.min' %>
+  <% %w{prototype jquery-1.4.2.min swfobject parseUri}.each do |lib| %>
+    <%= javascript_include_tag "3p/#{lib}" %>
+  <% end %>
   <script>
      var $j = jQuery.noConflict()
   </script>

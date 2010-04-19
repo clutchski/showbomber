@@ -34,8 +34,8 @@
 
   $j(document).ready( function() {
    
-    var playlist = new radio.Playlist('#events');
-    var player = new radio.Player('#player', playlist);
+    var player = new radio.Player('#player');
+    var playlist = new radio.Playlist('#events', player);
 
   });
   
