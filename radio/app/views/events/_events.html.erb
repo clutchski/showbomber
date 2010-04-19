@@ -25,3 +25,19 @@
   <% end %>
   
 </div><!-- end #events -->
+
+<div id="player">
+</div>
+
+<script type="text/javascript">
+  //FIXME: move this somewhere sane
+
+  $j(document).ready( function() {
+   
+    var playlist = new radio.Playlist('#events');
+    var player = new radio.Player('#player', playlist);
+
+  });
+  
+
+</script>

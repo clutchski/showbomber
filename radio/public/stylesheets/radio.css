@@ -127,3 +127,10 @@ a.play_embed {
   display:inline-block;
   background-image:url(/images/70-tv.png)
 }
+
+#player {
+  float:right;
+  width:500px;
+  height:400px;
+  background-color:gray;
+}
