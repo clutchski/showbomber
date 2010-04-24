@@ -2,3 +2,5 @@
 
 require ::File.expand_path('../config/environment',  __FILE__)
 run Radio::Application
+
+Sass::Plugin.options[:template_location] = '../app/stylesheets'
