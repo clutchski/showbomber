@@ -1,4 +1,8 @@
 
+/*
+ * Variables, mixins and the like.
+ */
+
 $link-hover: #bd1550;
 
 @mixin inline_list {
@@ -11,6 +15,10 @@ $link-hover: #bd1550;
   }
 }
 
+/*
+ * Selectors
+ */
+
 html, body {
   font-family:Palatino,Georgia,"Times New Roman",Times,serif;
   margin:1em;
@@ -22,14 +30,6 @@ html, body {
   font-size:250%;
   padding:0.1em 0.4em 0.1em 0.4em;
   text-decoration:none;
-  position:fixed;
-  top:16px;
-}
-
-#nav {
-  position:relative;
-  left:203px;
-  top:11px;
 }
 
 #nav {
@@ -66,13 +66,11 @@ div.event {
 }
 
 div.event .date {
-  position:fixed;
   font-size:110%;
   color: #CCC;
   text-transform:uppercase;
   font-weight:bold;
   text-align:right;
-  width:120px;
 }
 
 ul.artists {
@@ -80,8 +78,6 @@ ul.artists {
 }
 
 div.show_info, ul.artists {
-  position:relative;
-  left:125px;
 }
 
 div.event .artist, #venue .name, div.artist .name, #artists a.name, #venues
