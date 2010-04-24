@@ -38,31 +38,37 @@ html, body {
 
 #nav {
   @include inline_list;
-}
 
-#nav li a{
-  color:white;
-  background-color:gray;
-  font-size:150%;
-  padding:0.1em 0.4em 0.1em 0.4em;
-  text-decoration:none;
-}
+  li a{
+    color:white;
+    background-color:gray;
+    font-size:150%;
+    padding:0.1em 0.4em 0.1em 0.4em;
+    text-decoration:none;
+    &:hover {
+      background-color:blue;
+    }
+  }
 
-#nav li a:hover {
-  /*  FIXME: choose a nice header link background color */
-  background-color:blue;
-}
+} //#nav
 
 #footer {
   text-align:center;
   margin-top:1em;
   font-size:90%;
   color:#CCC;
+  clear:both;
+  margin-top:2em;
 }
 
 #main {
   margin:0.5em;
   margin-top:2em;
+}
+
+div#events {
+  float:left;
+  display:inline-block;
 }
 
 div.event {
@@ -132,7 +138,8 @@ a.play_embed {
 }
 
 #player {
-  float:right;
+  float:left;
+  margin-left:3em;
   width:500px;
   height:400px;
   background-color:gray;

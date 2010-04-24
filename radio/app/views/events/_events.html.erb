@@ -29,15 +29,16 @@
 <div id="player">
 </div>
 
+
 <script type="text/javascript">
   //FIXME: move this somewhere sane
 
   $j(document).ready( function() {
-   
-    var player = new radio.Player('#player');
-    var playlist = new radio.Playlist('#events', player);
 
+    var videoId = 'player';
+    var playlistId = 'events';
+   
+    var player = new radio.Player(videoId, playlistId);
   });
-  
 
 </script>
