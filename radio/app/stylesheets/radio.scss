@@ -5,11 +5,15 @@
 
 $link-hover: #bd1550;
 
-@mixin inline_list {
+@mixin no_style_list {
   list-style:none;
-  display:inline;
   margin:0;
   padding:0;
+}
+
+@mixin inline_list {
+  @include no_style_list;
+  display:inline;
   li {
     display: inline;
   }
@@ -77,9 +81,6 @@ ul.artists {
   @include inline_list;
 }
 
-div.show_info, ul.artists {
-}
-
 div.event .artist, #venue .name, div.artist .name, #artists a.name, #venues
 a.name {
   color:#586C78;
@@ -120,9 +121,7 @@ a.artist:hover, a.venue:hover, #footer a:hover {
 }
 
 ul#artists, ul#venues{
-  list-style:none;
-  margin:0;
-  padding:0;
+  @include no_style_list;
 }
 
 a.play_embed {
