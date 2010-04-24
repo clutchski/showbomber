@@ -1,3 +1,16 @@
+
+$link-hover: #bd1550;
+
+@mixin inline_list {
+  list-style:none;
+  display:inline;
+  margin:0;
+  padding:0;
+  li {
+    display: inline;
+  }
+}
+
 html, body {
   font-family:Palatino,Georgia,"Times New Roman",Times,serif;
   margin:1em;
@@ -19,10 +32,8 @@ html, body {
   top:11px;
 }
 
-#nav, #nav li {
-  list-style:none;
-  text-decoration:none;
-  display:inline;
+#nav {
+  @include inline_list;
 }
 
 #nav li a{
@@ -64,11 +75,8 @@ div.event .date {
   width:120px;
 }
 
-ul.artists, ul.artists li {
-  display:inline;
-  list-style:none;
-  margin:0;
-  padding:0;
+ul.artists {
+  @include inline_list;
 }
 
 div.show_info, ul.artists {
@@ -106,9 +114,9 @@ div.event .cost {
 }
 
 a.artist:hover, a.venue:hover, #footer a:hover {
-  color: #bd1550;
+  color: $link-hover;
   text-decoration:none;
-  border-bottom: 2px solid #bd1550;
+  border-bottom: 2px solid $link-hover;
 }
 
 #venue {
