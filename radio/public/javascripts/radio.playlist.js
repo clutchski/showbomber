@@ -7,7 +7,7 @@ radio.Playlist = Class.create({
     this.playSongCallback = playSongCallback;
 
     // dom references
-    this.artists = this.container.find(this.DOM.artistClass);
+    this.artists = this.container.find('.' + this.DOM.artistClass);
     this.songLinks = this.container.find(this.DOM.songLinkSelector);
     this.songLinks.click(this.songClickHandler.bind(this));
   },
@@ -32,7 +32,7 @@ radio.Playlist = Class.create({
 Object.extend(radio.Playlist, {
 
   DOM : { songLinkSelector : 'a.song'
-        , artistClass      : '.artist'
+        , artistClass      : 'artist'
         , nowPlayingClass  : 'playing'
         }
 
