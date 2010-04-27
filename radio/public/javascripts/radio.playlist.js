@@ -6,9 +6,11 @@ radio.Playlist = Class.create({
     this.container = $j('#' + playlistId);
     this.playSongCallback = playSongCallback;
 
+    // dom references
+    this.artists = this.container.find(this.DOM.artistClass);
     this.songLinks = this.container.find(this.DOM.songLinksClass);
     this.songLinks.click(this.songClickHandler.bind(this));
-  }, 
+  },
 
   songClickHandler : function(event) {
     event.preventDefault();
@@ -16,6 +18,14 @@ radio.Playlist = Class.create({
     var songUrl = songLink.attr('href');
     console.log('passing song to player: ' + songUrl);
     this.playSongCallback(songUrl);
+    this.highlightPlayingArtist(songLink);
+  },
+
+  highlightPlayingArtist : function(songLink) {
+
+    this.artists.removeClass(this.DOM.nowPlayingClass);
+    var artist = songLink.parent().find(this.DOM.artistClass);
+    artist.addClass(this.DOM.nowPlayingClass);
   }
 
 });
@@ -23,6 +33,9 @@ radio.Playlist = Class.create({
 // Add class methods and varibles.
 Object.extend(radio.Playlist, {
 
-  DOM : { songLinksClass : '.play_embed'}
+  DOM : { songLinksClass    : '.play_embed'
+        , artistClass       : '.artist'
+        , nowPlayingClass   : 'playing'
+        }
 
 });
