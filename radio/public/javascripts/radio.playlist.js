@@ -22,7 +22,7 @@ radio.Playlist = Class.create({
 
   highlightArtist : function(songLink) {
     this.artists.removeClass(this.DOM.nowPlayingClass);
-    var artist = songLink.parent().find(this.DOM.artistClass);
+    var artist = songLink.parent().find('.' + this.DOM.artistClass);
     artist.addClass(this.DOM.nowPlayingClass);
   }
 
