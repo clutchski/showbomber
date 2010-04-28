@@ -46,10 +46,18 @@ radio.Playlist = Class.create({
     }
   },
 
+  play : function() {
+    if (this.currentSongLink) {
+      this.currentSongLink.click();
+    } else {
+      this.log("no current song selected");
+    }
+  },
+
   next : function() {
     var link = this.getNextSongLink();
-    this.currentSongLink = $j(link);
-    this.currentSongLink.click();
+    this.currentSongLink = (link) ? $j(link) : null;
+    this.play();
   },
 
   previous : function() {
