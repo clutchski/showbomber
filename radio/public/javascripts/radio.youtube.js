@@ -26,7 +26,7 @@ var onYouTubePlayerReady = function(playerId) {
 
 radio.youtube.Controller = Class.create({
 
-  initialize : function(playerId, videoDivId, width, height) {
+  initialize : function(playerId, videoDivId, width, height, songEndedCallback) {
 
     //HACK
     radio.youtube.controller = this;
@@ -36,6 +36,7 @@ radio.youtube.Controller = Class.create({
     this.playerId = playerId;
     this.width = width;
     this.height = height;
+    this.videoEndedCallback = songEndedCallback;
 
     this.minSWFVersion = '8';
     this.flashVars = null;
@@ -56,7 +57,8 @@ radio.youtube.Controller = Class.create({
   onPlayerStateChange : function(state) {
 
     if (state === 'ENDED') {
-      console.log("video ended");
+      this.log("video ended");
+      this.videoEndedCallback();
     }
   },
 

@@ -7,12 +7,17 @@ radio.Player = Class.create({
     this.height = 400;
 
     var youtubePlayerId = 'youtubePlayer';
+    var onSongEndedCallback = this.onSongEnded.bind(this);
     this.youtubePlayer = new radio.youtube.Controller(
-                    youtubePlayerId, videoDivId, this.width, this.height);
+   youtubePlayerId, videoDivId, this.width, this.height, onSongEndedCallback);
 
     // initialize the playlist
     var playSongCallback = this.play.bind(this);
     this.playlist = new radio.Playlist(playlistDivId, playSongCallback);
+  },
+
+  onSongEnded : function() {
+    this.playlist.next();
   },
 
   log: function(message) { 
@@ -23,6 +28,6 @@ radio.Player = Class.create({
     this.log("playing song with url : " + songUrl);
     //FIXME: assert this is a youtube video
     this.youtubePlayer.play(songUrl);
-  }
+  },
 
 });
