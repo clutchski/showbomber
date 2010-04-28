@@ -5,6 +5,8 @@
 
 $link_hover_color: #bd1550;
 $now_playing_song_color: yellow;
+$event_date_column_width_px: 100px;
+$event_date_column_padding: 5px;
 
 @mixin no_style_list {
   list-style:none;
@@ -77,7 +79,7 @@ div.event {
 }
 
 div.event .date {
-  font-size:110%;
+  font-size:90%;
   color: #CCC;
   text-transform:uppercase;
   font-weight:bold;
@@ -103,6 +105,15 @@ div.event .venue, div.event .cost, div#venue {
   color:#ABB9C1;
   font-style:italic;
   font-size:95%;
+}
+
+.event .venue {
+  margin-left: $event_date_column_width_px + $event_date_column_padding;
+}
+.event .date {
+  display:inline-block;
+  min-width: $event_date_column_width_px;
+  width: $event_date_column_width_px;
 }
 
 div.event .cost {
