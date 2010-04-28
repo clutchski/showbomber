@@ -10,3 +10,11 @@ helpless:
 harvest:
     url: http://www.youtube.com/watch?v=j79wjIB46A0
     artist: neil_young
+
+national_peoples_scare:
+  artist: wolf_parade
+  url: http://www.youtube.com/watch?v=U08pOMc4yhU
+
+dead_and_rural:
+  artist: handsome_furs
+  url: http://www.youtube.com/watch?v=Fu2Wq_h8nXg
