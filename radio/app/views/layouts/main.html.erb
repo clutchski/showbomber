@@ -5,6 +5,8 @@
   <title>My Page</title>
   <%= stylesheet_link_tag 'radio' %>
 
+  <%# FIXME: replace multiple javascript includes with sprockets or concat %>
+
   <% %w{prototype jquery-1.4.2.min swfobject parseUri}.each do |lib| %>
     <%= javascript_include_tag "3p/#{lib}" %>
   <% end %>
@@ -12,10 +14,9 @@
      var $j = jQuery.noConflict()
   </script>
 
-  <%= javascript_include_tag 'radio' %>
-  <%= javascript_include_tag 'radio.playlist' %>
-  <%= javascript_include_tag 'radio.player' %>
-  <%= javascript_include_tag 'radio.youtube' %>
+  <% %w{radio radio.playlist radio.player radio.youtube}.each do |lib| %>
+    <%= javascript_include_tag lib %>
+  <% end %>
 
   <%= csrf_meta_tag %>
 </head>
