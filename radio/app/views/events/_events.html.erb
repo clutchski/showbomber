@@ -24,19 +24,17 @@
   
 </div><!-- end #events -->
 
-<div id="player">
-</div>
-
+<div id="video"></div>
 
 <script type="text/javascript">
   //FIXME: move this somewhere sane
 
   $j(document).ready( function() {
 
-    var videoId = 'player';
-    var playlistId = 'events';
+    var videoDivId = 'video';
+    var playlistDivId = 'events';
    
-    var player = new radio.Player(videoId, playlistId);
+    var player = new radio.Player(videoDivId, playlistDivId);
   });
 
 </script>
