@@ -7,7 +7,7 @@ radio.Player = Class.create({
     this.height = 400;
 
     var youtubePlayerId = 'youtubePlayer';
-    this.youtubePlayer = new radio.youtube.Player(
+    this.youtubePlayer = new radio.youtube.Controller(
                     youtubePlayerId, videoDivId, this.width, this.height);
 
     // initialize the playlist

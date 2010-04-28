@@ -1,32 +1,39 @@
 
+
+
 radio.youtube = {
 
-  playerReadyCallBacks : $H(),
+  state_by_id : $H({ '-1' : 'NOT_STARTED'
+                   , '0'  : 'ENDED'
+                   , '1'  : 'PLAYING'
+                   , '2'  : 'PAUSED'
+                   , '3'  : 'BUFFERING'
+                   , '5'  : 'CUED'
+                   }),
 
-  registerPlayerReadyCallback : function(playerId, callback) {
-    this.playerReadyCallBacks.set(playerId, callback);
+  onPlayerStateChange : function(stateId) {
+
+    var state = radio.youtube.state_by_id.get(stateId);
+    radio.youtube.controller.onPlayerStateChange(state);
+  },
+
+  onPlayerReady : function(playerId) {
+
+    radio.youtube.controller.onPlayerReady();
   }
 
 };
 
-/* This function is called by the javascript api whenever a youtube 
- * player is enabled.
- */
-function onYouTubePlayerReady(playerId) {
-  var callback = radio.youtube.playerReadyCallBacks.get(playerId);
-  if (!callback) {
-    console.error("no youtube player registered with id " + playerId);
-  } else {
-    callback(playerId);
-  }
-};
+// called by youtube js api when the player is loaded
+var onYouTubePlayerReady = radio.youtube.onPlayerReady;
 
-/*
- * This class controls a YouTube player.
- */
-radio.youtube.Player = Class.create({
+radio.youtube.Controller = Class.create({
 
   initialize : function(playerId, videoDivId, width, height) {
+
+    //HACK
+    radio.youtube.controller = this;
+    this.player = null;
 
     this.videoDivId = videoDivId;
     this.playerId = playerId;
@@ -36,17 +43,24 @@ radio.youtube.Player = Class.create({
     this.minSWFVersion = '8';
     this.flashVars = null;
     this.expressSwfInstallUrl = null;
-    
-    radio.youtube.registerPlayerReadyCallback(
-                    playerId, this.playerReadyCallback.bind(this));
   }, 
 
   log : function(message) {
-    console.log("radio.youtube.Player: " + message);
+    console.log("radio.youtube.Controller: " + message);
   },
 
-  playerReadyCallback : function(playerId) {
-    this.log("player ready callback " + playerId);
+  onPlayerReady : function() {
+    this.player = document.getElementById(this.videoDivId);
+    var stateChangeCallback = "radio.youtube.onPlayerStateChange";
+    this.player.addEventListener("onStateChange", stateChangeCallback);
+    this.player.playVideo();
+  },
+
+  onPlayerStateChange : function(state) {
+
+    if (state === 'ENDED') {
+      console.log("video ended");
+    }
   },
 
   play : function(url) {
