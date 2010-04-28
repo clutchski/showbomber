@@ -17,15 +17,12 @@ radio.youtube = {
     radio.youtube.controller.onPlayerStateChange(state);
   },
 
-  onPlayerReady : function(playerId) {
-
-    radio.youtube.controller.onPlayerReady();
-  }
-
 };
 
 // called by youtube js api when the player is loaded
-var onYouTubePlayerReady = radio.youtube.onPlayerReady;
+var onYouTubePlayerReady = function(playerId) {
+  radio.youtube.controller.onPlayerReady();
+};
 
 radio.youtube.Controller = Class.create({
 
