@@ -28,19 +28,19 @@ $event_date_column_padding: 4px;
 
 html, body {
   font-family:Palatino,Georgia,"Times New Roman",Times,serif;
-  margin:1em;
-}
-
-#logo {
-  height: 80px;
-  width: 80px;
+  margin:0.4em;
 }
 
 #title {
+  background-image:url(/images/bomb_64-64.png);
+  background-position:17px 15px;
+  background-attachment:fixed;
+  background-repeat:no-repeat;
   background-color:#ABB9C1;
   color:white;
-  font-size:250%;
-  padding:0.1em 0.4em 0.1em 0.4em;
+  position:relative;
+  font-size:60px;
+  padding:0.1em 0.4em 0.1em 75px;
   text-decoration:none;
 }
 
