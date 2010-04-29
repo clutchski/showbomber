@@ -24,7 +24,8 @@
 <body>
 
   <div id="header">
-    <%= link_to 'ShowRadio', root_path, :id=>'logo'%>
+    <%= image_tag("logo.png", :id=>'logo') %>
+    <%= link_to 'showbomber', root_path, :id=>'title'%>
     <ul id="nav">
       <li><%= link_to 'Events', events_path %></li>
       <li><%= link_to 'Artists', artists_path %></li>
