@@ -63,13 +63,13 @@ html, body {
   li a{
     @include rounded_corners(5px);
     color:white;
-    background-color:#36454F;
-    font-size:150%;
+    font-size:152%;
     padding:0.1em 0.4em 0.1em 0.4em;
-    font-weight:bold;
     text-decoration:none;
+    text-transform:uppercase;
     &:hover {
-      background-color:blue;
+      //background-color:blue;
+      background-color:#36454F;
     }
   }
 
