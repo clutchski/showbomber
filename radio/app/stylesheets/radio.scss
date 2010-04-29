@@ -6,7 +6,7 @@
 $link_hover_color: #bd1550;
 $now_playing_song_color: yellow;
 $event_date_column_width_px: 100px;
-$event_date_column_padding: 7px;
+$event_date_column_padding: 8px;
 
 @mixin no_style_list {
   list-style:none;
@@ -39,10 +39,15 @@ html, body {
   margin-top:5px;
 }
 
+#main {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
 #header {
   @include rounded_corners(10px);
   background-color:#ABB9C1;
-  padding:10px;
+  padding:7px;
 }
 
 #title {
@@ -68,7 +73,6 @@ html, body {
     text-decoration:none;
     text-transform:uppercase;
     &:hover {
-      //background-color:blue;
       background-color:#36454F;
     }
   }
@@ -152,10 +156,13 @@ a.artist:hover, a.venue:hover, #footer a:hover {
   color: $link_hover_color;
   text-decoration:none;
   border-bottom: 2px solid $link_hover_color;
+
 }
 
 a.artist.playing {
-  background-color:$now_playing_song_color;
+  background-color:#FCF75E;
+  padding:1px 5px 1px 5px;
+  @include rounded_corners(4px);
 }
 
 #venue {
