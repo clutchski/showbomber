@@ -6,7 +6,7 @@
 $link_hover_color: #bd1550;
 $now_playing_song_color: yellow;
 $event_date_column_width_px: 100px;
-$event_date_column_padding: 4px;
+$event_date_column_padding: 7px;
 
 @mixin no_style_list {
   list-style:none;
@@ -35,8 +35,8 @@ $event_date_column_padding: 4px;
 html, body {
 
   font-family:Courier,Courier New,monospace;
-  //font-family:Palatino,Georgia,"Times New Roman",Times,serif;
-  margin:15px;
+  margin:12px;
+  margin-top:5px;
 }
 
 #header {
