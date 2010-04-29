@@ -22,21 +22,34 @@ $event_date_column_padding: 4px;
   }
 }
 
+@mixin rounded_corners($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
 /*
  * Selectors
  */
 
 html, body {
-  font-family:Palatino,Georgia,"Times New Roman",Times,serif;
-  margin:0.4em;
+
+  font-family:Courier,Courier New,monospace;
+  //font-family:Palatino,Georgia,"Times New Roman",Times,serif;
+  margin:15px;
+}
+
+#header {
+  @include rounded_corners(10px);
+  background-color:#ABB9C1;
+  padding:10px;
 }
 
 #title {
   background-image:url(/images/bomb_64-64.png);
-  background-position:17px 15px;
-  background-attachment:fixed;
+  background-position:2px 3px;
+  background-attachment:relative;
   background-repeat:no-repeat;
-  background-color:#ABB9C1;
   color:white;
   position:relative;
   font-size:60px;
@@ -48,10 +61,12 @@ html, body {
   @include inline_list;
 
   li a{
+    @include rounded_corners(5px);
     color:white;
-    background-color:gray;
+    background-color:#36454F;
     font-size:150%;
     padding:0.1em 0.4em 0.1em 0.4em;
+    font-weight:bold;
     text-decoration:none;
     &:hover {
       background-color:blue;
