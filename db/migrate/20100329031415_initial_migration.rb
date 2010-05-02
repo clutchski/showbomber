@@ -10,7 +10,7 @@ class InitialMigration < ActiveRecord::Migration
     create_table :venues do |t|
       t.string :name
       t.string :phone
-      t.string :address1
+      t.string :address
       t.string :city
       t.string :state
       t.timestamps

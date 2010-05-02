@@ -33,7 +33,7 @@ class VenuesControllerTest < ActionController::TestCase
 
   test "invalid parameters venue" do
     params = { :name => 'Some Venue',
-               :address1 => "123 Fake Street",
+               :address => "123 Fake Street",
                :city => "New York",
                :state => "NY"
              }

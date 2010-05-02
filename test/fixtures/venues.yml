@@ -2,14 +2,14 @@
 
 bowery_ballroom:
   name: Bowery Ballroom
-  address1: 6 Delancey Street
+  address: 6 Delancey Street
   city: New York
   state: NY
   phone: 212.213.4567
 
 mercury_lounge:
   name: Mercury Lounge
-  address1: 217 East Houston Street
+  address: 217 East Houston Street
   city: New York
   state: NY
   phone: 917 442 7934

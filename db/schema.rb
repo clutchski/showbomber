@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(:version => 20100329031415) do
   create_table "venues", :force => true do |t|
     t.string   "name"
     t.string   "phone"
-    t.string   "address1"
+    t.string   "address"
     t.string   "city"
     t.string   "state"
     t.datetime "created_at"
