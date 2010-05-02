@@ -161,7 +161,7 @@ a.artist:hover, a.venue:hover, #footer a:hover {
 
 a.artist.playing {
   background-color:#FCF75E;
-  padding:1px 5px 1px 5px;
+  padding:2px 6px 2px 6px;
   @include rounded_corners(4px);
 }
 
