@@ -73,33 +73,46 @@ class LiveNationTest < ActionController::IntegrationTest
     artist_xml = %{
 			<artist>
 				<artist_link>#{link}</artist_link>
-				<id>#{link}</id>
-				<amg_id>#{id}</amg_id>
+				<id>#{id}</id>
+				<amg_id>#{amg_id}</amg_id>
 				<name>#{name}</name>
 				<genre></genre>
-			</artist>}
+			</artist>
+          }
 
-      artist_data = parse_xml(artist_xml)['artist']
-      artist = LiveNationAPI::Transformer.transform_artist(artist_data)
-      assert_equal name, artist.name
+    artist_data = parse_xml(artist_xml)['artist']
+    artist = LiveNationAPI::Transformer.transform_artist(artist_data)
+    assert_equal name, artist.name
   end
 
   test "test transform" do
     sample_file = File.join(this_dir(), 'live_nation_sample_data.xml')
     input_xml_data = File.open(sample_file) { |f| f.read }
-    # Crack is the parsing library used in httparty. definitely an abstraction
-    # leak, but oh well. fix this by serving test data from a test controller?
-    xml_data = Crack::XML.parse(input_xml_data)
+    ## Crack is the parsing library used in httparty. definitely an abstraction
+    ## leak, but oh well. fix this by serving test data from a test controller?
+    xml_data = parse_xml(input_xml_data)
     events = LiveNationAPI::Transformer.transform(xml_data)
+
     assert_equal 2, events.length
 
     lupe_at_house_of_blues = events[0]
     house_of_blues = lupe_at_house_of_blues.venue
     assert_equal "House of Blues Sunset Strip", house_of_blues.name
+    hob_artists = lupe_at_house_of_blues.artists
+    assert_equal 2, hob_artists.length
+    lupe = hob_artists[0]
+    assert_equal "Lupe Fiasco", lupe.name
+    bob = hob_artists[1]
+    assert_equal "B.o.B.", bob.name
 
     ok_go_in_philly = events[1]
     theatre_of_living_arts = ok_go_in_philly.venue
     assert_equal "Theatre of the Living Arts", theatre_of_living_arts.name
+
+    philly_artists = ok_go_in_philly.artists
+    assert_equal 1, philly_artists.length
+    ok_go = philly_artists[0]
+    assert_equal "OK Go", ok_go.name
 
   end
 

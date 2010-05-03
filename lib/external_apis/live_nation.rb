@@ -57,9 +57,20 @@ module LiveNationAPI
       venue_data = event_data['venue']
       venue = transform_venue(venue_data)
 
+      artists = []
+      %w{artists_headline artists_other}.each do |key|
+        artists_set_data = event_data[key]
+        next if artists_set_data.nil?
+        artists_data = artists_set_data['artist']
+        if !artists_data.is_a? Array
+          artists_data = [artists_data]
+        end
+        artists += artists_data.collect{|a| transform_artist(a)}
+      end
+
       event = Event.new
       event.venue = venue
-
+      event.artists = artists
       return event
     end
 

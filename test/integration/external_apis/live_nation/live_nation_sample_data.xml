@@ -83,22 +83,8 @@
 				<genre></genre>
 			</artist>
 		</artists_headline>
-		<artists_other>
-			<artist>
-				<artist_link>http://www.livenation.com/artist/earl-greyhound-tickets/?c=api-001100</artist_link>
-				<id>624278</id>
-				<amg_id>680269</amg_id>
-				<name>Earl Greyhound</name>
-				<genre></genre>
-			</artist>
-			<artist>
-				<artist_link>http://www.livenation.com/artist/the-booze-tickets/?c=api-001100</artist_link>
-				<id>621936</id>
-				<amg_id></amg_id>
-				<name>The Booze</name>
-				<genre></genre>
-			</artist>
-		</artists_other>
+    <artists_other>
+    </artists_other>
 		<ticketing_source>no</ticketing_source>
 		<ticket_types>
 			<ticket>
