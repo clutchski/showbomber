@@ -1,3 +1,6 @@
+#
+# This module contains test for the live nation api.
+#
 
 # stdlib
 require 'test_helper'
