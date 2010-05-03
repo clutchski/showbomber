@@ -64,6 +64,26 @@ class LiveNationTest < ActionController::IntegrationTest
 
   end
 
+  test "test_transform_artist" do 
+    name = "Neil Young"
+    link = "http://livenation.com/link"
+    id = "301901"
+    amg_id = "23422"
+
+    artist_xml = %{
+			<artist>
+				<artist_link>#{link}</artist_link>
+				<id>#{link}</id>
+				<amg_id>#{id}</amg_id>
+				<name>#{name}</name>
+				<genre></genre>
+			</artist>}
+
+      artist_data = parse_xml(artist_xml)['artist']
+      artist = LiveNationAPI::Transformer.transform_artist(artist_data)
+      assert_equal name, artist.name
+  end
+
   test "test transform" do
     sample_file = File.join(this_dir(), 'live_nation_sample_data.xml')
     input_xml_data = File.open(sample_file) { |f| f.read }

@@ -9,6 +9,11 @@ require 'httparty'
 
 module LiveNationAPI
 
+
+ #
+ # This class hits the live nation webservice, and returns a hash of
+ # the response content.
+ # 
  class Extractor
 
     include HTTParty
@@ -26,6 +31,10 @@ module LiveNationAPI
     end
   end
 
+
+  # 
+  # This class transforms the live nation feed data into business objects.
+  #
   class Transformer
 
     def self.transform_venue(venue_data)
@@ -36,6 +45,12 @@ module LiveNationAPI
       venue.state = venue_data['state']
       venue.phone = venue_data['phone']
       return venue
+    end
+
+    def self.transform_artist(artist_data)
+      artist = Artist.new
+      artist.name = artist_data["name"]
+      return artist
     end
 
     def self.transform_event(event_data)
