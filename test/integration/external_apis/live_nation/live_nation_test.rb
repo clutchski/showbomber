@@ -1,10 +1,6 @@
 
 # stdlib
 require 'test_helper'
-require 'pp'
-
-# 3p
-require 'crack'
 
 # project
 require 'lib/external_apis/live_nation.rb'
