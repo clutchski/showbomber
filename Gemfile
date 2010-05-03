@@ -9,6 +9,6 @@ gem "httparty"
 # Rails has selected sqlite3.
 gem "sqlite3-ruby", :require => "sqlite3"
 
-# group :test do
-#   gem "webrat"
-# end
+group :test do
+  gem "crack"
+end
