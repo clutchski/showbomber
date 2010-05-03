@@ -10,6 +10,10 @@ require 'lib/external_apis/live_nation.rb'
 
 class LiveNationTest < ActionController::IntegrationTest
 
+  def this_dir
+    File.dirname(__FILE__)
+  end
+
   test "test extractor works" do
     xml_data = LiveNationAPI::Extractor.extract(test_mode=true)
     assert xml_data.is_a? Hash
@@ -17,6 +21,66 @@ class LiveNationTest < ActionController::IntegrationTest
     events = xml_data['result']
     assert events.has_key? 'event'
     assert events['event'].is_a? Array
+  end
+
+  def parse_xml(xml)
+    # Crack is the parsing library used in httparty. definitely an abstraction
+    # leak, but oh well. fix this by serving test data from a test controller?
+    Crack::XML.parse(xml)
+  end
+
+  test "test_transform_venue" do
+
+    name = "Hollywood Bowl"
+    phone = "3238485100"
+    address = "8430 Sunset Boulevard"
+    postal_code = "90210"
+    city = "West Hollywood"
+    state = "CA"
+    country = "US"
+    venue_link = "http://someurl.com"
+
+    xml = %{
+		  <venue>
+			  <id>1596</id>
+			  <owned>OWNED</owned>
+			  <name>#{name}</name>
+			  <city>#{city}</city>
+			  <state>#{state}</state>
+			  <country>#{country}</country>
+			  <address>#{address}</address>
+			  <postal_code>#{postal_code}</postal_code>
+			  <phone>#{phone}</phone>
+			  <permitted_items></permitted_items>
+			  <venue_link>#{venue_link}</venue_link>
+		  </venue>}
+    venue_data = parse_xml(xml)
+    venue = LiveNationAPI::Transformer.transform_venue(venue_data['venue'])
+
+    assert_equal name, venue.name
+    assert_equal city, venue.city
+    assert_equal state, venue.state
+    assert_equal phone, venue.phone
+
+  end
+
+  test "test transform" do
+    sample_file = File.join(this_dir(), 'live_nation_sample_data.xml')
+    input_xml_data = File.open(sample_file) { |f| f.read }
+    # Crack is the parsing library used in httparty. definitely an abstraction
+    # leak, but oh well. fix this by serving test data from a test controller?
+    xml_data = Crack::XML.parse(input_xml_data)
+    events = LiveNationAPI::Transformer.transform(xml_data)
+    assert_equal 2, events.length
+
+    lupe_at_house_of_blues = events[0]
+    house_of_blues = lupe_at_house_of_blues.venue
+    assert_equal "House of Blues Sunset Strip", house_of_blues.name
+
+    ok_go_in_philly = events[1]
+    theatre_of_living_arts = ok_go_in_philly.venue
+    assert_equal "Theatre of the Living Arts", theatre_of_living_arts.name
+
   end
 
 end

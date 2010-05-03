@@ -26,5 +26,39 @@ module LiveNationAPI
     end
   end
 
+  class Transformer
+
+    def self.transform_venue(venue_data)
+      venue = Venue.new
+      venue.name = venue_data['name']
+      venue.city = venue_data['city']
+      venue.address = venue_data['address']
+      venue.state = venue_data['state']
+      venue.phone = venue_data['phone']
+      return venue
+    end
+
+    def self.transform_event(event_data)
+      venue_data = event_data['venue']
+      venue = transform_venue(venue_data)
+
+      event = Event.new
+      event.venue = venue
+
+      return event
+    end
+
+
+    def self.transform(live_nation_data)
+      events_data = live_nation_data['result']
+      return events_data['event'].collect{|e| transform_event(e)}
+    end
+
+  end
+
+  class Loader < ActiveRecord::Base
+
+
+  end
  
 end

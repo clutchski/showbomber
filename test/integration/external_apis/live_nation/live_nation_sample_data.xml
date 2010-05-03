@@ -1,0 +1,117 @@
+<?xml version="1.0" ?>
+<result xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://developers.livenation.com/apifeed.xsd">
+<feedversion>1.1</feedversion>	<event>
+		<id>419652</id>
+		<source>LN</source>
+		<type>Music</type>
+		<status>Normal</status>
+		<title>Steppin Laser Tour: Lupe Fiasco</title>
+		<date>5-2-2010</date>
+		<time>21:00:00</time>
+		<doors>20:00:00</doors>
+		<description></description>
+		<venue>
+			<id>1596</id>
+			<owned>OWNED</owned>
+			<name>House of Blues Sunset Strip</name>
+			<city>West Hollywood</city>
+			<state>CA</state>
+			<country>US</country>
+			<address>8430 Sunset Boulevard</address>
+			<postal_code>90069</postal_code>
+			<phone>3238485100</phone>
+			<permitted_items></permitted_items>
+			<venue_link>http://www.livenation.com/venue/house-of-blues-sunset-strip-tickets/?c=api-001100</venue_link>
+		</venue>
+		<artists_headline>
+			<artist>
+				<artist_link>http://www.livenation.com/artist/lupe-fiasco-tickets/?c=api-001100</artist_link>
+				<id>620670</id>
+				<amg_id>741971</amg_id>
+				<name>Lupe Fiasco</name>
+				<genre></genre>
+			</artist>
+		</artists_headline>
+		<artists_other>
+			<artist>
+				<artist_link>http://www.livenation.com/artist/b-o-b-tickets/?c=api-001100</artist_link>
+				<id>301907</id>
+				<amg_id>926413</amg_id>
+				<name>B.o.B.</name>
+				<genre></genre>
+			</artist>
+		</artists_other>
+		<ticketing_source>no</ticketing_source>
+		<ticket_types>
+			<ticket>
+				<type>General Onsale</type>
+				<start_date>3-13-2010 10:00</start_date>
+			</ticket>
+		</ticket_types>
+		<ticket_link>http://www.livenation.com/edp/eventId/419652/?c=api-001100</ticket_link>
+		<last_modified>3-22-2010 20:37</last_modified>
+	</event>
+	<event>
+		<id>419686</id>
+		<source>LN</source>
+		<type>Music</type>
+		<status>Normal</status>
+		<title>OK Go with Earl Greyhound and The Booze</title>
+		<date>5-3-2010</date>
+		<time>20:00:00</time>
+		<doors>19:00:00</doors>
+		<description></description>
+		<venue>
+			<id>1681</id>
+			<owned>OWNED</owned>
+			<name>Theatre of the Living Arts</name>
+			<city>Philadelphia</city>
+			<state>PA</state>
+			<country>US</country>
+			<address>334 South Street </address>
+			<postal_code>19147</postal_code>
+			<phone>2159221011</phone>
+			<permitted_items></permitted_items>
+			<venue_link>http://www.livenation.com/venue/theater-of-the-living-arts-tickets/?c=api-001100</venue_link>
+		</venue>
+		<artists_headline>
+			<artist>
+				<artist_link>http://www.livenation.com/artist/ok-go-tickets/?c=api-001100</artist_link>
+				<id>24908</id>
+				<amg_id>483558</amg_id>
+				<name>OK Go</name>
+				<genre></genre>
+			</artist>
+		</artists_headline>
+		<artists_other>
+			<artist>
+				<artist_link>http://www.livenation.com/artist/earl-greyhound-tickets/?c=api-001100</artist_link>
+				<id>624278</id>
+				<amg_id>680269</amg_id>
+				<name>Earl Greyhound</name>
+				<genre></genre>
+			</artist>
+			<artist>
+				<artist_link>http://www.livenation.com/artist/the-booze-tickets/?c=api-001100</artist_link>
+				<id>621936</id>
+				<amg_id></amg_id>
+				<name>The Booze</name>
+				<genre></genre>
+			</artist>
+		</artists_other>
+		<ticketing_source>no</ticketing_source>
+		<ticket_types>
+			<ticket>
+				<type>General Onsale</type>
+				<start_date>3-26-2010 12:00</start_date>
+			</ticket>
+			<ticket>
+				<type>Motorola Motoblur</type>
+				<start_date>3-26-2010 12:00</start_date>
+				<end_date>5-03-2010 20:00</end_date>
+			</ticket>
+		</ticket_types>
+		<ticket_link>http://www.livenation.com/edp/eventId/419686/?c=api-001100</ticket_link>
+		<last_modified>4-16-2010 17:57</last_modified>
+	</event>
+</result>
