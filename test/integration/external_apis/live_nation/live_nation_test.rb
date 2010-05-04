@@ -142,6 +142,7 @@ class LiveNationTest < ActionController::IntegrationTest
     }
     event_data = parse_xml(event_xml)
     event = LiveNationAPI::Transformer.transform_event(event_data['event'])
+    assert_equal DateTime.new(2010, 5, 2, 21), event.start_date
 
     # do a smoke test of the the artist parsing
     artists = event.artists

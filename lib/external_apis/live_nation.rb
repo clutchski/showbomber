@@ -54,9 +54,12 @@ module LiveNationAPI
     end
 
     def self.transform_event(event_data)
+
+      # parse venue
       venue_data = event_data['venue']
       venue = transform_venue(venue_data)
 
+      # parse artists
       artists = []
       %w{artists_headline artists_other}.each do |key|
         artists_set_data = event_data[key]
@@ -68,12 +71,18 @@ module LiveNationAPI
         artists += artists_data.collect{|a| transform_artist(a)}
       end
 
+      # parse start date
+      start_date_data = "#{event_data['date']} #{event_data['time']}"
+      # format: "5-2-2010 21:00:00"
+      start_date_format = "%m-%d-%Y %H:%M:%S"
+      start_date = DateTime.strptime(start_date_data, start_date_format)
+
       event = Event.new
       event.venue = venue
       event.artists = artists
+      event.start_date = start_date
       return event
     end
-
 
     def self.transform(live_nation_data)
       events_data = live_nation_data['result']
