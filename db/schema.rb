@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20100329031415) do
     t.string   "address"
     t.string   "city"
     t.string   "state"
+    t.string   "postal_code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

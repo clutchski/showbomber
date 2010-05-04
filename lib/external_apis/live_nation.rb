@@ -40,9 +40,10 @@ module LiveNationAPI
     def self.transform_venue(venue_data)
       venue = Venue.new
       venue.name = venue_data['name']
-      venue.city = venue_data['city']
       venue.address = venue_data['address']
+      venue.city = venue_data['city']
       venue.state = venue_data['state']
+      venue.postal_code = venue_data['postal_code']
       venue.phone = venue_data['phone']
       return venue
     end
