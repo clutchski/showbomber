@@ -5,6 +5,7 @@ bowery_ballroom:
   address: 6 Delancey Street
   city: New York
   state: NY
+  postal_code: 10002-2804
   phone: 212.213.4567
 
 mercury_lounge:
