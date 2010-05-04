@@ -1,11 +1,11 @@
 
 <div id="venue">
 
-  <div class="name">    <%= @venue.name %>      </div>
-  <div class="address"> <%= @venue.address %>   </div>
+  <div class="name"><%= @venue.name %></div>
+  <div class="address"><%= @venue.address %></div>
   <span class="city"><%= @venue.city %></span>, 
-  <span class="state">   <%= @venue.state %>     </span>
-  <div class="phone">   <%= @venue.phone %>     </div>
+  <span class="state"><%= @venue.state %></span>
+  <div class="phone"><%= @venue.phone %></div>
 </div>
 
 <%= render( :partial => "events/events",
