@@ -25,7 +25,8 @@ class LiveNationTest < ActionController::IntegrationTest
 
   def parse_xml(xml)
     # Crack is the parsing library used in httparty. definitely an abstraction
-    # leak, but oh well. fix this by serving test data from a test controller?
+    # leak, but oh well. if this becomes a problem, we'll always parse with
+    # Crack, and do custom http shit
     Crack::XML.parse(xml)
   end
 
@@ -85,11 +86,79 @@ class LiveNationTest < ActionController::IntegrationTest
     assert_equal name, artist.name
   end
 
+  test "transform_event" do
+    event_xml = %{
+      <event>
+      		<id>419652</id>
+      		<source>LN</source>
+      		<type>Music</type>
+      		<status>Normal</status>
+      		<title>Steppin Laser Tour: Lupe Fiasco</title>
+      		<date>5-2-2010</date>
+      		<time>21:00:00</time>
+      		<doors>20:00:00</doors>
+      		<description></description>
+      		<venue>
+      			<id>1596</id>
+      			<owned>OWNED</owned>
+      			<name>House of Blues Sunset Strip</name>
+      			<city>West Hollywood</city>
+      			<state>CA</state>
+      			<country>US</country>
+      			<address>8430 Sunset Boulevard</address>
+      			<postal_code>90069</postal_code>
+      			<phone>3238485100</phone>
+      			<permitted_items></permitted_items>
+      			<venue_link>http://www.livenation.com/venue/house-of-blues-sunset-strip-tickets/?c=api-001100</venue_link>
+      		</venue>
+      		<artists_headline>
+      			<artist>
+      				<artist_link>http://www.livenation.com/artist/lupe-fiasco-tickets/?c=api-001100</artist_link>
+      				<id>620670</id>
+      				<amg_id>741971</amg_id>
+      				<name>Lupe Fiasco</name>
+      				<genre></genre>
+      			</artist>
+      		</artists_headline>
+      		<artists_other>
+      			<artist>
+      				<artist_link>http://www.livenation.com/artist/b-o-b-tickets/?c=api-001100</artist_link>
+      				<id>301907</id>
+      				<amg_id>926413</amg_id>
+      				<name>B.o.B.</name>
+      				<genre></genre>
+      			</artist>
+      		</artists_other>
+      		<ticketing_source>no</ticketing_source>
+      		<ticket_types>
+      			<ticket>
+      				<type>General Onsale</type>
+      				<start_date>3-13-2010 10:00</start_date>
+      			</ticket>
+      		</ticket_types>
+      		<ticket_link>http://www.livenation.com/edp/eventId/419652/?c=api-001100</ticket_link>
+      		<last_modified>3-22-2010 20:37</last_modified>
+      	</event>
+    }
+    event_data = parse_xml(event_xml)
+    event = LiveNationAPI::Transformer.transform_event(event_data['event'])
+
+    # do a smoke test of the the artist parsing
+    artists = event.artists
+    assert_equal 2, artists.length
+    assert_equal 'Lupe Fiasco', artists[0].name
+    assert_equal 'B.o.B.', artists[1].name
+
+    # do a smoke test of the venue parsing
+    assert_equal "House of Blues Sunset Strip", event.venue.name
+
+
+  end
+
   test "test transform" do
     sample_file = File.join(this_dir(), 'live_nation_sample_data.xml')
     input_xml_data = File.open(sample_file) { |f| f.read }
-    ## Crack is the parsing library used in httparty. definitely an abstraction
-    ## leak, but oh well. fix this by serving test data from a test controller?
+
     xml_data = parse_xml(input_xml_data)
     events = LiveNationAPI::Transformer.transform(xml_data)
 
@@ -100,10 +169,8 @@ class LiveNationTest < ActionController::IntegrationTest
     assert_equal "House of Blues Sunset Strip", house_of_blues.name
     hob_artists = lupe_at_house_of_blues.artists
     assert_equal 2, hob_artists.length
-    lupe = hob_artists[0]
-    assert_equal "Lupe Fiasco", lupe.name
-    bob = hob_artists[1]
-    assert_equal "B.o.B.", bob.name
+    assert_equal "Lupe Fiasco", hob_artists[0].name
+    assert_equal "B.o.B.", hob_artists[1].name
 
     ok_go_in_philly = events[1]
     theatre_of_living_arts = ok_go_in_philly.venue
@@ -111,8 +178,7 @@ class LiveNationTest < ActionController::IntegrationTest
 
     philly_artists = ok_go_in_philly.artists
     assert_equal 1, philly_artists.length
-    ok_go = philly_artists[0]
-    assert_equal "OK Go", ok_go.name
+    assert_equal "OK Go", philly_artists[0].name
 
   end
 
