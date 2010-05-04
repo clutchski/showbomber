@@ -8,11 +8,7 @@ require 'test_helper'
 # project
 require 'lib/external_apis/live_nation.rb'
 
-class LiveNationTest < ActionController::IntegrationTest
-
-  def this_dir
-    File.dirname(__FILE__)
-  end
+class LiveNationExtractorTest < ActionController::IntegrationTest
 
   test "test extractor works" do
     xml_data = LiveNationAPI::Extractor.extract(test_mode=true)
@@ -23,11 +19,19 @@ class LiveNationTest < ActionController::IntegrationTest
     assert events['event'].is_a? Array
   end
 
+end
+
+class LiveNationAPITransformerTest < ActionController::IntegrationTest
+
   def parse_xml(xml)
     # Crack is the parsing library used in httparty. definitely an abstraction
     # leak, but oh well. if this becomes a problem, we'll always parse with
     # Crack, and do custom http shit
     Crack::XML.parse(xml)
+  end
+
+  def this_dir
+    File.dirname(__FILE__)
   end
 
   test "test_transform_venue" do
@@ -159,7 +163,7 @@ class LiveNationTest < ActionController::IntegrationTest
 
   end
 
-  test "test transform" do
+  test "transform feed" do
     sample_file = File.join(this_dir(), 'live_nation_sample_data.xml')
     input_xml_data = File.open(sample_file) { |f| f.read }
 
