@@ -8,4 +8,5 @@ gem "pg"
 
 group :test do
   gem "crack"
+  gem "forgery"
 end
