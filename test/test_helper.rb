@@ -16,14 +16,18 @@ class ActiveSupport::TestCase
   # Test data creation methods
   #
 
+  def get_random_venue_params
+    { :name        => "The #{Forgery::Name.company_name} Club",
+      :address     => Forgery::Address.street_address,
+      :city        => Forgery::Address.city,
+      :state       => Forgery::Address.state,
+      :postal_code => Forgery::Address.zip,
+      :phone       => Forgery::Address.phone
+    }
+  end
+
   def new_venue(params={})
-    defaults = { :name        => "The #{Forgery::Name.company_name} Club",
-                 :address     => Forgery::Address.street_address,
-                 :city        => Forgery::Address.city,
-                 :state       => Forgery::Address.state,
-                 :postal_code => Forgery::Address.zip,
-                 :phone       => Forgery::Address.phone
-               }
+    defaults = get_random_venue_params
     defaults.merge(params)
     Venue.new(defaults)
   end
