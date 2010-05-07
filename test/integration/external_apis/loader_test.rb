@@ -31,21 +31,21 @@ class ExternalAPIVenueLoaderTest < ActiveSupport::TestCase
   test "load identical venue" do
     params = get_random_venue_params()
 
-    venue1 = new_venue(params)
+    venue = new_venue(params)
 
     # load a new venue once, and assert it works
-    assert_nil Venue.find_by_name(venue1.name)
-    Loader.load_venue(venue1)
-    actual_venue1 = Venue.find_by_name(venue1.name)
-    assert_not_nil actual_venue1
-    assert_not_nil actual_venue1.id
+    assert_nil Venue.find_by_name(venue.name)
+    Loader.load_venue(venue)
+    actual_venue = Venue.find_by_name(venue.name)
+    assert_not_nil actual_venue
+    assert_not_nil actual_venue.id
 
     # load the same venue again, and assert the data is identical
-    venue2 = new_venue(params)
-    Loader.load_venue(venue2)
-    actual_venue2 = Venue.find_by_name(venue2.name)
-    assert_equal actual_venue1.id,   actual_venue2.id
-    assert_equal actual_venue1.name, actual_venue2.name
+    assert_nil venue.id
+    Loader.load_venue(venue)
+    actual_venue2 = Venue.find_by_name(venue.name)
+    assert_equal actual_venue.name, actual_venue2.name
+    assert_equal actual_venue.id,   actual_venue2.id
 
   end
 

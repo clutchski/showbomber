@@ -3,11 +3,12 @@
 # into the database.
 #
 
-class Loader < ActiveRecord::Base
+class Loader < ActiveRecord::Migration
 
   def self.load_venue(venue)
     transaction do
-      Venue.find_or_create_by_name(venue.attributes)
+      venue = Venue.find_or_create_by_name(venue.attributes)
+      venue.save!
     end
     venue
   end
@@ -16,9 +17,7 @@ class Loader < ActiveRecord::Base
     transaction do 
       events.each do |event|
         #FIXME: wtf?
-        venue = event.venue
-        venue.save!
-        event.venue = venue
+        event.venue = self.load_venue(event.venue)
         event.save!
       end
     end
