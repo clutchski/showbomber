@@ -7,7 +7,7 @@ class Loader < ActiveRecord::Base
 
   def self.load_venue(venue)
     transaction do
-      venue.save
+      Venue.find_or_create_by_name(venue.attributes)
     end
     venue
   end
