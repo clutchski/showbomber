@@ -6,6 +6,32 @@ require 'test_helper'
 require 'lib/external_apis/loader.rb'
 
 
+#
+# This class contains tests for the edge cases of loading venues
+#
+class ExternalAPIVenueLoaderTest < ActiveSupport::TestCase
+
+  test "load new venue" do
+    venue = new_venue({"the caruso club" => name})
+
+    # assert no such test data exists
+    assert_nil Venue.find_by_name(venue.name)
+
+    # load the venue
+    Loader.load_venue(venue)
+
+    # assert it exists
+    actual_venue = Venue.find_by_name(venue.name)
+    assert_not_nil actual_venue
+    assert_not_nil actual_venue.id
+    assert_equal venue.name, actual_venue.name
+    assert_equal venue.city, actual_venue.city
+  end
+
+
+
+end
+
 class ExternalAPILoaderTest < ActionController::IntegrationTest
 
   test "load_new_event_artists_venues" do
