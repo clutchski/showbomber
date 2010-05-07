@@ -16,7 +16,6 @@ class Loader < ActiveRecord::Migration
   def self.load_events(events)
     transaction do 
       events.each do |event|
-        #FIXME: wtf?
         event.venue = self.load_venue(event.venue)
         event.save!
       end
