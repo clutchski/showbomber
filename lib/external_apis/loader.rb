@@ -3,7 +3,7 @@
 # into the database.
 #
 
-class Loader < ActiveRecord::Migration
+class Loader < ActiveRecord::Base
 
   def self.load_venue(venue)
     transaction do

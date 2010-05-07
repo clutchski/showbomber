@@ -44,9 +44,34 @@ class ExternalAPIVenueLoaderTest < ActiveSupport::TestCase
     assert_nil venue.id
     Loader.load_venue(venue)
     actual_venue2 = Venue.find_by_name(venue.name)
+    assert_not_nil actual_venue2.id
     assert_equal actual_venue.name, actual_venue2.name
     assert_equal actual_venue.id,   actual_venue2.id
 
+  end
+
+  test "load venue with same name in different cities" do
+    params = get_random_venue_params()
+
+    chicago_params = params.merge({:city => 'chicago'})
+    toronto_params = params.merge({:city => 'toronto'})
+
+    chicago_venue = new_venue(chicago_params)
+    toronto_venue = new_venue(toronto_params)
+
+    assert_nil Venue.find_by_name(params[:name])
+
+    Loader.load_venue(chicago_venue)
+    Loader.load_venue(toronto_venue)
+
+    venues = Venue.find_by_name(params[:name])
+
+    assert_not_nil venues
+    assert_equal 2, venues.size
+
+    cities = venues.collect{|v| v.city}
+    assert cities.include?('toronto')
+    assert cities.include?('chicago')
   end
 
 end
