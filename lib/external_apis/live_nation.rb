@@ -10,11 +10,11 @@ require 'httparty'
 module LiveNationAPI
 
 
- #
- # This class hits the live nation webservice, and returns a hash of
- # the response content.
- # 
- class Extractor
+  #
+  # This class hits the live nation webservice, and returns a hash of
+  # the response content.
+  # 
+  class Extractor
 
     include HTTParty
 
