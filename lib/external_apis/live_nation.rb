@@ -92,9 +92,4 @@ module LiveNationAPI
 
   end
 
-  class Loader < ActiveRecord::Base
-
-
-  end
- 
 end
