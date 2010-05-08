@@ -27,9 +27,8 @@ class ActiveSupport::TestCase
   end
 
   def new_venue(params={})
-    defaults = get_random_venue_params
-    defaults.merge(params)
-    Venue.new(defaults)
+    params = get_random_venue_params.merge(params)
+    Venue.new(params)
   end
 
   def create_venue(params={})
