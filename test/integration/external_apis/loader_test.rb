@@ -28,7 +28,7 @@ class ExternalAPIVenueLoaderTest < ActiveSupport::TestCase
     assert_equal venue.city, actual_venue.city
   end
 
-  test "load identical venue" do
+  test "load identical venue twice" do
     params = get_random_venue_params()
 
     venue = new_venue(params)
@@ -58,7 +58,6 @@ class ExternalAPIVenueLoaderTest < ActiveSupport::TestCase
 
     chicago_venue = new_venue(chicago_params)
     toronto_venue = new_venue(toronto_params)
-
 
     assert_nil Venue.find_by_name(params[:name])
     
