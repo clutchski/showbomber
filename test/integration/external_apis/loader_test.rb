@@ -12,7 +12,7 @@ require 'lib/external_apis/loader.rb'
 class ExternalAPIVenueLoaderTest < ActiveSupport::TestCase
 
   test "load new venue" do
-    venue = new_venue({"the caruso club" => name})
+    venue = new_venue({:name =>"the caruso club"})
 
     # assert no such test data exists
     assert_nil Venue.find_by_name(venue.name)
@@ -59,12 +59,13 @@ class ExternalAPIVenueLoaderTest < ActiveSupport::TestCase
     chicago_venue = new_venue(chicago_params)
     toronto_venue = new_venue(toronto_params)
 
-    assert_nil Venue.find_by_name(params[:name])
 
+    assert_nil Venue.find_by_name(params[:name])
+    
     Loader.load_venue(chicago_venue)
     Loader.load_venue(toronto_venue)
 
-    venues = Venue.find_by_name(params[:name])
+    venues = Venue.all(:conditions => {:name => params[:name]})
 
     assert_not_nil venues
     assert_equal 2, venues.size
