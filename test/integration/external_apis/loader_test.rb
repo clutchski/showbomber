@@ -42,7 +42,6 @@ class ExternalAPIArtistLoaderTest < ActiveSupport::TestCase
     artists = Artist.find(:all, :conditions=>{:name=>artist.name})
     assert_equal 1, artists.size
   end
-
 end
 
 
@@ -52,7 +51,7 @@ end
 class ExternalAPIVenueLoaderTest < ActiveSupport::TestCase
 
   test "load new venue" do
-    venue = VenueGenerator.generate({:name =>"the caruso club"})
+    venue = VenueGenerator.generate
 
     # assert no such test data exists
     assert_nil Venue.find_by_name(venue.name)
@@ -68,26 +67,24 @@ class ExternalAPIVenueLoaderTest < ActiveSupport::TestCase
     assert_equal venue.city, actual_venue.city
   end
 
-  test "load identical venue twice" do
-    params = VenueGenerator.get_random_attributes()
+  test "loading a venue twice doesn't duplicate rows" do
 
-    venue = VenueGenerator.generate(params)
+    venue = VenueGenerator.generate
 
-    # load a new venue once, and assert it works
+    # load a venue
     assert_nil Venue.find_by_name(venue.name)
     Loader.load_venue(venue)
-    actual_venue = Venue.find_by_name(venue.name)
-    assert_not_nil actual_venue
-    assert_not_nil actual_venue.id
+    assert_not_nil Venue.find_by_name(venue.name)
 
-    # load the same venue again, and assert the data is identical
-    assert_nil venue.id
-    Loader.load_venue(venue)
-    actual_venue2 = Venue.find_by_name(venue.name)
-    assert_not_nil actual_venue2.id
-    assert_equal actual_venue.name, actual_venue2.name
-    assert_equal actual_venue.id,   actual_venue2.id
+    # load a duplicate venue
+    duplicate_venue = venue.clone
+    assert_nil duplicate_venue.id
+    assert_equal venue.name, duplicate_venue.name
+    Loader.load_venue(duplicate_venue)
 
+    # assert only one venue with the given name exists
+    venues = Venue.find(:all, :conditions=>{:name=>venue.name})
+    assert_equal 1, venues.size
   end
 
   test "load venue with same name in different cities" do
