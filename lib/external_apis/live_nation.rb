@@ -6,9 +6,16 @@
 
 require 'httparty'
 
+require 'lib/external_apis/loader.rb'
+
 
 module LiveNationAPI
 
+  def self.run
+    data = Extractor.extract(test_mode=true)
+    events = Transformer.transform(data)
+    Loader.load_events(events)
+  end
 
   #
   # This class hits the live nation webservice, and returns a hash of
