@@ -38,10 +38,9 @@ class ExternalAPIArtistLoaderTest < ActiveSupport::TestCase
     assert_nil duplicate_artist.id
     Loader.load_artist(duplicate_artist)
 
-    # assert only one exists
+    # assert only one artist with the given name exists
     artists = Artist.find(:all, :conditions=>{:name=>artist.name})
     assert_equal 1, artists.size
-
   end
 
 end
