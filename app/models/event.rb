@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
   belongs_to :venue
   has_and_belongs_to_many :artists
 
-  validates_presence_of :venue_id, :start_date
+  validates_presence_of     :venue_id, :start_date
   validates_numericality_of :min_cost, :allow_nil=>true
   validates_numericality_of :max_cost, :allow_nil=>true
   validate :validate_cost
@@ -15,7 +15,7 @@ class Event < ActiveRecord::Base
   end
 
   def to_dollars(n)
-    return "$#{n}"
+    "$#{n}"
   end
 
   def price_range_in_words
