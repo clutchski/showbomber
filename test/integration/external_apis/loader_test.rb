@@ -14,17 +14,16 @@ class ExternalAPIArtistLoaderTest < ActiveSupport::TestCase
 
   test "load new artist" do
 
-    params = get_random_artist_params()
-
+    params = ArtistGenerator.get_random_attributes()
 
     # load the artist
-    artist = new_artist(params)
+    artist = ArtistGenerator.generate(params)
     assert_nil Artist.find_by_name(artist.name)
     Loader.load_artist(artist)
     assert_not_nil Artist.find_by_name(artist.name)
 
     # assert loading doesn't duplicate
-    artist = new_artist(params)
+    artist = ArtistGenerator.generate(params)
     assert_nil artist.id
     Loader.load_artist(artist)
 
@@ -36,8 +35,8 @@ class ExternalAPIArtistLoaderTest < ActiveSupport::TestCase
 
   test "loading the same artist does not duplicate rows" do
 
-    params = get_random_artist_params()
-    artist = new_artist(params)
+    params = ArtistGenerator.get_random_attributes()
+    artist = ArtistGenerator.generate(params)
 
     # assert no such test data exists
     assert_nil Artist.find_by_name(artist.name)
@@ -47,7 +46,7 @@ class ExternalAPIArtistLoaderTest < ActiveSupport::TestCase
     assert_not_nil = Artist.find_by_name(artist.name)
 
     # load it again
-    artist = new_artist(params)
+    artist = ArtistGenerator.generate(params)
     Loader.load_artist(artist)
 
     # assert there's only one
@@ -65,7 +64,7 @@ end
 class ExternalAPIVenueLoaderTest < ActiveSupport::TestCase
 
   test "load new venue" do
-    venue = new_venue({:name =>"the caruso club"})
+    venue = VenueGenerator.generate({:name =>"the caruso club"})
 
     # assert no such test data exists
     assert_nil Venue.find_by_name(venue.name)
@@ -82,9 +81,9 @@ class ExternalAPIVenueLoaderTest < ActiveSupport::TestCase
   end
 
   test "load identical venue twice" do
-    params = get_random_venue_params()
+    params = VenueGenerator.get_random_attributes()
 
-    venue = new_venue(params)
+    venue = VenueGenerator.generate(params)
 
     # load a new venue once, and assert it works
     assert_nil Venue.find_by_name(venue.name)
@@ -104,13 +103,13 @@ class ExternalAPIVenueLoaderTest < ActiveSupport::TestCase
   end
 
   test "load venue with same name in different cities" do
-    params = get_random_venue_params()
+    params = VenueGenerator.get_random_attributes()
 
     chicago_params = params.merge({:city => 'chicago'})
     toronto_params = params.merge({:city => 'toronto'})
 
-    chicago_venue = new_venue(chicago_params)
-    toronto_venue = new_venue(toronto_params)
+    chicago_venue = VenueGenerator.generate(chicago_params)
+    toronto_venue = VenueGenerator.generate(toronto_params)
 
     assert_nil Venue.find_by_name(params[:name])
     

@@ -6,45 +6,39 @@ require 'forgery'
 
 module ModelGenerator
 
-  # artist generators
-
-  def get_random_artist_params
-    { :name => "The #{Forgery::Name.full_name} Band" }
+  module ModelGenerator
+    def generate(static_attributes={})
+      attributes = get_random_attributes.merge(static_attributes)
+      @model_class.new(attributes)
+    end
   end
 
-  def new_artist(params={})
-    create_params = get_random_artist_params.merge(params)
-    Artist.new(create_params)
+
+  class ArtistGenerator
+    extend ModelGenerator
+
+    @model_class = Artist
+
+    def self.get_random_attributes
+      { :name => "The #{Forgery::Name.full_name} Band" }
+    end
   end
 
-  def create_artist(params={})
-    artist = new_artist(params)
-    artist.save
-    artist
+
+  class VenueGenerator
+    extend ModelGenerator
+
+    @model_class = Venue
+
+    def self.get_random_attributes
+      { :name        => "The #{Forgery::Name.company_name} Club",
+        :address     => Forgery::Address.street_address,
+        :city        => Forgery::Address.city,
+        :state       => Forgery::Address.state,
+        :postal_code => Forgery::Address.zip,
+        :phone       => Forgery::Address.phone
+      }
+    end
   end
-
-  # venue generators
-
-  def get_random_venue_params
-    { :name        => "The #{Forgery::Name.company_name} Club",
-      :address     => Forgery::Address.street_address,
-      :city        => Forgery::Address.city,
-      :state       => Forgery::Address.state,
-      :postal_code => Forgery::Address.zip,
-      :phone       => Forgery::Address.phone
-    }
-  end
-
-  def new_venue(params={})
-    params = get_random_venue_params.merge(params)
-    Venue.new(params)
-  end
-
-  def create_venue(params={})
-    venue = new_venue(params)
-    venue.save
-    venue
-  end
-
 
 end
