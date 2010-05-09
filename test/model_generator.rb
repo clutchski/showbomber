@@ -41,4 +41,22 @@ module ModelGenerator
     end
   end
 
+  class EventGenerator
+    extend ModelGenerator
+
+    @model_class = Event
+
+    def self.get_random_attributes
+      num_artists = rand(4) + 1
+      num_days_in_future = rand(10) + 1
+
+      { :venue => VenueGenerator.generate,
+        :artists => num_artists.times.collect{|n| ArtistGenerator.generate},
+        :start_date => num_days_in_future.days.from_now
+      }
+    end
+
+
+  end
+
 end
