@@ -6,8 +6,6 @@
 
 require 'httparty'
 
-require 'lib/external_apis/loader.rb'
-
 
 module LiveNationAPI
 
