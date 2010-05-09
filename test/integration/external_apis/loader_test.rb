@@ -14,17 +14,9 @@ class ExternalAPIArtistLoaderTest < ActiveSupport::TestCase
 
   test "load new artist" do
 
-    params = ArtistGenerator.get_random_attributes()
-
-    # load the artist
-    artist = ArtistGenerator.generate(params)
+    # load an artist
+    artist = ArtistGenerator.generate()
     assert_nil Artist.find_by_name(artist.name)
-    Loader.load_artist(artist)
-    assert_not_nil Artist.find_by_name(artist.name)
-
-    # assert loading doesn't duplicate
-    artist = ArtistGenerator.generate(params)
-    assert_nil artist.id
     Loader.load_artist(artist)
 
     actual_artist = Artist.find_by_name(artist.name)
@@ -35,21 +27,18 @@ class ExternalAPIArtistLoaderTest < ActiveSupport::TestCase
 
   test "loading the same artist does not duplicate rows" do
 
-    params = ArtistGenerator.get_random_attributes()
-    artist = ArtistGenerator.generate(params)
-
-    # assert no such test data exists
+    # load an artist
+    artist = ArtistGenerator.generate()
     assert_nil Artist.find_by_name(artist.name)
-
-    # load the artist
     Loader.load_artist(artist)
-    assert_not_nil = Artist.find_by_name(artist.name)
+    assert_not_nil Artist.find_by_name(artist.name)
 
-    # load it again
-    artist = ArtistGenerator.generate(params)
-    Loader.load_artist(artist)
+    # load a duplicate artist
+    duplicate_artist = artist.clone
+    assert_nil duplicate_artist.id
+    Loader.load_artist(duplicate_artist)
 
-    # assert there's only one
+    # assert only one exists
     artists = Artist.find(:all, :conditions=>{:name=>artist.name})
     assert_equal 1, artists.size
 
