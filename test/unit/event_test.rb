@@ -1,4 +1,9 @@
+#
+# This module contains unit tests for the Event model.
+# 
+
 require 'test_helper'
+
 
 class EventTest < ActiveSupport::TestCase
 
