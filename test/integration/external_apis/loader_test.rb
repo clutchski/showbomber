@@ -7,6 +7,59 @@ require 'lib/external_apis/loader.rb'
 
 
 #
+# This class contains tests for the loading artists
+#
+
+class ExternalAPIArtistLoaderTest < ActiveSupport::TestCase
+
+  test "load new artist" do
+
+    params = get_random_artist_params()
+
+
+    # load the artist
+    artist = new_artist(params)
+    assert_nil Artist.find_by_name(artist.name)
+    Loader.load_artist(artist)
+    assert_not_nil Artist.find_by_name(artist.name)
+
+    # assert loading doesn't duplicate
+    artist = new_artist(params)
+    assert_nil artist.id
+    Loader.load_artist(artist)
+
+    actual_artist = Artist.find_by_name(artist.name)
+    assert_not_nil actual_artist
+    assert_not_nil actual_artist.id
+    assert_equal artist.name, actual_artist.name
+  end
+
+  test "loading the same artist does not duplicate rows" do
+
+    params = get_random_artist_params()
+    artist = new_artist(params)
+
+    # assert no such test data exists
+    assert_nil Artist.find_by_name(artist.name)
+
+    # load the artist
+    Loader.load_artist(artist)
+    assert_not_nil = Artist.find_by_name(artist.name)
+
+    # load it again
+    artist = new_artist(params)
+    Loader.load_artist(artist)
+
+    # assert there's only one
+    artists = Artist.find(:all, :conditions=>{:name=>artist.name})
+    assert_equal 1, artists.size
+
+  end
+
+end
+
+
+#
 # This class contains tests for the edge cases of loading venues
 #
 class ExternalAPIVenueLoaderTest < ActiveSupport::TestCase
