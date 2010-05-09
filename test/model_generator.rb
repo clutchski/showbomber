@@ -1,5 +1,5 @@
 #
-# This module 
+# This module generates model objects for use in testing.
 #
 
 require 'forgery'
