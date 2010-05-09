@@ -26,6 +26,8 @@ class Loader < ActiveRecord::Base
   def self.load_event(event)
     transaction do
 
+        #FIXME: don't duplicate events
+
         event.venue = self.load_venue(event.venue)
         artists = event.artists.clone
         event.artists.clear
