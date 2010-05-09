@@ -11,6 +11,12 @@ module ModelGenerator
       attributes = get_random_attributes.merge(static_attributes)
       @model_class.new(attributes)
     end
+
+    def persisted(static_attributes={})
+      model_object = generate(static_attributes)
+      model_object.save
+      model_object
+    end
   end
 
 
