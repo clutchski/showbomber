@@ -56,8 +56,8 @@ module ModelGenerator
       num_artists = rand(4) + 1
       num_days_in_future = rand(10) + 1
 
-      { :venue => VenueGenerator.generate,
-        :artists => num_artists.times.collect{|n| ArtistGenerator.generate},
+      { :venue => VenueGenerator.persisted,
+        :artists => num_artists.times.collect{|n| ArtistGenerator.persisted},
         :start_date => num_days_in_future.days.from_now
       }
     end
