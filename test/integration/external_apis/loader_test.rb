@@ -124,13 +124,17 @@ class ExternalAPILoaderTest < ActionController::IntegrationTest
     venue_names = venues.collect{|v| v.name}
 
     # assert no events exist with the given artists/venues
-    assert Artist.find(:all, :conditions=>["name in (?)", artist_names]).empty?
-    assert Venue.find(:all, :conditions=>["name in (?)", venue_names]).empty?
+    artists.each do |a|
+      assert Artist.where({:name => a.name}).all.empty?
+      assert Event.by_artist(a).empty?
+    end
 
-    assert Event.find(:all, :joins=>[:artists, :venue],
-            :conditions=>["artists.name in (?) OR venues.name in (?)",
-                              artist_names, venue_names]).empty?
-    num_events = Event.count(:all)
+    venues.each do |v|
+      assert Venue.where({:name => v.name}).all.empty?
+      assert Event.by_artist(v).empty?
+    end
+
+    num_events = Event.count
 
     event1 = EventGenerator.generate(
                 {:artists=>artists[0,2], :venue=>venues[0]})
@@ -140,8 +144,7 @@ class ExternalAPILoaderTest < ActionController::IntegrationTest
 
     Loader.load_events(events)
 
-    assert_equal num_events + events.length, Event.count(:all)
-
+    assert_equal num_events + events.length, Event.count
     # assert that the data has been created
     artist_names.each{|n| assert_not_nil Artist.find_by_name(n)} 
     venue_names.each{|n| assert_not_nil Venue.find_by_name(n)} 
