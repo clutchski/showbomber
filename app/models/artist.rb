@@ -8,4 +8,8 @@ class Artist < ActiveRecord::Base
     songs.first
   end
 
+  def to_s
+    "Artist<#{name}>"
+  end
+
 end
