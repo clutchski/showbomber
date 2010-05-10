@@ -39,7 +39,7 @@ class ExternalAPIArtistLoaderTest < ActiveSupport::TestCase
     Loader.load_artist(duplicate_artist)
 
     # assert only one artist with the given name exists
-    artists = Artist.find(:all, :conditions=>{:name=>artist.name})
+    artists = Artist.where({:name=>artist.name}).all()
     assert_equal 1, artists.size
   end
 end
@@ -101,7 +101,7 @@ class ExternalAPIVenueLoaderTest < ActiveSupport::TestCase
     Loader.load_venue(chicago_venue)
     Loader.load_venue(toronto_venue)
 
-    venues = Venue.all(:conditions => {:name => params[:name]})
+    venues = Venue.where({:name => params[:name]}).all()
 
     assert_not_nil venues
     assert_equal 2, venues.size
