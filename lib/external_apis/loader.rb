@@ -41,7 +41,6 @@ class Loader < ActiveRecord::Base
     end
   end
 
-
   def self.load_events(events)
     transaction do 
       events.each{|event| load_event(event)}
