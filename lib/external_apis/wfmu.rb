@@ -18,7 +18,6 @@ module WFMU
     puts data.inspect
   end
 
-
   class Extractor
 
     @@URL = "http://www.wfmu.org/arbguide.php"
@@ -47,7 +46,7 @@ module WFMU
 
     def self.parse_address(address_cell)
       address = self.normalize(address_cell.text).strip
-      # remove cross streets
+      # remove cross streets (e.g 200 5th at 2nd ave)
       address = address.split(" at ", 2)[0]
       return (address.nil? or address.empty?) ? nil : address
     end
@@ -73,16 +72,6 @@ module WFMU
       return (city.empty?) ? nil : city
     end
 
-
-    def self.parse_venue(cells)
-      { :name    => parse_venue_name(cells[@@VENUE_CELL]),
-        :address => parse_address(cells[@@ADDRESS_CELL]),
-        :city    => parse_venue_city(cells[@@CITY_CELL]),
-        :phone   => parse_venue_phone(cells[@@PHONE_CELL]),
-        :website => parse_venue_website(cells[@@VENUE_CELL])
-      }
-    end
-
     def self.parse_cost(cost_cell)
       return self.normalize(cost_cell.content).strip
     end
@@ -91,6 +80,15 @@ module WFMU
       date = date_cell.content
       time = time_cell.content
       self.normalize("#{date} #{time}").strip
+    end
+
+    def self.parse_venue(cells)
+      { :name    => parse_venue_name(cells[@@VENUE_CELL]),
+        :address => parse_address(cells[@@ADDRESS_CELL]),
+        :city    => parse_venue_city(cells[@@CITY_CELL]),
+        :phone   => parse_venue_phone(cells[@@PHONE_CELL]),
+        :website => parse_venue_website(cells[@@VENUE_CELL])
+      }
     end
 
     def self.parse_row(row)
