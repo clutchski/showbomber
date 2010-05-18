@@ -44,10 +44,18 @@ module WFMU
     end
 
     def self.parse_address(address_cell)
-      address = self.normalize(address_cell.text).strip
-      # remove cross streets (e.g 200 5th at 2nd ave)
-      address = address.split(" at ", 2)[0]
-      return (address.nil? or address.empty?) ? nil : address
+      address = self.normalize(address_cell.text).strip.to_s
+
+      return nil if address.nil? or address.empty?
+
+      # wfmu stores addresses very informally, including cross streets,
+      # neighbourhoods, etc. try to strip everthing else away, to just 
+      # get the street address
+      splits = [" at ", ",", " b/t", " btwn", " --", " ("]
+
+      return splits.inject(address) do |m, s|
+        (m.split(s)[0]).strip
+      end
     end
 
     def self.parse_venue_name(venue_cell)

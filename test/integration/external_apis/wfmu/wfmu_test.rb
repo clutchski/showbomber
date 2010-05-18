@@ -42,7 +42,7 @@ class WFMUExtractorTest < ActionController::IntegrationTest
     terminal_5_venue = terminal_5[:venue]
     assert_equal "Terminal 5", terminal_5_venue[:name]
     assert_equal "http://www.terminal5nyc.com/", terminal_5_venue[:website]
-    assert_equal "610 W. 56 ST", terminal_5_venue[:address]
+    assert_equal "289 Kent Ave.", terminal_5_venue[:address]
     assert_equal "New York City", terminal_5_venue[:city]
     assert_nil terminal_5_venue[:phone]
 
