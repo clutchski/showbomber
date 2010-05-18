@@ -1,0 +1,82 @@
+#
+# This module contains test for the wfmu events site.
+#
+
+# stdlib
+require 'test_helper'
+
+# project
+require 'lib/external_apis/wfmu.rb'
+
+class WFMUExtractorTest < ActionController::IntegrationTest
+
+  def this_dir
+    File.dirname(__FILE__)
+  end
+
+  def read_sample_data(path)
+    sample_file = File.join(this_dir(), path)
+    File.open(sample_file) { |f| f.read }
+  end
+  
+  test "test extractor works" do
+    sample_html = read_sample_data("wfmu_example.html")
+    events = WFMU::Extractor.parse(sample_html)
+    assert_equal 3, events.length
+
+    # parse terminal 5 event
+
+    terminal_5 = events[0]
+    assert_equal "Tue 5/18 7 PM", terminal_5[:date] 
+    assert_equal "$38", terminal_5[:cost] 
+    terminal_5_artists = terminal_5[:artists]
+    assert_not_nil terminal_5_artists
+    assert_equal 1, terminal_5_artists.length
+    assert_equal "Public Image Limited", terminal_5_artists[0]
+
+    terminal_5_venue = terminal_5[:venue]
+    assert_equal "Terminal 5", terminal_5_venue[:name]
+    assert_equal "http://www.terminal5nyc.com/", terminal_5_venue[:website]
+    assert_equal "610 W. 56 ST", terminal_5_venue[:address]
+    assert_equal "New York City", terminal_5_venue[:city]
+    assert_nil terminal_5_venue[:phone]
+
+    # parse union hall event
+
+    union_hall = events[1]
+    assert_equal "Tue 5/18 8 PM", union_hall[:date] 
+    assert_equal "$15", union_hall[:cost] 
+    union_hall_artists = union_hall[:artists]
+    assert_not_nil union_hall_artists
+    assert_equal 2, union_hall_artists.length
+    assert_equal "Neil Halstead", union_hall_artists[0]
+    assert_equal "J. Wise", union_hall_artists[1]
+
+    union_hall_venue = union_hall[:venue]
+    assert_equal "Union Hall", union_hall_venue[:name]
+    assert_equal "http://unionhallny.com/", union_hall_venue[:website]
+    assert_equal "702 Union St", union_hall_venue[:address]
+    assert_equal "Brooklyn", union_hall_venue[:city]
+    assert_equal "718-638-4400", union_hall_venue[:phone]
+
+    # parse knitting factory event
+
+    knitting_factory = events[2]
+    assert_equal "Wed 5/19 7 PM", knitting_factory[:date] 
+    assert_equal "$12", knitting_factory[:cost] 
+    knitting_factory_artists = knitting_factory[:artists]
+    assert_equal 3, knitting_factory_artists.length
+    assert_equal "Spectrum", knitting_factory_artists[0]
+    assert_equal "Cheval Sombre", knitting_factory_artists[1]
+    assert_equal "The Vacant Lots", knitting_factory_artists[2]
+
+    knitting_factory_venue = knitting_factory[:venue]
+    assert_equal "Knitting Factory Brooklyn", knitting_factory_venue[:name]
+    assert_nil knitting_factory_venue[:address]
+    assert_nil knitting_factory_venue[:city]
+    assert_nil knitting_factory_venue[:phone]
+    assert_nil knitting_factory_venue[:website]
+
+  end
+
+end
