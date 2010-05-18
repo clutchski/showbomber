@@ -9,12 +9,14 @@ require 'active_support/core_ext'
 require 'open-uri'
 require 'nokogiri'
 
+require 'lib/external_apis/loader.rb'
 
 module WFMU
 
   def self.run
     data = Extractor.extract
-    puts data.inspect
+    events = Transformer.transform data
+    Loader.load_events(events)
   end
 
   class Extractor
@@ -86,16 +88,36 @@ module WFMU
       return cost[1..-1].to_i
     end
 
+    def self.str_to_date(str, format)
+      begin
+        return DateTime.strptime(str, format)
+      rescue => e
+        msg = "error parsing '#{str}' with fmt '#{format}': #{e.message}"
+        raise Exception.new(msg)
+      end
+    end
+
     def self.parse_date(date_cell, time_cell)
-      date = date_cell.content
-      time = time_cell.content
-      start_time = self.normalize("#{date} #{time}").strip.to_s
+      date = self.normalize(date_cell.content).to_s
+      time = self.normalize(time_cell.content).to_s
 
-      date_no_mins = "%a %m/%d %I %p"
-      date_with_mins = "%a %m/%d %I:%M %p"
+      date_format = "%a %m/%d"
 
-      cur_format = start_time.include?(":") ? date_with_mins : date_no_mins
-      return DateTime.strptime(start_time, cur_format)
+      return str_to_date(date, date_format) if time.blank?
+
+      # yes, this is real.   
+      time = time.downcase.include?("noon") ? "12 PM" : time
+      
+      # for ranges, just show the start time for now
+      time = (time.split("-", 2)[0]).strip
+
+      date_no_mins = "#{date_format} %I %p"
+      date_with_mins = "#{date_format} %I:%M %p"
+
+      date_str = self.normalize("#{date} #{time}").strip.to_s
+      cur_format = date_str.include?(":") ? date_with_mins : date_no_mins
+
+      return str_to_date(date_str, cur_format)
     end
 
     def self.parse_venue(cells)
@@ -135,15 +157,29 @@ module WFMU
   class Transformer
 
     def self.transform_venue(venue_data)
-    end
-
-    def self.transform_artist(artist_data)
+      Venue.new do |v|
+        v.name = venue_data[:name]
+        v.address = venue_data[:address]
+        v.city = venue_data[:city]
+        v.phone = venue_data[:phone]
+        #FIXME: add website
+      end
     end
 
     def self.transform_event(event_data)
+      venue = transform_venue(event_data[:venue])
+      artists = event_data[:artists].collect{|name| Artist.new(:name=>name)}
+
+      Event.new do |e|
+        e.min_cost = event_data[:cost]
+        e.start_date = event_data[:date]
+        e.artists = artists
+        e.venue = venue
+      end
     end
 
     def self.transform(events_data)
+      events_data.collect{|e| self.transform_event(e)}
     end
 
   end
