@@ -33,7 +33,7 @@ class WFMUExtractorTest < ActionController::IntegrationTest
 
     terminal_5 = events[0]
     assert_equal DateTime.new(this_year, 05, 18, 19), terminal_5[:date] 
-    assert_equal "$38", terminal_5[:cost] 
+    assert_equal 0, terminal_5[:cost] 
     terminal_5_artists = terminal_5[:artists]
     assert_not_nil terminal_5_artists
     assert_equal 1, terminal_5_artists.length
@@ -50,7 +50,7 @@ class WFMUExtractorTest < ActionController::IntegrationTest
 
     union_hall = events[1]
     assert_equal DateTime.new(this_year, 05, 18, 20), union_hall[:date] 
-    assert_equal "$15", union_hall[:cost] 
+    assert_equal 15, union_hall[:cost] 
     union_hall_artists = union_hall[:artists]
     assert_not_nil union_hall_artists
     assert_equal 2, union_hall_artists.length
@@ -68,7 +68,7 @@ class WFMUExtractorTest < ActionController::IntegrationTest
 
     knitting_factory = events[2]
     assert_equal DateTime.new(this_year, 05, 19, 19,30), knitting_factory[:date] 
-    assert_equal "$12", knitting_factory[:cost] 
+    assert_equal 12, knitting_factory[:cost] 
     knitting_factory_artists = knitting_factory[:artists]
     assert_equal 3, knitting_factory_artists.length
     assert_equal "Spectrum", knitting_factory_artists[0]

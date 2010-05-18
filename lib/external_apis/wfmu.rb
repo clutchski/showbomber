@@ -72,7 +72,10 @@ module WFMU
     end
 
     def self.parse_cost(cost_cell)
-      return self.normalize(cost_cell.content).strip
+      cost = self.normalize(cost_cell.content).strip
+      return 0 if cost.downcase.include? 'free'
+      # remove the dollar sign
+      return cost[1..-1].to_i
     end
 
     def self.parse_date(date_cell, time_cell)
