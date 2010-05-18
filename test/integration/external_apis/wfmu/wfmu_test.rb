@@ -8,10 +8,15 @@ require 'test_helper'
 # project
 require 'lib/external_apis/wfmu.rb'
 
+
 class WFMUExtractorTest < ActionController::IntegrationTest
 
   def this_dir
     File.dirname(__FILE__)
+  end
+
+  def this_year
+    DateTime.now.year
   end
 
   def read_sample_data(path)
@@ -27,7 +32,7 @@ class WFMUExtractorTest < ActionController::IntegrationTest
     # parse terminal 5 event
 
     terminal_5 = events[0]
-    assert_equal "Tue 5/18 7 PM", terminal_5[:date] 
+    assert_equal DateTime.new(this_year, 05, 18, 19), terminal_5[:date] 
     assert_equal "$38", terminal_5[:cost] 
     terminal_5_artists = terminal_5[:artists]
     assert_not_nil terminal_5_artists
@@ -44,7 +49,7 @@ class WFMUExtractorTest < ActionController::IntegrationTest
     # parse union hall event
 
     union_hall = events[1]
-    assert_equal "Tue 5/18 8 PM", union_hall[:date] 
+    assert_equal DateTime.new(this_year, 05, 18, 20), union_hall[:date] 
     assert_equal "$15", union_hall[:cost] 
     union_hall_artists = union_hall[:artists]
     assert_not_nil union_hall_artists
@@ -62,7 +67,7 @@ class WFMUExtractorTest < ActionController::IntegrationTest
     # parse knitting factory event
 
     knitting_factory = events[2]
-    assert_equal "Wed 5/19 7 PM", knitting_factory[:date] 
+    assert_equal DateTime.new(this_year, 05, 19, 19,30), knitting_factory[:date] 
     assert_equal "$12", knitting_factory[:cost] 
     knitting_factory_artists = knitting_factory[:artists]
     assert_equal 3, knitting_factory_artists.length
@@ -78,5 +83,4 @@ class WFMUExtractorTest < ActionController::IntegrationTest
     assert_nil knitting_factory_venue[:website]
 
   end
-
 end

@@ -5,8 +5,7 @@
 # http://www.wfmu.org/arbguide.php
 #
 
-require 'rubygems'
-require 'active_support'
+require 'active_support/core_ext'
 require 'open-uri'
 require 'nokogiri'
 
@@ -35,7 +34,7 @@ module WFMU
       # http://stackoverflow.com/questions/225471
       #   /how-do-i-replace-accented-latin-characters-in-ruby
       #e.g. nbsp -> space
-      string.mb_chars.normalize.strip
+      string.mb_chars.normalize(:kc).strip
     end
 
     def self.parse_artists(artists_cell)
@@ -79,7 +78,13 @@ module WFMU
     def self.parse_date(date_cell, time_cell)
       date = date_cell.content
       time = time_cell.content
-      self.normalize("#{date} #{time}").strip
+      start_time = self.normalize("#{date} #{time}").strip.to_s
+
+      date_no_mins = "%a %m/%d %I %p"
+      date_with_mins = "%a %m/%d %I:%M %p"
+
+      cur_format = start_time.include?(":") ? date_with_mins : date_no_mins
+      return DateTime.strptime(start_time, cur_format)
     end
 
     def self.parse_venue(cells)
@@ -113,69 +118,22 @@ module WFMU
     end
   end
 
-  ## 
-  ## This class transforms the live nation feed data into business objects.
-  ##
-  #class Transformer
+  # 
+  # This class transforms the feed data into business objects.
+  #
+  class Transformer
 
-  #  def self.transform_venue(venue_data)
-  #    venue = Venue.new
-  #    venue.name = venue_data['name']
-  #    venue.address = venue_data['address']
-  #    venue.city = venue_data['city']
-  #    venue.state = venue_data['state']
-  #    venue.postal_code = venue_data['postal_code']
-  #    venue.phone = venue_data['phone']
-  #    return venue
-  #  end
+    def self.transform_venue(venue_data)
+    end
 
-  #  def self.transform_artist(artist_data)
-  #    artist = Artist.new
-  #    artist.name = artist_data["name"]
-  #    return artist
-  #  end
+    def self.transform_artist(artist_data)
+    end
 
-  #  def self.transform_event(event_data)
+    def self.transform_event(event_data)
+    end
 
-  #    # parse venue
-  #    venue_data = event_data['venue']
-  #    venue = transform_venue(venue_data)
+    def self.transform(events_data)
+    end
 
-  #    # parse artists
-  #    artists = []
-  #    %w{artists_headline artists_other}.each do |key|
-  #      artists_set_data = event_data[key]
-  #      next if artists_set_data.nil?
-  #      artists_data = artists_set_data['artist']
-  #      if !artists_data.is_a? Array
-  #        artists_data = [artists_data]
-  #      end
-  #      artists += artists_data.collect{|a| transform_artist(a)}
-  #    end
-
-  #    # parse start date
-  #    start_date_data = "#{event_data['date']} #{event_data['time']}"
-  #    # format: "5-2-2010 21:00:00"
-  #    start_date_format = "%m-%d-%Y %H:%M:%S"
-  #    start_date = DateTime.strptime(start_date_data, start_date_format)
-
-  #    event = Event.new
-  #    event.venue = venue
-  #    event.artists = artists
-  #    event.start_date = start_date
-  #    return event
-  #  end
-
-  #  def self.transform(live_nation_data)
-  #    events_data = live_nation_data['result']
-  #    return events_data['event'].collect{|e| transform_event(e)}
-  #  end
-
-  #end
-
-end
-
-if $0 == __FILE__
-  data = WFMU::Extractor.extract
-  puts data.inspect
+  end
 end
