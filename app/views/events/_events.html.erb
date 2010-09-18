@@ -12,8 +12,8 @@
         <%= get_play_link(artist) %>
       </li>
     <% end %>
-
     </ul>
+
     <div class="event_info">
       <%= link_to event.venue.name, event.venue, {:class => "venue"}%>
       <span class="cost"><%= event.price_range_in_words %></span>
