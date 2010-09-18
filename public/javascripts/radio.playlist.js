@@ -1,14 +1,12 @@
 radio.Playlist = Class.create({
 
-  initialize : function(playlistId, playSongCallback) {
-    this.domKeys = radio.Playlist.domKeys;
+  initialize : function(containerId) {
 
-    this.container = $j('#' + playlistId);
-    this.playSongCallback = playSongCallback;
-
+    this.container = $j('#' + containerId);
     this.currentSongLink = null;
 
     // dom references
+    this.domKeys = radio.Playlist.domKeys;
     this.artists = this.container.find('.' + this.domKeys.artistClass);
     this.songLinks = this.container.find('.' + this.domKeys.songLinkClass);
     this.songLinks.click(this.songClickHandler.bind(this));
@@ -25,7 +23,7 @@ radio.Playlist = Class.create({
     this.currentSongLink = songLink;
     var songUrl = songLink.attr('href');
 
-    this.playSongCallback(songUrl);
+    this.container.trigger(this.events.songSelected, songUrl);
     this.highlightArtist(songLink);
   },
 
@@ -74,6 +72,8 @@ radio.Playlist = Class.create({
 
 // Add class methods and varibles.
 Object.extend(radio.Playlist, {
+
+  songSelected : "songSelected",
 
   domKeys : { songLinkClass    : 'song'
             , artistClass      : 'artist'
