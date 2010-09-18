@@ -1,4 +1,6 @@
 radio.youtube = {
+  
+  controller : null,
 
   state_by_id : $H({ '-1' : 'NOT_STARTED'
                    , '0'  : 'ENDED'
@@ -9,36 +11,26 @@ radio.youtube = {
                    }),
 
   onPlayerStateChange : function(stateId) {
-
     var state = radio.youtube.state_by_id.get(stateId);
     radio.youtube.controller.onPlayerStateChange(state);
   }
-
-};
-
-// called by youtube js api when the player is loaded
-var onYouTubePlayerReady = function(playerId) {
-  radio.youtube.controller.onPlayerReady();
 };
 
 radio.youtube.Controller = Class.create({
 
   initialize : function(videoDivId, width, height, songEndedCallback) {
 
-    //HACK
     radio.youtube.controller = this;
     this.player = null;
 
     this.videoDivId = videoDivId;
-    this.playerId = 'youtubePlayer';
+    this.playerId = 'radioYoutubePlayer';
 
     this.width = width;
     this.height = height;
     this.videoEndedCallback = songEndedCallback;
 
     this.minSWFVersion = '8';
-    this.flashVars = null;
-    this.expressSwfInstallUrl = null;
   }, 
 
   log : function(message) {
@@ -88,3 +80,12 @@ radio.youtube.Controller = Class.create({
   }
 
 });
+
+/* This function is called by the YouTube javascript API
+ * when the player is ready.
+ */
+var onYouTubePlayerReady = function(playerId) {
+  radio.youtube.controller.onPlayerReady();
+};
+
+

@@ -21,7 +21,6 @@ radio.Playlist = Class.create({
   songClickHandler : function(event) {
     event.preventDefault();
     var songLink = $j(event.target);
-
     this.currentSongLink = songLink;
     var songUrl = songLink.attr('href');
     this.highlightArtist(songLink);
