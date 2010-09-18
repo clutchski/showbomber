@@ -1,4 +1,7 @@
-<div id="events">
+
+<% eventsDivId, videoDivId  = 'events', 'video' %>
+
+<div id="<%= eventsDivId %>">
 
   <% events.each do |event| %>
   <div class="event">
@@ -24,16 +27,13 @@
   
 </div><!-- end #events -->
 
-<div id="video"></div>
+<div id="<%= videoDivId %>"></div>
 
 <script type="text/javascript">
-  //FIXME: move this somewhere sane
 
   $j(document).ready( function() {
-
-    var videoDivId = 'video';
-    var playlistDivId = 'events';
-   
+    var videoDivId = '<%= videoDivId %>';
+    var playlistDivId = '<%= eventsDivId %>';
     var controller = new radio.Controller(videoDivId, playlistDivId);
   });
 
