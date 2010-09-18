@@ -9,7 +9,9 @@ radio.Controller = Class.create({
 
     var Playlist = radio.Playlist;
     this.playlist = new Playlist(playlistDivId);
-    $j('#' + playlistDivId).bind(Playlist.songSelected, this.play.bind(this));
+    var playlistDiv = $j('#' + playlistDivId);
+    playlistDiv.bind(Playlist.songSelected, this.playSong.bind(this));
+    playlistDiv.bind(Playlist.artistSelected, this.playArtist.bind(this));
   },
 
   log: function(message) {
@@ -21,10 +23,20 @@ radio.Controller = Class.create({
     this.playlist.next();
   },
 
-  play : function(event, songUrl) {
-    this.log("playing song with url : " + songUrl);
+  playSong : function(event, url) {
+    this.log("playing song with url : " + url);
     //FIXME: assert this is a YouTube video
-    this.player.play(songUrl);
+    this.player.play(url);
+  },
+
+  playSongById : function(id) {
+    this.player.playById(id);
+  },
+
+  playArtist : function(event, name) {
+    this.log("playing artist: " + name);
+    radio.YouTube.DataAPI.getVideoIdForArtist(name, 
+                          this.playSongById.bind(this));
   }
 
 });

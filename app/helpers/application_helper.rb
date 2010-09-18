@@ -5,6 +5,7 @@ module ApplicationHelper
 
   def get_play_link(artist)
     song = artist.get_song
-    link_to("", song.url, {:class=>"song"}) unless song.nil?
+    url = song.nil? ? "" : song.url
+    link_to("", url, {:class=>"song"})
   end
 end

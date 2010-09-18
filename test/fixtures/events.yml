@@ -18,3 +18,28 @@ wolf_parade_at_bowery_ballroom:
   artists: wolf_parade, handsome_furs
   min_cost: 0
   max_cost: 0
+
+indie_at_bowery_ballroom:
+  venue: bowery_ballroom
+  start_date: <%= 4.days.from_now.to_s :db %>
+  artists: ohbijou, richard_laviolette, holy_fuck
+  min_cost: 0
+  max_cost: 0
+
+indie_at_bowery_ballroom:
+  venue: bowery_ballroom
+  start_date: <%= 4.days.from_now.to_s :db %>
+  artists: ohbijou, richard_laviolette, holy_fuck
+  min_cost: 0
+  max_cost: 0
+
+johnny_cash_at_mercury_lounge:
+  venue: mercury_lounge
+  start_date: <%= 6.days.from_now.to_s :db %>
+  artists: johnny_cash
+  min_cost: 0
+  max_cost: 0
+
+
+
+

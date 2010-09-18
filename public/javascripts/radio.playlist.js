@@ -19,12 +19,17 @@ radio.Playlist = Class.create({
   },
 
   songClickHandler : function(event) {
-    event.preventDefault();
+    event.preventDefault(); // don't follow the link
     var songLink = $j(event.target);
     this.currentSongLink = songLink;
     var songUrl = songLink.attr('href');
+    if (songUrl) {
+      this.container.trigger(this.cls.songSelected, songUrl);
+    } else {
+      var artist = this._getArtistElement(songLink);
+      this.container.trigger(this.cls.artistSelected, artist.html());
+    }
     this.highlightArtist(songLink);
-    this.container.trigger(this.cls.songSelected, songUrl);
   },
 
   getNextSongLink : function() {
@@ -64,16 +69,20 @@ radio.Playlist = Class.create({
 
   highlightArtist : function(songLink) {
     this.artists.removeClass(this.domKeys.nowPlayingClass);
-    var artist = songLink.parent().find('.' + this.domKeys.artistClass);
+    var artist = this._getArtistElement(songLink);
     artist.addClass(this.domKeys.nowPlayingClass);
-  }
+  },
 
+  _getArtistElement : function(songLink) {
+    return songLink.parent().find('.' + this.domKeys.artistClass);
+  }
 });
 
 // Add class methods and varibles.
 Object.extend(radio.Playlist, {
 
   songSelected : "songSelected",
+  artistSelected : "artistSelected",
 
   domKeys : { songLinkClass    : 'song'
             , artistClass      : 'artist'

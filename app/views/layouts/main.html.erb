@@ -15,10 +15,9 @@
      var $j = jQuery.noConflict()
   </script>
 
-  <% %w{radio radio.playlist radio.controller radio.youtube}.each do |lib| %>
+  <% %w{radio radio.playlist radio.controller radio.youtube radio.youtube.data}.each do |lib| %>
     <%= javascript_include_tag lib %>
   <% end %>
-
   <%= csrf_meta_tag %>
 </head>
 <body>

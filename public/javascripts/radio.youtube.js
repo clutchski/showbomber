@@ -37,10 +37,13 @@ radio.YouTube.Player = Class.create({
   },
 
   play : function(url) {
-
     this.log("playing song " + url);
-
     var videoId = this._getVideoId(url);
+    this.playById(videoId);
+  },
+
+  playById : function(videoId) {
+    this.log("playing video with id: " + videoId);
     var embedUrl = this._getEmbedUrl(videoId);
 
     var params = { allowScriptAccess: "always" };
