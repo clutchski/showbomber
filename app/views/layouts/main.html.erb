@@ -15,7 +15,7 @@
      var $j = jQuery.noConflict()
   </script>
 
-  <% %w{radio radio.playlist radio.player radio.youtube}.each do |lib| %>
+  <% %w{radio radio.playlist radio.controller radio.youtube}.each do |lib| %>
     <%= javascript_include_tag lib %>
   <% end %>
 

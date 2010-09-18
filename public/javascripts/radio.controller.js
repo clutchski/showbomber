@@ -1,5 +1,5 @@
 
-radio.Player = Class.create({
+radio.Controller = Class.create({
 
   initialize : function(videoDivId, playlistDivId) {
 
@@ -7,7 +7,7 @@ radio.Player = Class.create({
     this.height = 400;
 
     var onSongEndedCallback = this.onSongEnded.bind(this);
-    this.youtubePlayer = new radio.YouTube.Controller(
+    this.player = new radio.YouTube.Player(
         videoDivId, this.width, this.height, onSongEndedCallback);
 
     this.playlist = new radio.Playlist(playlistDivId);
@@ -25,7 +25,7 @@ radio.Player = Class.create({
   play : function(event, songUrl) {
     this.log("playing song with url : " + songUrl);
     //FIXME: assert this is a YouTube video
-    this.youtubePlayer.play(songUrl);
+    this.player.play(songUrl);
   }
 
 });

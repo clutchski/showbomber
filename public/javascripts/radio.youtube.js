@@ -16,7 +16,7 @@ radio.YouTube = {
   }
 };
 
-radio.YouTube.Controller = Class.create({
+radio.YouTube.Player = Class.create({
 
   initialize : function(videoDivId, width, height, songEndedCallback) {
 
