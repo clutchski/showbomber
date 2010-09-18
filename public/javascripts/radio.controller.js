@@ -3,20 +3,22 @@ radio.Controller = Class.create({
 
   initialize : function(videoDivId, playlistDivId) {
 
-    var onSongEndedCallback = this.onSongEnded.bind(this);
-    this.player = new radio.YouTube.Player(
-        videoDivId, onSongEndedCallback);
+    var Player = radio.YouTube.Player;
+    this.player = new Player(videoDivId);
+    $j('#' + videoDivId).live(Player.videoEnded, this.onSongEnded.bind(this));
 
-    this.playlist = new radio.Playlist(playlistDivId);
-    $j('#'+playlistDivId).bind(radio.Playlist.songSelected, this.play.bind(this));
+    var Playlist = radio.Playlist;
+    this.playlist = new Playlist(playlistDivId);
+    $j('#' + playlistDivId).bind(Playlist.songSelected, this.play.bind(this));
+  },
+
+  log: function(message) {
+    console.log("radio.Controller: " + message);
   },
 
   onSongEnded : function() {
+    console.log('song ended');
     this.playlist.next();
-  },
-
-  log: function(message) { 
-    console.log("radio.Player: " + message);
   },
 
   play : function(event, songUrl) {

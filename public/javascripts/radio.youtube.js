@@ -18,7 +18,9 @@ radio.YouTube = {
 
 radio.YouTube.Player = Class.create({
 
-  initialize : function(videoDivId, width, height, songEndedCallback) {
+  initialize : function(videoDivId) {
+
+    this.cls = radio.YouTube.Player;
 
     radio.YouTube.controller = this;
     this.player = null;
@@ -28,13 +30,11 @@ radio.YouTube.Player = Class.create({
 
     this.width = 500;
     this.height = 400;
-    this.videoEndedCallback = songEndedCallback;
-
     this.minSWFVersion = '8';
   }, 
 
   log : function(message) {
-    console.log("radio.YouTube.Controller: " + message);
+    console.log("radio.YouTube.Player: " + message);
   },
 
   onPlayerReady : function() {
@@ -45,10 +45,9 @@ radio.YouTube.Player = Class.create({
   },
 
   onPlayerStateChange : function(state) {
-
     if (state === 'ENDED') {
       this.log("video ended");
-      this.videoEndedCallback();
+      $j('#' + this.videoDivId).trigger(this.cls.videoEnded);
     }
   },
 
@@ -78,7 +77,10 @@ radio.YouTube.Player = Class.create({
       );
       return template.evaluate({'videoId':videoId, 'playerId':this.playerId});
   }
+});
 
+Object.extend(radio.YouTube.Player, {
+  videoEnded : 'videoEnded'
 });
 
 /* This function is called by the YouTube javascript API
