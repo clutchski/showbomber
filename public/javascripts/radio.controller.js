@@ -3,12 +3,9 @@ radio.Controller = Class.create({
 
   initialize : function(videoDivId, playlistDivId) {
 
-    this.width = 500;
-    this.height = 400;
-
     var onSongEndedCallback = this.onSongEnded.bind(this);
     this.player = new radio.YouTube.Player(
-        videoDivId, this.width, this.height, onSongEndedCallback);
+        videoDivId, onSongEndedCallback);
 
     this.playlist = new radio.Playlist(playlistDivId);
     $j('#'+playlistDivId).bind(radio.Playlist.songSelected, this.play.bind(this));

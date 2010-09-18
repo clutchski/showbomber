@@ -26,8 +26,8 @@ radio.YouTube.Player = Class.create({
     this.videoDivId = videoDivId;
     this.playerId = 'radioYoutubePlayer';
 
-    this.width = width;
-    this.height = height;
+    this.width = 500;
+    this.height = 400;
     this.videoEndedCallback = songEndedCallback;
 
     this.minSWFVersion = '8';
