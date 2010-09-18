@@ -1,4 +1,4 @@
-radio.youtube = {
+radio.YouTube = {
   
   controller : null,
 
@@ -11,16 +11,16 @@ radio.youtube = {
                    }),
 
   onPlayerStateChange : function(stateId) {
-    var state = radio.youtube.state_by_id.get(stateId);
-    radio.youtube.controller.onPlayerStateChange(state);
+    var state = radio.YouTube.state_by_id.get(stateId);
+    radio.YouTube.controller.onPlayerStateChange(state);
   }
 };
 
-radio.youtube.Controller = Class.create({
+radio.YouTube.Controller = Class.create({
 
   initialize : function(videoDivId, width, height, songEndedCallback) {
 
-    radio.youtube.controller = this;
+    radio.YouTube.controller = this;
     this.player = null;
 
     this.videoDivId = videoDivId;
@@ -34,12 +34,12 @@ radio.youtube.Controller = Class.create({
   }, 
 
   log : function(message) {
-    console.log("radio.youtube.Controller: " + message);
+    console.log("radio.YouTube.Controller: " + message);
   },
 
   onPlayerReady : function() {
     this.player = document.getElementById(this.videoDivId);
-    var stateChangeCallback = "radio.youtube.onPlayerStateChange";
+    var stateChangeCallback = "radio.YouTube.onPlayerStateChange";
     this.player.addEventListener("onStateChange", stateChangeCallback);
     this.player.playVideo();
   },
@@ -85,7 +85,7 @@ radio.youtube.Controller = Class.create({
  * when the player is ready.
  */
 var onYouTubePlayerReady = function(playerId) {
-  radio.youtube.controller.onPlayerReady();
+  radio.YouTube.controller.onPlayerReady();
 };
 
 
