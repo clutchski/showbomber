@@ -61,8 +61,6 @@ module ModelGenerator
         :start_date => num_days_in_future.days.from_now
       }
     end
-
-
   end
 
 end

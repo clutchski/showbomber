@@ -115,6 +115,35 @@ end
 
 class ExternalAPILoaderTest < ActionController::IntegrationTest
 
+  test "loading_event_twice_does_not_duplicate_rows" do
+    event = EventGenerator.generate
+
+    assert Event.by_artist(event.artists).all.empty?
+    assert Event.by_venue(event.venue).all.empty?
+
+    # create the event the first time
+    assert_difference('Event.count', 1) do
+      Loader.load_event(event)
+    end
+    # create the event the first time
+
+    # clone the event
+    duplicate_event = event.clone
+
+    artists = event.artists.collect{|a| a.clone}
+    duplicate_event.artists.clear
+
+    artists.each do |a|
+      duplicate_event.artists.build(a.clone.attributes)
+    end
+    duplicate_event.build_venue(event.venue.clone.attributes)
+
+    # reload the event, assert another is not loaded
+    assert_no_difference('Event.count') do
+      Loader.load_event(duplicate_event)
+    end
+  end
+
   test "load_new_event_artists_venues" do
 
     artists = 4.times.collect{|i| ArtistGenerator.generate }
