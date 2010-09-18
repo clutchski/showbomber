@@ -10,7 +10,6 @@ radio.Player = Class.create({
     this.youtubePlayer = new radio.youtube.Controller(
         videoDivId, this.width, this.height, onSongEndedCallback);
 
-    // initialize the playlist
     this.playlist = new radio.Playlist(playlistDivId);
     $j('#'+playlistDivId).bind(radio.Playlist.songSelected, this.play.bind(this));
   },
