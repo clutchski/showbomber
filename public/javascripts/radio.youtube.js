@@ -1,6 +1,6 @@
 radio.YouTube = {
   
-  controller : null,
+  player : null,
 
   state_by_id : $H({ '-1' : 'NOT_STARTED'
                    , '0'  : 'ENDED'
@@ -12,22 +12,22 @@ radio.YouTube = {
 
   onPlayerStateChange : function(stateId) {
     var state = radio.YouTube.state_by_id.get(stateId);
-    radio.YouTube.controller.onPlayerStateChange(state);
+    radio.YouTube.player.onPlayerStateChange(state);
   }
 };
 
 radio.YouTube.Player = Class.create({
 
-  initialize : function(videoDivId) {
+  initialize : function(containerId) {
+
+    // HACK: set the singleton to this instance
+    radio.YouTube.player = this;
 
     this.cls = radio.YouTube.Player;
-
-    radio.YouTube.controller = this;
+    this.containerId = containerId;
     this.player = null;
 
-    this.videoDivId = videoDivId;
-    this.playerId = 'radioYoutubePlayer';
-
+    this.playerId = 'radioYouTubePlayer';
     this.width = 500;
     this.height = 400;
     this.minSWFVersion = '8';
@@ -38,7 +38,7 @@ radio.YouTube.Player = Class.create({
   },
 
   onPlayerReady : function() {
-    this.player = document.getElementById(this.videoDivId);
+    this.player = document.getElementById(this.containerId);
     var stateChangeCallback = "radio.YouTube.onPlayerStateChange";
     this.player.addEventListener("onStateChange", stateChangeCallback);
     this.player.playVideo();
@@ -47,7 +47,7 @@ radio.YouTube.Player = Class.create({
   onPlayerStateChange : function(state) {
     if (state === 'ENDED') {
       this.log("video ended");
-      $j('#' + this.videoDivId).trigger(this.cls.videoEnded);
+      $j('#' + this.containerId).trigger(this.cls.videoEnded);
     }
   },
 
@@ -59,9 +59,9 @@ radio.YouTube.Player = Class.create({
     var embedUrl = this._getEmbedUrl(videoId);
 
     var params = { allowScriptAccess: "always" };
-    var attrs  = { id: this.videoDivId };
+    var attrs  = { id: this.containerId };
 
-    swfobject.embedSWF(embedUrl, this.videoDivId, this.width, this.height
+    swfobject.embedSWF(embedUrl, this.containerId, this.width, this.height
                       , this.minSWFVersion, null, null, params, attrs);
 
   },
@@ -87,7 +87,7 @@ Object.extend(radio.YouTube.Player, {
  * when the player is ready.
  */
 var onYouTubePlayerReady = function(playerId) {
-  radio.YouTube.controller.onPlayerReady();
+  radio.YouTube.player.onPlayerReady();
 };
 
 
