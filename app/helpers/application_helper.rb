@@ -7,6 +7,4 @@ module ApplicationHelper
     song = artist.get_song
     link_to("", song.url, {:class=>"song"}) unless song.nil?
   end
-
-
 end
