@@ -23,14 +23,15 @@ var onYouTubePlayerReady = function(playerId) {
 
 radio.youtube.Controller = Class.create({
 
-  initialize : function(playerId, videoDivId, width, height, songEndedCallback) {
+  initialize : function(videoDivId, width, height, songEndedCallback) {
 
     //HACK
     radio.youtube.controller = this;
     this.player = null;
 
     this.videoDivId = videoDivId;
-    this.playerId = playerId;
+    this.playerId = 'youtubePlayer';
+
     this.width = width;
     this.height = height;
     this.videoEndedCallback = songEndedCallback;
