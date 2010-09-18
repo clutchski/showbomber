@@ -1,6 +1,3 @@
-
-
-
 radio.youtube = {
 
   state_by_id : $H({ '-1' : 'NOT_STARTED'
@@ -15,7 +12,7 @@ radio.youtube = {
 
     var state = radio.youtube.state_by_id.get(stateId);
     radio.youtube.controller.onPlayerStateChange(state);
-  },
+  }
 
 };
 
