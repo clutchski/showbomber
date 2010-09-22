@@ -14,6 +14,14 @@ radio.Playlist = Class.create({
     this.songLinks.click(this.songClickHandler.bind(this));
   },
 
+  songSelected: function(callback) {
+    this.container.bind(this.cls.songSelected, callback);
+  },
+
+  artistSelected: function(callback) {
+    this.container.bind(this.cls.artistSelected, callback);
+  },
+
   log : function(msg) {
     console.log("radio.Playlist: " + msg);
   },

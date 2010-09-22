@@ -7,11 +7,9 @@ radio.Controller = Class.create({
     this.player = new Player(videoDivId);
     $j('#' + videoDivId).live(Player.videoEnded, this.onSongEnded.bind(this));
 
-    var Playlist = radio.Playlist;
-    this.playlist = new Playlist(playlistDivId);
-    var playlistDiv = $j('#' + playlistDivId);
-    playlistDiv.bind(Playlist.songSelected, this.playSong.bind(this));
-    playlistDiv.bind(Playlist.artistSelected, this.playArtist.bind(this));
+    this.playlist = new radio.Playlist(playlistDivId);
+    this.playlist.songSelected(this.playSong.bind(this));
+    this.playlist.artistSelected(this.playArtist.bind(this));
   },
 
   log: function(message) {
