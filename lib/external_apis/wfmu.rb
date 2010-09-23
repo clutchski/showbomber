@@ -184,3 +184,7 @@ module WFMU
 
   end
 end
+
+if __FILE__ == $0
+  WFMU::run()
+end
