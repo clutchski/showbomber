@@ -6,8 +6,6 @@
   <link rel="shortcut icon" href="/favicon.ico" />
   <%= stylesheet_link_tag 'radio' %>
 
-  <%# FIXME: replace multiple javascript includes with sprockets or concat %>
-
   <% %w{prototype jquery-1.4.2.min swfobject parseUri}.each do |lib| %>
     <%= javascript_include_tag "3p/#{lib}" %>
   <% end %>
@@ -15,7 +13,7 @@
      var $j = jQuery.noConflict()
   </script>
 
-  <% %w{radio radio.playlist radio.controller radio.youtube radio.youtube.data}.each do |lib| %>
+  <% %w{radio radio.playlist radio.controller radio.youtube radio.youtube.player radio.youtube.data}.each do |lib| %>
     <%= javascript_include_tag lib %>
   <% end %>
   <%= csrf_meta_tag %>
