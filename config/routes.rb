@@ -1,4 +1,4 @@
-Radio::Application.routes.draw do |map|
+Radio::Application.routes.draw do
   resources :venues
   resources :artists
   resources :events
