@@ -35,7 +35,7 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     forgery (0.3.4)
-    haml (3.0.0.beta.1)
+    haml (3.0.18)
     httparty (0.5.2)
       crack (= 0.1.6)
     i18n (0.4.1)
@@ -77,7 +77,7 @@ PLATFORMS
 DEPENDENCIES
   crack
   forgery
-  haml
+  haml (= 3.0.18)
   httparty
   nokogiri
   pg

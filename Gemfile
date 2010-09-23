@@ -3,7 +3,7 @@ source 'http://gemcutter.org'
 
 gem "rails", "3.0.0"
 
-gem "haml"
+gem "haml", "3.0.18"
 gem "httparty"
 gem "pg"
 gem "nokogiri"
