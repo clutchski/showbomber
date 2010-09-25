@@ -32,6 +32,9 @@ module WFMU
     @@CITY_CELL     = 6
     @@PHONE_CELL    = 7
 
+    @@NJ_CITIES = ['hoboken']
+    @@NEW_YORK_CITY_ALIASES = ['new york city', 'nyc']
+
     def self.normalize(string)
       # http://stackoverflow.com/questions/225471
       #   /how-do-i-replace-accented-latin-characters-in-ruby
@@ -39,10 +42,18 @@ module WFMU
       string.mb_chars.normalize(:kc).strip
     end
 
+    def self.parse_artist(artist_cell)
+      # sometimes WFMU includes miscellaneous information in other information
+      # in parents, like "Pavement (Reunion!)" or "Joe Blow (From Some Band)"
+      # so get rid of that
+      artist = artist_cell.split('(', 2)[0]
+      self.normalize(artist)
+    end
+
     def self.parse_artists(artists_cell)
       # the first line contains the artists, others contain age info, etc.
       artist_line = artists_cell.content.split("\n", 2)[0]
-      return artist_line.split(',').collect{|a| normalize(a)}
+      artist_line.split(',').collect{|a| parse_artist(a) }
     end
 
     def self.parse_address(address_cell)
@@ -120,10 +131,30 @@ module WFMU
       return str_to_date(date_str, cur_format)
     end
 
+    def self.get_state(city)
+      if city and @@NJ_CITIES.include? city.downcase
+        return "New Jersey"
+      else
+        return "New York"
+      end
+    end
+
+    def self.normalize_city(city)
+      if not city or @@NEW_YORK_CITY_ALIASES.include?(city.downcase)
+        return "New York"
+      else
+        return city
+      end
+    end
+
     def self.parse_venue(cells)
+      aliased_city = parse_venue_city(cells[@@CITY_CELL])
+      city = normalize_city(aliased_city)
+      state = self.get_state(city)
       { :name    => parse_venue_name(cells[@@VENUE_CELL]),
         :address => parse_address(cells[@@ADDRESS_CELL]),
-        :city    => parse_venue_city(cells[@@CITY_CELL]),
+        :city    => city,
+        :state   => state,
         :phone   => parse_venue_phone(cells[@@PHONE_CELL]),
         :website => parse_venue_website(cells[@@VENUE_CELL])
       }
@@ -161,6 +192,7 @@ module WFMU
         v.name = venue_data[:name]
         v.address = venue_data[:address]
         v.city = venue_data[:city]
+        v.state = venue_data[:state]
         v.phone = venue_data[:phone]
         #FIXME: add website
       end
