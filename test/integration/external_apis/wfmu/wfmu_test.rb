@@ -43,7 +43,8 @@ class WFMUExtractorTest < ActionController::IntegrationTest
     assert_equal "Terminal 5", terminal_5_venue[:name]
     assert_equal "http://www.terminal5nyc.com/", terminal_5_venue[:website]
     assert_equal "289 Kent Ave.", terminal_5_venue[:address]
-    assert_equal "New York City", terminal_5_venue[:city]
+    assert_equal "New York", terminal_5_venue[:city]
+    assert_equal "New York", terminal_5_venue[:state]
     assert_nil terminal_5_venue[:phone]
 
     # parse union hall event
@@ -62,6 +63,7 @@ class WFMUExtractorTest < ActionController::IntegrationTest
     assert_equal "http://unionhallny.com/", union_hall_venue[:website]
     assert_equal "702 Union St", union_hall_venue[:address]
     assert_equal "Brooklyn", union_hall_venue[:city]
+    assert_equal "New York", union_hall_venue[:state]
     assert_equal "718-638-4400", union_hall_venue[:phone]
 
     # parse knitting factory event
@@ -78,7 +80,8 @@ class WFMUExtractorTest < ActionController::IntegrationTest
     knitting_factory_venue = knitting_factory[:venue]
     assert_equal "Knitting Factory Brooklyn", knitting_factory_venue[:name]
     assert_nil knitting_factory_venue[:address]
-    assert_nil knitting_factory_venue[:city]
+    assert_equal "New York", knitting_factory_venue[:city]
+    assert_equal "New York", knitting_factory_venue[:state]
     assert_nil knitting_factory_venue[:phone]
     assert_nil knitting_factory_venue[:website]
 
