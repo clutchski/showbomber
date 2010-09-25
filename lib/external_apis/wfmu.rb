@@ -42,10 +42,18 @@ module WFMU
       string.mb_chars.normalize(:kc).strip
     end
 
+    def self.parse_artist(artist_cell)
+      # sometimes WFMU includes miscellaneous information in other information
+      # in parents, like "Pavement (Reunion!)" or "Joe Blow (From Some Band)"
+      # so get rid of that
+      artist = artist_cell.split('(', 2)[0]
+      self.normalize(artist)
+    end
+
     def self.parse_artists(artists_cell)
       # the first line contains the artists, others contain age info, etc.
       artist_line = artists_cell.content.split("\n", 2)[0]
-      return artist_line.split(',').collect{|a| normalize(a)}
+      artist_line.split(',').collect{|a| parse_artist(a) }
     end
 
     def self.parse_address(address_cell)
