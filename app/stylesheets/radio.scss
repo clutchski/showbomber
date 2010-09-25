@@ -4,7 +4,7 @@
  */
 
 $link_hover_color: #bd1550;
-$now_playing_song_color: yellow;
+$header_background_color:#ABB9C1; 
 $event_date_column_width_px: 100px;
 $event_date_column_padding: 8px;
 
@@ -32,8 +32,7 @@ $event_date_column_padding: 8px;
  * Selectors
  */
 
-html, body {
-
+html {
   font-family:Courier,Courier New,monospace;
   margin:12px;
   margin-top:5px;
@@ -46,7 +45,7 @@ html, body {
 
 #header {
   @include rounded_corners(10px);
-  background-color:#ABB9C1;
+  background-color:$header_background_color;
   padding:7px;
 }
 
@@ -93,7 +92,8 @@ html, body {
   margin-top:2em;
 }
 
-div#events {
+#events {
+  margin-left:2em;
   float:left;
   display:inline-block;
 }
@@ -156,7 +156,6 @@ a.artist:hover, a.venue:hover, #footer a:hover {
   color: $link_hover_color;
   text-decoration:none;
   border-bottom: 2px solid $link_hover_color;
-
 }
 
 a.artist.playing {
@@ -182,7 +181,6 @@ a.song {
 
 #video {
   float:left;
-  margin-left:3em;
   width:500px;
   height:365px;
   background-color:#CCC;
