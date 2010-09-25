@@ -37,7 +37,10 @@ class Loader < ActiveRecord::Base
           event.artists.push(artist)
         end
 
-        event.save!
+        existing_event = Event.where({:venue_id=>event.venue.id, :start_date=>
+        event.start_date}).first
+
+        event.save! unless existing_event
     end
   end
 
