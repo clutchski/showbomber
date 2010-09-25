@@ -33,7 +33,7 @@ module WFMU
     @@PHONE_CELL    = 7
 
     @@NJ_CITIES = ['hoboken']
-    @@NEW_YORK_CITY_ALIASES = ['new york city', 'new york']
+    @@NEW_YORK_CITY_ALIASES = ['new york city', 'nyc']
 
     def self.normalize(string)
       # http://stackoverflow.com/questions/225471
@@ -184,6 +184,7 @@ module WFMU
         v.name = venue_data[:name]
         v.address = venue_data[:address]
         v.city = venue_data[:city]
+        v.state = venue_data[:state]
         v.phone = venue_data[:phone]
         #FIXME: add website
       end
