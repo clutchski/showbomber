@@ -1,0 +1,156 @@
+/*
+ * Variables, mixins and the like.
+ */
+/*
+ * Selectors
+ */
+html {
+  font-family: Courier,Courier New,monospace;
+  margin: 12px;
+  margin-top: 5px; }
+
+#main {
+  margin-left: 10%;
+  margin-right: 10%; }
+
+#header {
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background-color: #abb9c1;
+  padding: 7px; }
+
+#title {
+  background-image: url(/images/bomb_64-64.png);
+  background-position: 2px 3px;
+  background-attachment: relative;
+  background-repeat: no-repeat;
+  color: white;
+  position: relative;
+  font-size: 60px;
+  padding: 0.1em 0.4em 0.1em 75px;
+  text-decoration: none; }
+
+#nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline; }
+  #nav li {
+    display: inline; }
+  #nav li a {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    color: white;
+    font-size: 152%;
+    padding: 0.1em 0.4em 0.1em 0.4em;
+    text-decoration: none;
+    text-transform: uppercase; }
+    #nav li a:hover {
+      background-color: #36454F; }
+
+#footer {
+  text-align: center;
+  margin-top: 1em;
+  font-size: 90%;
+  color: #CCC;
+  clear: both;
+  margin-top: 2em; }
+
+#main {
+  margin: 0.5em;
+  margin-top: 2em;
+  width: 970px;
+  margin-left: auto;
+  margin-right: auto; }
+
+#events {
+  float: left;
+  clear: left;
+  width: 460px;
+  display: inline-block; }
+
+div.event {
+  margin-bottom: 1em; }
+
+div.event .date {
+  font-size: 90%;
+  color: #CCC;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: right; }
+
+ul.artists {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline; }
+  ul.artists li {
+    display: inline; }
+
+div.event .artist, #venue .name, div.artist .name, #artists a.name, #venues
+a.name {
+  color: #586C78;
+  text-decoration: none;
+  font-size: 110%;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-style: normal; }
+
+div.event .venue, div.event .cost, div#venue {
+  text-decoration: none;
+  color: #ABB9C1;
+  font-style: italic;
+  font-size: 95%; }
+
+.event .venue {
+  margin-left: 108px; }
+
+.event .date {
+  display: inline-block;
+  min-width: 100px;
+  width: 100px; }
+
+div.event .cost {
+  margin-left: 0.5em; }
+
+#footer a {
+  color: #CCC;
+  text-decoration: none;
+  text-transform: lowercase;
+  font-size: 80%;
+  margin-right: 2em; }
+
+a.artist:hover, a.venue:hover, #footer a:hover {
+  color: #bd1550;
+  text-decoration: none;
+  border-bottom: 2px solid #bd1550; }
+
+a.artist.playing {
+  background-color: #FCF75E;
+  padding: 2px 6px 2px 6px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px; }
+
+#venue {
+  margin-bottom: 1em; }
+
+ul#artists, ul#venues {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+a.song {
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  background-image: url(/images/70-tv.png); }
+
+#video {
+  float: right;
+  clear: right;
+  width: 500px;
+  height: 365px;
+  background-color: #CCC; }
