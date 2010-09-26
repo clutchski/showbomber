@@ -38,5 +38,7 @@ module Radio
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters << :password
+
+    config.secret_token = '48b64c8b15cf2478116979ccb797c6dceac025aa58659a9edc291d78d6fe1a0e6691c445822e37fef94fc600d0bf29648f1c3379b0934f8ee45d4ad740e98168'
   end
 end
