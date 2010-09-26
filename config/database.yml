@@ -13,7 +13,6 @@ development:
 test:
   <<: *common
   database: showbomber_test
-  min_messages: WARNING
 
 production:
   <<: *common
