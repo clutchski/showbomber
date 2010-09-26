@@ -1,4 +1,3 @@
-
 /*
  * Variables, mixins and the like.
  */
@@ -39,8 +38,8 @@ html {
 }
 
 #main {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin:0.5em;
+  width:970px;
 }
 
 #header {
@@ -85,14 +84,6 @@ html {
   color:#CCC;
   clear:both;
   margin-top:2em;
-}
-
-#main {
-  margin:0.5em;
-  margin-top:2em;
-  width:970px;
-  margin-left:auto;
-  margin-right:auto;
 }
 
 #events {
