@@ -40,5 +40,10 @@ module Radio
     config.filter_parameters << :password
 
     config.secret_token = '48b64c8b15cf2478116979ccb797c6dceac025aa58659a9edc291d78d6fe1a0e6691c445822e37fef94fc600d0bf29648f1c3379b0934f8ee45d4ad740e98168'
+    
+    config.session_store :cookie_store, {
+      :key    => '_radio_session',
+      :secret => '055f7fb5a6930797d2e1eb2a75395fef012ebc86dcb10043818f375ff6599ec1e811d213b9d0f593ad31574e92c42f7866d46d52b606640eb3ad304b79160e60'
+    }
   end
 end
