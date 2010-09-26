@@ -2,16 +2,6 @@ require 'test_helper'
 
 class VenuesControllerTest < ActionController::TestCase
 
-  #FIXME replace this with a built-in?
-  def assert_arrays_equal(array1, array2)
-    expected = array1.dup
-    array2.each do |e|
-      assert expected.member?(e)
-      expected.delete(e)
-    end
-    assert expected.empty?
-  end
-
   test "should get index" do
     get :index
     assert_response :success
@@ -31,24 +21,6 @@ class VenuesControllerTest < ActionController::TestCase
     assert_redirected_to venue_path(assigns(:venue))
   end
 
-  test "invalid parameters venue" do
-    params = { :name => 'Some Venue',
-               :address => "123 Fake Street",
-               :city => "New York",
-               :state => "NY"
-             }
-    # assert that each field is required by excluding each one
-    # from a post
-    params.keys.each do |key|
-      invalid_params = params.dup
-      invalid_params[key] = ''
-      assert_no_difference('Venue.count') do
-        post :create, :venue => invalid_params
-      end
-    end
-  end
-
-
   test "should show venue" do
     venue = venues(:bowery_ballroom)
     get :show, :id => venue.to_param
@@ -56,11 +28,6 @@ class VenuesControllerTest < ActionController::TestCase
     assert_response :success
     actual_venue = assigns(:venue)
     assert_equal actual_venue, venue
-
-    event_keys = [:neil_at_bowery_ballroom, :wolf_parade_at_bowery_ballroom]
-    expected_events = event_keys.collect{|e| events(e)}
-
-    assert_arrays_equal expected_events, actual_venue.events
   end
 
   test "should get edit" do
