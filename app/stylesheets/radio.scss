@@ -1,9 +1,10 @@
+
 /*
  * Variables, mixins and the like.
  */
 
 $link_hover_color: #bd1550;
-$header_background_color:#ABB9C1; 
+$now_playing_song_color: yellow;
 $event_date_column_width_px: 100px;
 $event_date_column_padding: 8px;
 
@@ -31,20 +32,21 @@ $event_date_column_padding: 8px;
  * Selectors
  */
 
-html {
+html, body {
+
   font-family:Courier,Courier New,monospace;
   margin:12px;
   margin-top:5px;
 }
 
 #main {
-  margin:0.5em;
-  width:970px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 #header {
   @include rounded_corners(10px);
-  background-color:$header_background_color;
+  background-color:#ABB9C1;
   padding:7px;
 }
 
@@ -86,10 +88,13 @@ html {
   margin-top:2em;
 }
 
-#events {
+#main {
+  margin:0.5em;
+  margin-top:2em;
+}
+
+div#events {
   float:left;
-  clear:left;
-  width:460px;
   display:inline-block;
 }
 
@@ -151,6 +156,7 @@ a.artist:hover, a.venue:hover, #footer a:hover {
   color: $link_hover_color;
   text-decoration:none;
   border-bottom: 2px solid $link_hover_color;
+
 }
 
 a.artist.playing {
@@ -175,8 +181,8 @@ a.song {
 }
 
 #video {
-  float:right;
-  clear:right;
+  float:left;
+  margin-left:3em;
   width:500px;
   height:365px;
   background-color:#CCC;
