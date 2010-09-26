@@ -1,8 +1,6 @@
 
 <% eventsDivId, videoDivId  = 'events', 'video' %>
 
-<div id="<%= videoDivId %>"></div>
-
 <div id="<%= eventsDivId %>">
 
   <% events.each do |event| %>
@@ -29,6 +27,7 @@
   
 </div><!-- end #events -->
 
+<div id="<%= videoDivId %>"></div>
 
 <script type="text/javascript">
 

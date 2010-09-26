@@ -90,11 +90,13 @@ html {
 #main {
   margin:0.5em;
   margin-top:2em;
+  width:970px;
 }
 
 #events {
-  margin-left:2em;
   float:left;
+  clear:left;
+  width:460px;
   display:inline-block;
 }
 
@@ -180,7 +182,8 @@ a.song {
 }
 
 #video {
-  float:left;
+  float:right;
+  clear:right;
   width:500px;
   height:365px;
   background-color:#CCC;
