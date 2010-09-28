@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   respond_to :html
 
   def index
-    @events = Event.all(:order => "start_date ASC")
+    @events = Event.get_upcoming_events()
     respond_with(@events)
   end
 

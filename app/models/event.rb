@@ -8,7 +8,6 @@ class Event < ActiveRecord::Base
     joins(:artists).where({"artists.id" => artist.id})
   }
 
-
   belongs_to :venue
   has_and_belongs_to_many :artists
 
@@ -28,7 +27,6 @@ class Event < ActiveRecord::Base
   end
 
   def price_range_in_words
-
     in_words = ''
     if min_cost.blank? and max_cost.blank?
       in_words = ''
@@ -47,4 +45,8 @@ class Event < ActiveRecord::Base
     in_words
   end
 
+  def self.get_upcoming_events
+    return Event.includes([:venue, {:artists => :songs}]
+                              ).all(:order => "start_date ASC")
+  end
 end
