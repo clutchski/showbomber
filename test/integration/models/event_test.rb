@@ -39,4 +39,33 @@ class EventTest < ActiveSupport::TestCase
       assert e.artists.include?(artist)
     end
   end
+
+  test "events in the past aren't included in upcoming events" do
+    days_ago = [10, 5, 1]
+    past_events = days_ago.collect do |d| 
+      Factory.create(:event, :start_date => d.days.ago)
+    end
+
+    upcoming_events = Event.get_upcoming_events()
+
+    past_events.each do |e|
+      assert !upcoming_events.include?(e), 
+        "upcoming events shouldn't include past event: #{e.start_date}"
+    end
+  end
+
+  test "assert today's events are included in upcoming events" do
+    show_times = [6, 12, 17, 23]
+    midnight = DateTime.now.midnight
+    events = show_times.collect do |t|
+      start_date = midnight + (60*60 * t)
+      Factory.create(:event, :start_date => start_date)
+    end
+
+    upcoming_events = Event.get_upcoming_events()
+
+    events.each do |e|
+      assert upcoming_events.include?(e)
+    end
+  end
 end
