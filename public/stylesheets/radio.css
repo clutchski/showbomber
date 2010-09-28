@@ -4,20 +4,20 @@
 /*
  * Selectors
  */
-html {
+html, body {
   font-family: Courier,Courier New,monospace;
   margin: 12px;
   margin-top: 5px; }
 
 #main {
-  margin: 0.5em;
-  width: 970px; }
+  margin-left: 10%;
+  margin-right: 10%; }
 
 #header {
   border-radius: 10px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
-  background-color: #abb9c1;
+  background-color: #ABB9C1;
   padding: 7px; }
 
 #title {
@@ -52,16 +52,15 @@ html {
 
 #footer {
   text-align: center;
-  margin-top: 1em;
-  font-size: 90%;
-  color: #CCC;
   clear: both;
+  margin: 2em; }
+
+#main {
+  margin: 0.5em;
   margin-top: 2em; }
 
 #events {
   float: left;
-  clear: left;
-  width: 460px;
   display: inline-block; }
 
 div.event {
@@ -109,7 +108,7 @@ div.event .cost {
   margin-left: 0.5em; }
 
 #footer a {
-  color: #CCC;
+  color: black;
   text-decoration: none;
   text-transform: lowercase;
   font-size: 80%;
@@ -142,8 +141,8 @@ a.song {
   background-image: url(/images/70-tv.png); }
 
 #video {
-  float: right;
-  clear: right;
+  float: left;
+  margin-left: 3em;
   width: 500px;
   height: 365px;
   background-color: #CCC; }
