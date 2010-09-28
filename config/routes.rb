@@ -5,8 +5,11 @@ Radio::Application.routes.draw do
 
   root :to => "events#index"
 
-
   match 'artists/:id/songs' => 'artists#songs'
+
+  # static routes
+
+  match 'contact' =>  'static#contact'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
