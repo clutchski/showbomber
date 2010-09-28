@@ -10,5 +10,6 @@ gem "nokogiri"
 
 group :test do
   gem "crack"
+  gem 'factory_girl_rails'
   gem "forgery"
 end
