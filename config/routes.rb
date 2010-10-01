@@ -9,7 +9,7 @@ Radio::Application.routes.draw do
 
   # static routes
 
-  match 'contact' =>  'static#contact'
+  match 'contact' =>  'static#contact', :as => :contact
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
