@@ -8,4 +8,8 @@ module ApplicationHelper
     url = song.nil? ? "" : song.url
     link_to("", url, {:class=>"song"})
   end
+
+  def get_uservoice_url()
+    return "http://showbomber.uservoice.com"
+  end
 end
