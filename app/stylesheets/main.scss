@@ -60,9 +60,7 @@ body {
     padding:0.1em 0.4em 0.1em 0.4em;
     text-decoration:none;
     text-transform:uppercase;
-    &:hover {
-      background-color:$header_link_hover_color;
-    }
+    @include hover_background_color($header_link_hover_color);
   }
 }
 
@@ -81,4 +79,7 @@ body {
   text-decoration:none;
   text-transform:lowercase;
   margin-right:2em;
+  padding: 0.1em 0.4em 0.1em 0.4em;
+  @include rounded_corners(5px);
+  @include hover_background_color($header_link_hover_color);
 }

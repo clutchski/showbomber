@@ -70,7 +70,13 @@ body {
   font-weight: bold;
   text-decoration: none;
   text-transform: lowercase;
-  margin-right: 2em; }
+  margin-right: 2em;
+  padding: 0.1em 0.4em 0.1em 0.4em;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; }
+  #footer a:hover {
+    background-color: #36454f; }
 
 /*
  * Selectors
@@ -119,7 +125,7 @@ div.event .venue, div.event .cost, div#venue {
 div.event .cost {
   margin-left: 0.5em; }
 
-a.artist:hover, a.venue:hover, #footer a:hover {
+a.artist:hover, a.venue:hover {
   color: #bd1550;
   text-decoration: none;
   border-bottom: 2px solid #bd1550; }

@@ -40,3 +40,9 @@
   -webkit-border-radius-bottomleft: $radius;
   -webkit-border-radius-bottomright: $radius;
 }
+
+@mixin hover_background_color($color) {
+  &:hover {
+    background-color: $color;
+  }
+}
