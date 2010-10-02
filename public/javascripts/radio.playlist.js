@@ -22,6 +22,17 @@ radio.Playlist = Class.create({
     this.container.bind(this.cls.artistSelected, callback);
   },
 
+  selectFirstArtist : function() {
+    //FIXME: This won't play a song link, if the artist has one loaded.
+    var artist = this.artists.first();
+    if (artist) {
+      var artist_name = artist.html();
+      this.highlightArtist(artist);
+      return artist_name;
+    }
+    return null;
+  },
+
   log : function(msg) {
     console.log("radio.Playlist: " + msg);
   },
@@ -29,15 +40,16 @@ radio.Playlist = Class.create({
   songClickHandler : function(event) {
     event.preventDefault(); // don't follow the link
     var songLink = $j(event.target);
+    var artist = this._getArtistElement(songLink);
+
     this.currentSongLink = songLink;
     var songUrl = songLink.attr('href');
     if (songUrl) {
       this.container.trigger(this.cls.songSelected, songUrl);
     } else {
-      var artist = this._getArtistElement(songLink);
       this.container.trigger(this.cls.artistSelected, artist.html());
     }
-    this.highlightArtist(songLink);
+    this.highlightArtist(artist);
   },
 
   getNextSongLink : function() {
@@ -75,10 +87,9 @@ radio.Playlist = Class.create({
     this.currentSongLink.click();
   },
 
-  highlightArtist : function(songLink) {
+  highlightArtist : function(artist) {
     this.artists.removeClass(this.domKeys.nowPlayingClass);
-    var artist = this._getArtistElement(songLink);
-    artist.addClass(this.domKeys.nowPlayingClass);
+    $j(artist).addClass(this.domKeys.nowPlayingClass);
   },
 
   _getArtistElement : function(songLink) {

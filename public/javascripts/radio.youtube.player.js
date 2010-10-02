@@ -25,7 +25,9 @@ radio.YouTube.Player = Class.create({
     this.player = document.getElementById(this.containerId);
     var stateChangeCallback = "radio.YouTube.Player.singleton.onStateChange";
     this.player.addEventListener("onStateChange", stateChangeCallback);
-    this.player.playVideo();
+    if (this.playWhenLoaded) {
+      this.player.playVideo();
+    }
   },
 
   onStateChange : function(stateId) {
@@ -42,7 +44,23 @@ radio.YouTube.Player = Class.create({
   },
 
   playById : function(videoId) {
-    this.log("playing video with id: " + videoId);
+    this.playWhenLoaded = true;
+    this._load(videoId);
+  },
+
+  load : function(url) {
+    var videoId = this._getVideoId(url);
+    this.loadById(videoId);
+  },
+
+  loadById : function(videoId) {
+    this.playWhenLoaded = false;
+    this._load(videoId);
+  },
+
+  _load : function(videoId) {
+    
+    this.log("loading video with id: " + videoId);
     var embedUrl = this._getEmbedUrl(videoId);
 
     var params = { allowScriptAccess: "always" };

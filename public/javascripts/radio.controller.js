@@ -10,6 +10,9 @@ radio.Controller = Class.create({
     this.playlist = new radio.Playlist(playlistDivId);
     this.playlist.songSelected(this.playSong.bind(this));
     this.playlist.artistSelected(this.playArtist.bind(this));
+
+    var artist = this.playlist.selectFirstArtist();
+    this.loadArtist(artist);
   },
 
   log: function(message) {
@@ -31,10 +34,18 @@ radio.Controller = Class.create({
     this.player.playById(id);
   },
 
+  loadSongById : function(id) {
+    this.player.loadById(id);
+  },
+
   playArtist : function(event, name) {
     this.log("playing artist: " + name);
     radio.YouTube.DataAPI.getVideoIdForArtist(name, 
                           this.playSongById.bind(this));
-  }
+  },
 
+  loadArtist : function(name) {
+    radio.YouTube.DataAPI.getVideoIdForArtist(name, 
+                            this.loadSongById.bind(this));
+  }
 });
