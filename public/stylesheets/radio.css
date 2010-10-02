@@ -11,8 +11,9 @@ html, body {
   background-color: #DDE5E2; }
 
 #main {
-  margin-left: 15%;
-  margin-right: 15%;
+  position: relative;
+  margin-left: 2%;
+  margin-right: 2%;
   margin-top: 0.5em;
   margin-bottom: 1em;
   background-color: white;
@@ -150,12 +151,12 @@ a.song {
   display: inline-block;
   background-image: url(/images/70-tv.png); }
 
+#events {
+  margin-left: 520px; }
+
 #video {
-  margin-left: 3em;
+  position: absolute;
+  top: 10px;
+  left: 10px;
   width: 500px;
-  height: 365px;
-  background-color: #7F5407;
-  padding: 10px;
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px; }
+  height: 365px; }
