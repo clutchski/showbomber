@@ -1,8 +1,6 @@
-/*--------------------------------------------------
- * 
- * This module contains site-level mixins.
- * 
- *--------------------------------------------------*/
+//
+// This module contains mixins used by more than one page.
+//
 
 @mixin no_style_list {
   list-style:none;
