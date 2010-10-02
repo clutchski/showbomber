@@ -45,9 +45,21 @@ class Loader < ActiveRecord::Base
   end
 
   def self.load_events(events)
+    num_events = events.length
+    Rails.logger.info "Event loading start. Loading #{num_events} events"
+
+    error_count = 0
     transaction do 
-      events.each{|event| load_event(event)}
+      events.each do |event| 
+        begin
+          load_event(event)
+        rescue => error
+          Rails.logger.error "Unable to load event: #{event}: #{error}\n#{error.backtrace}"
+          error_count += 1
+        end
+      end
     end
+    Rails.logger.info "Event loading finished. #{error_count} of #{num_events} failed."
   end
 
 end
