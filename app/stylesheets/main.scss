@@ -2,12 +2,23 @@
 // This module contains the styling common to all pages.
 // 
 
+
 @import "mixins";
+
+
+$site_background_color: #DDE5E2;
+$main_background_color: white;
+$header_background_color: #ABB9C1;
+$header_text_color: white;
+$header_link_hover_color: #36454F;
+$footer_background_color: $header_background_color;
+$footer_text_color: $header_text_color;
+
 
 body {
   font-family:Courier,Courier New,monospace;
   margin:12px;
-  background-color:#DDE5E2;
+  background-color: $site_background_color;
 }
 
 #main {
@@ -16,7 +27,7 @@ body {
   margin-right: 0.5%;
   margin-top:0.5em;
   margin-bottom:1em;
-  background-color:white;
+  background-color:$main_background_color;
   padding:3px;
   min-height:500px;
   @include rounded_corners(10px);
@@ -24,7 +35,7 @@ body {
 
 #header {
   @include rounded_corners(10px);
-  background-color:#ABB9C1;
+  background-color:$header_background_color;
   padding:7px;
 }
 
@@ -33,7 +44,7 @@ body {
   background-position:2px 3px;
   background-attachment:relative;
   background-repeat:no-repeat;
-  color:white;
+  color:$header_text_color;
   position:relative;
   font-size:60px;
   padding:0.1em 0.4em 0.1em 75px;
@@ -45,13 +56,13 @@ body {
 
   li a{
     @include rounded_corners(5px);
-    color:white;
+    color:$header_text_color;
     font-size:152%;
     padding:0.1em 0.4em 0.1em 0.4em;
     text-decoration:none;
     text-transform:uppercase;
     &:hover {
-      background-color:#36454F;
+      background-color:$header_link_hover_color;
     }
   }
 }
@@ -60,17 +71,17 @@ body {
   text-align:center;
   clear:both;
   margin:2em;
-  background-color:#ABB9C1;
+  background-color:$footer_background_color;
   padding:5px;
   @include rounded_corners(10px);
   margin-left:auto;
   margin-right:auto;
-  color:white;
+  color:$footer_text_color;
   width:500px;
 }
 
 #footer a {
-  color:white;
+  color:$footer_text_color;
   font-weight:bold;
   text-decoration:none;
   text-transform:lowercase;

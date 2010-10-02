@@ -1,7 +1,7 @@
 body {
   font-family: Courier,Courier New,monospace;
   margin: 12px;
-  background-color: #DDE5E2; }
+  background-color: #dde5e2; }
 
 #main {
   position: relative;
@@ -20,7 +20,7 @@ body {
   border-radius: 10px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
-  background-color: #ABB9C1;
+  background-color: #abb9c1;
   padding: 7px; }
 
 #title {
@@ -51,13 +51,13 @@ body {
     text-decoration: none;
     text-transform: uppercase; }
     #nav li a:hover {
-      background-color: #36454F; }
+      background-color: #36454f; }
 
 #footer {
   text-align: center;
   clear: both;
   margin: 2em;
-  background-color: #ABB9C1;
+  background-color: #abb9c1;
   padding: 5px;
   border-radius: 10px;
   -moz-border-radius: 10px;
