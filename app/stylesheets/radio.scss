@@ -37,11 +37,19 @@ html, body {
   font-family:Courier,Courier New,monospace;
   margin:12px;
   margin-top:5px;
+  background-color:#DDE5E2;
 }
 
 #main {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top:0.5em;
+  margin-bottom:1em;
+  background-color:white;
+  padding-left:10px;
+  padding-right:10px;
+  padding-bottom:10px;
+  @include rounded_corners(10px);
 }
 
 #header {
@@ -83,16 +91,13 @@ html, body {
   text-align:center;
   clear:both;
   margin:2em;
-}
-
-#main {
-  margin:0.5em;
-  margin-top:2em;
-}
-
-#events {
-  float:left;
-  display:inline-block;
+  background-color:#ABB9C1;
+  padding:5px;
+  @include rounded_corners(10px);
+  margin-left:auto;
+  margin-right:auto;
+  color:white;
+  width:500px;
 }
 
 div.event {
@@ -142,10 +147,9 @@ div.event .cost {
 }
 
 #footer a {
-  color:black;
+  color:white;
   text-decoration:none;
   text-transform:lowercase;
-  font-size: 80%;
   margin-right:2em;
 }
 
@@ -178,9 +182,10 @@ a.song {
 }
 
 #video {
-  float:left;
   margin-left:3em;
   width:500px;
   height:365px;
-  background-color:#CCC;
+  background-color:#7F5407;
+  padding:10px;
+  @include rounded_corners(10px);
 }

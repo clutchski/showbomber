@@ -7,11 +7,21 @@
 html, body {
   font-family: Courier,Courier New,monospace;
   margin: 12px;
-  margin-top: 5px; }
+  margin-top: 5px;
+  background-color: #DDE5E2; }
 
 #main {
-  margin-left: 10%;
-  margin-right: 10%; }
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  background-color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px; }
 
 #header {
   border-radius: 10px;
@@ -53,15 +63,16 @@ html, body {
 #footer {
   text-align: center;
   clear: both;
-  margin: 2em; }
-
-#main {
-  margin: 0.5em;
-  margin-top: 2em; }
-
-#events {
-  float: left;
-  display: inline-block; }
+  margin: 2em;
+  background-color: #ABB9C1;
+  padding: 5px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  width: 500px; }
 
 div.event {
   margin-bottom: 1em; }
@@ -108,10 +119,9 @@ div.event .cost {
   margin-left: 0.5em; }
 
 #footer a {
-  color: black;
+  color: white;
   text-decoration: none;
   text-transform: lowercase;
-  font-size: 80%;
   margin-right: 2em; }
 
 a.artist:hover, a.venue:hover, #footer a:hover {
@@ -141,8 +151,11 @@ a.song {
   background-image: url(/images/70-tv.png); }
 
 #video {
-  float: left;
   margin-left: 3em;
   width: 500px;
   height: 365px;
-  background-color: #CCC; }
+  background-color: #7F5407;
+  padding: 10px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px; }
