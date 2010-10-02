@@ -32,24 +32,23 @@ $event_date_column_padding: 8px;
  * Selectors
  */
 
-html, body {
-
+body {
   font-family:Courier,Courier New,monospace;
   margin:12px;
-  margin-top:5px;
   background-color:#DDE5E2;
 }
 
 #main {
   position:relative;
-  margin-left: 2%;
-  margin-right: 2%;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
   margin-top:0.5em;
   margin-bottom:1em;
   background-color:white;
   padding-left:10px;
   padding-right:10px;
   padding-bottom:10px;
+  min-height:500px;
   @include rounded_corners(10px);
 }
 
@@ -149,6 +148,7 @@ div.event .cost {
 
 #footer a {
   color:white;
+  font-weight:bold;
   text-decoration:none;
   text-transform:lowercase;
   margin-right:2em;
