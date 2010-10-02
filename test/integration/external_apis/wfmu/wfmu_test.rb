@@ -20,7 +20,7 @@ class WFMUExtractorTest < ActionController::IntegrationTest
   end
 
   def read_sample_data(path)
-    sample_file = File.join(this_dir(), path)
+    sample_file = File.join(this_dir(), 'test_data', path)
     File.open(sample_file) { |f| f.read }
   end
 
