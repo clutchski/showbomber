@@ -1,9 +1,8 @@
-/*
- * Variables, mixins and the like.
- */
-/*
- * Selectors
- */
+/*--------------------------------------------------
+ * 
+ * This module contains site-level mixins.
+ * 
+ *--------------------------------------------------*/
 body {
   font-family: Courier,Courier New,monospace;
   margin: 12px;
@@ -73,6 +72,16 @@ body {
   color: white;
   width: 500px; }
 
+#footer a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: lowercase;
+  margin-right: 2em; }
+
+/*
+ * Selectors
+ */
 div.event {
   margin-bottom: 1em; }
 
@@ -116,13 +125,6 @@ div.event .venue, div.event .cost, div#venue {
 
 div.event .cost {
   margin-left: 0.5em; }
-
-#footer a {
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-  text-transform: lowercase;
-  margin-right: 2em; }
 
 a.artist:hover, a.venue:hover, #footer a:hover {
   color: #bd1550;

@@ -1,0 +1,27 @@
+/*--------------------------------------------------
+ * 
+ * This module contains site-level mixins.
+ * 
+ *--------------------------------------------------*/
+
+@mixin no_style_list {
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+@mixin inline_list {
+  @include no_style_list;
+  display:inline;
+  li {
+    display: inline;
+  }
+}
+
+@mixin rounded_corners($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+

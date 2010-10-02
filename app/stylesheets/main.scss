@@ -1,0 +1,74 @@
+@import "mixins";
+
+body {
+  font-family:Courier,Courier New,monospace;
+  margin:12px;
+  background-color:#DDE5E2;
+}
+
+#main {
+  position:relative;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+  margin-top:0.5em;
+  margin-bottom:1em;
+  background-color:white;
+  padding:3px;
+  min-height:500px;
+  @include rounded_corners(10px);
+}
+
+#header {
+  @include rounded_corners(10px);
+  background-color:#ABB9C1;
+  padding:7px;
+}
+
+#title {
+  background-image:url(/images/bomb_64-64.png);
+  background-position:2px 3px;
+  background-attachment:relative;
+  background-repeat:no-repeat;
+  color:white;
+  position:relative;
+  font-size:60px;
+  padding:0.1em 0.4em 0.1em 75px;
+  text-decoration:none;
+}
+
+#nav {
+  @include inline_list;
+
+  li a{
+    @include rounded_corners(5px);
+    color:white;
+    font-size:152%;
+    padding:0.1em 0.4em 0.1em 0.4em;
+    text-decoration:none;
+    text-transform:uppercase;
+    &:hover {
+      background-color:#36454F;
+    }
+  }
+}
+
+#footer {
+  text-align:center;
+  clear:both;
+  margin:2em;
+  background-color:#ABB9C1;
+  padding:5px;
+  @include rounded_corners(10px);
+  margin-left:auto;
+  margin-right:auto;
+  color:white;
+  width:500px;
+}
+
+#footer a {
+  color:white;
+  font-weight:bold;
+  text-decoration:none;
+  text-transform:lowercase;
+  margin-right:2em;
+}
