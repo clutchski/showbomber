@@ -51,9 +51,14 @@ module WFMU
     end
 
     def self.parse_artists(artists_cell)
-      # the first line contains the artists, others contain age info, etc.
+      # The first line contains the artists, others contain misc info.
       artist_line = artists_cell.content.split("\n", 2)[0]
-      artist_line.split(',').collect{|a| parse_artist(a) }
+
+      # Artists are usually delimited with commas, but occasionally slashes
+      # are used - see Case 30.
+      delimiter = artist_line.include?(',') ? ',' : '/'
+
+      artist_line.split(delimiter).collect{|a| parse_artist(a) }
     end
 
     def self.parse_address(address_cell)

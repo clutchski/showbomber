@@ -23,6 +23,26 @@ class WFMUExtractorTest < ActionController::IntegrationTest
     sample_file = File.join(this_dir(), path)
     File.open(sample_file) { |f| f.read }
   end
+
+  test "test slash delimited artists are parsed. case 30" do
+    html = read_sample_data("wfmu_case_30_slash_delimited_artists.html")
+    events = WFMU::Extractor.parse(html)
+    assert_equal 1, events.length
+
+    event = events.first
+  
+    artists = event[:artists]
+
+    expected_names = %w{Trident Immolith Evoken Neldoreth}
+
+    assert !artists.empty?
+    assert_equal expected_names.length, artists.length
+
+    artists.each do |a|
+      assert expected_names.include? a
+    end
+  end
+ 
   
   test "test extractor works" do
     sample_html = read_sample_data("wfmu_example.html")
