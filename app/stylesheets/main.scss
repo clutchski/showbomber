@@ -6,7 +6,7 @@
 @import "mixins";
 
 
-$site_background_color: #DDE5E2;
+$site_background_color: #EFF7F4;
 $main_background_color: white;
 $header_background_color: #ABB9C1;
 $header_text_color: white;
@@ -26,6 +26,7 @@ body {
   background-color:$main_background_color;
   padding:1em;
   min-height:500px;
+  border: 3px solid $header_background_color;
 }
 
 #header {
@@ -69,9 +70,9 @@ body {
   text-align:center;
   clear:both;
   background-color:$footer_background_color;
-  padding:5px;
   @include rounded_corners_bottom(10px);
   color:$footer_text_color;
+  padding:5px;
 }
 
 #footer a {
