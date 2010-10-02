@@ -23,18 +23,13 @@ body {
 
 #main {
   position:relative;
-  margin-left: 0.5%;
-  margin-right: 0.5%;
-  margin-top:0.5em;
-  margin-bottom:1em;
   background-color:$main_background_color;
-  padding:3px;
+  padding:1em;
   min-height:500px;
-  @include rounded_corners(10px);
 }
 
 #header {
-  @include rounded_corners(10px);
+  @include rounded_corners_top(10px);
   background-color:$header_background_color;
   padding:7px;
 }
@@ -54,6 +49,9 @@ body {
 #nav {
   @include inline_list;
 
+  font-weight:bold;
+  margin-left:3em;
+  
   li a{
     @include rounded_corners(5px);
     color:$header_text_color;
@@ -70,14 +68,10 @@ body {
 #footer {
   text-align:center;
   clear:both;
-  margin:2em;
   background-color:$footer_background_color;
   padding:5px;
-  @include rounded_corners(10px);
-  margin-left:auto;
-  margin-right:auto;
+  @include rounded_corners_bottom(10px);
   color:$footer_text_color;
-  width:500px;
 }
 
 #footer a {
