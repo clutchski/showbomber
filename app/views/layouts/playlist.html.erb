@@ -1,0 +1,17 @@
+<%#
+  This template is used to render playlist pages.
+%>
+
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'playlist' %>
+<% end %>
+
+<% content_for :main do %>
+  <div id="sidebar">
+    <%= yield(:sidebar) %>
+  </div>
+  <div id="content">
+    <%= yield %>
+  </div>
+<% end %>
+<%= render :file => 'layouts/main' %> 

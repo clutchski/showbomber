@@ -5,7 +5,8 @@
   <% tagline = "Hear bands playing in New York." %>
   <title><%= "#{title} - #{tagline}" %></title>
   <link rel="shortcut icon" href="/favicon.ico" />
-  <%= stylesheet_link_tag 'radio' %>
+  <%= stylesheet_link_tag 'main' %>
+  <%= content_for?(:stylesheets) ? yield(:stylesheets) : "" %>
 
   <% %w{prototype jquery-1.4.2.min swfobject parseUri}.each do |lib| %>
     <%= javascript_include_tag "3p/#{lib}" %>
@@ -28,7 +29,7 @@
 
   <div id="main">
     <p class="notice"><%= notice %></p>
-    <%= yield %>
+    <%= content_for?(:main) ? yield(:main) : yield %>
   </div><!-- end #main -->
 
   <div id="footer">
