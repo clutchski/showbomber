@@ -59,7 +59,6 @@ body {
   clear:both;
   background-color:$footer_background_color;
   @include rounded_corners_bottom(10px);
-  color:$footer_text_color;
   padding:5px;
 }
 
