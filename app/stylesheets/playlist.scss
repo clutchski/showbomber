@@ -1,0 +1,69 @@
+//
+// This module contains styling for the playlist.
+//
+
+@import "main";
+
+$sidebar_width:500px;
+$date_width:110px;
+
+$artist_name_color:black;
+$event_info_color:gray;
+
+
+#sidebar {
+  position:fixed;
+  width:$sidebar_width;
+}
+
+#content {
+  margin-left:$sidebar_width + 20px;
+}
+
+.venue_and_cost td {
+  padding-bottom:10px;
+}
+
+.artists {
+  @include inline_list;
+}
+
+.artist {
+  text-transform:uppercase;
+  font-weight:bold;
+  color:$artist_name_color;
+  text-decoration:none;
+}
+
+.venue, .cost {
+  text-transform:capitalize;
+  color:$event_info_color;
+  font-style:italic;
+  text-decoration:none;
+}
+
+.cost {
+  margin-left:1em;
+}
+
+.date {
+  text-transform:uppercase;
+  color:$event_info_color;
+  width:$date_width;
+  vertical-align:top;
+  font-weight:bold;
+}
+
+.artist.playing {
+  background-color:#FCF75E;
+  padding:2px 6px 2px 6px;
+  @include rounded_corners(4px);
+}
+
+.song {
+  height:20px;
+  width:20px;
+  margin-top:-9px;
+  display:inline-block;
+  background-image:url(/images/70-tv.png)
+}
