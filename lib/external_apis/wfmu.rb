@@ -77,14 +77,21 @@ module WFMU
     end
 
     def self.parse_venue_name(venue_cell)
+      # A strange one-off. WFMU stores the name of "Le Poisson Rouge" as
+      # "(le) Poiss..", which messes up other parens parsing, so just hacking
+      # it out here. Case #31.
+      content = venue_cell.content
+      if content.downcase.starts_with?("(le) poisson rouge")
+        return "Le Poisson Rouge"
+      end
       # ignore the "(website)" link
-      name = venue_cell.content.split('(', 2)[0]
+      name = content.split('(', 2)[0]
       return self.normalize(name).strip
     end
  
     def self.parse_venue_website(venue_cell)
       url_nodeset = venue_cell.css('a')
-      url = (url_nodeset.empty?) ? nil : url_nodeset.first['href']
+      return (url_nodeset.empty?) ? nil : url_nodeset.first['href']
     end
 
     def self.parse_venue_phone(phone_cell)

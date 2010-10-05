@@ -24,6 +24,15 @@ class WFMUExtractorTest < ActionController::IntegrationTest
     File.open(sample_file) { |f| f.read }
   end
 
+  test "assert venue names starting with parens can be parsed. Case 31" do
+    html = read_sample_data("wfmu_case_31_venue_starting_with_parens.html")
+    events = WFMU::Extractor.parse(html)
+    assert_equal 1, events.length
+    event = events.first
+    venue = event[:venue]
+    assert_equal "Le Poisson Rouge", venue[:name]
+  end
+
   test "test slash delimited artists are parsed. case 30" do
     html = read_sample_data("wfmu_case_30_slash_delimited_artists.html")
     events = WFMU::Extractor.parse(html)
