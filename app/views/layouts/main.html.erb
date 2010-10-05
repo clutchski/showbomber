@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>showbomber</title>
+  <% title = "showbomber" %>
+  <% tagline = "Hear bands playing in New York." %>
+  <title><%= "#{title} - #{tagline}" %></title>
   <link rel="shortcut icon" href="/favicon.ico" />
   <%= stylesheet_link_tag 'radio' %>
 
@@ -20,13 +22,9 @@
 <body>
 
   <div id="header">
-    <%= link_to 'showbomber', root_path, :id=>'title'%>
-    <ul id="nav">
-      <li><%= link_to 'Events', events_path %></li>
-      <li><%= link_to 'Artists', artists_path %></li>
-      <li><%= link_to 'Venues', venues_path %></li>
-    </ul>
-  </div> <!-- end #header -->
+    <%= link_to title, root_path, :id=>'title'%>
+    <h1 id="tagline"><%= tagline %></h1>
+  </div>
 
   <div id="main">
     <p class="notice"><%= notice %></p>

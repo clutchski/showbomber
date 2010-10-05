@@ -35,6 +35,13 @@ body {
   padding:7px;
 }
 
+#tagline {
+  font-size:20px;
+  display:inline;
+  font-weight:normal;
+  color:$header_text_color;
+}
+
 #title {
   background-image:url(/images/bomb_64-64.png);
   background-position:2px 3px;
@@ -45,23 +52,6 @@ body {
   font-size:60px;
   padding:0.1em 0.4em 0.1em 75px;
   text-decoration:none;
-}
-
-#nav {
-  @include inline_list;
-
-  font-weight:bold;
-  margin-left:3em;
-  
-  li a{
-    @include rounded_corners(5px);
-    color:$header_text_color;
-    font-size:152%;
-    padding:0.1em 0.4em 0.1em 0.4em;
-    text-decoration:none;
-    text-transform:uppercase;
-    @include hover_background_color($header_link_hover_color);
-  }
 }
 
 #footer {

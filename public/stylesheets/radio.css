@@ -20,6 +20,12 @@ body {
   background-color: #abb9c1;
   padding: 7px; }
 
+#tagline {
+  font-size: 20px;
+  display: inline;
+  font-weight: normal;
+  color: white; }
+
 #title {
   background-image: url(/images/bomb_64-64.png);
   background-position: 2px 3px;
@@ -30,27 +36,6 @@ body {
   font-size: 60px;
   padding: 0.1em 0.4em 0.1em 75px;
   text-decoration: none; }
-
-#nav {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: inline;
-  font-weight: bold;
-  margin-left: 3em; }
-  #nav li {
-    display: inline; }
-  #nav li a {
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    color: white;
-    font-size: 152%;
-    padding: 0.1em 0.4em 0.1em 0.4em;
-    text-decoration: none;
-    text-transform: uppercase; }
-    #nav li a:hover {
-      background-color: #36454f; }
 
 #footer {
   text-align: center;
