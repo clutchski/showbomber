@@ -23,7 +23,7 @@ class Event < ActiveRecord::Base
   end
 
   def to_dollars(n)
-    "$#{n}"
+    return (n <= 0) ? 'free': "$#{n}"
   end
 
   def price_range_in_words
@@ -33,8 +33,6 @@ class Event < ActiveRecord::Base
     elsif min_cost.blank? or max_cost.blank?
       cost = min_cost.blank? ? max_cost : min_cost
       in_words = to_dollars(cost)
-    elsif max_cost == 0 and min_cost == 0
-      in_words = 'free'
     elsif max_cost == min_cost
       in_words = to_dollars(min_cost)
     else

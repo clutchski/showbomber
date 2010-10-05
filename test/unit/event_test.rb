@@ -52,6 +52,11 @@ class EventTest < ActiveSupport::TestCase
     event.max_cost = 20
     assert_equal "$10 - $20", event.price_range_in_words
 
+    # test min cost 0, max cost nil
+    event.min_cost = 0
+    event.max_cost = nil
+    assert_equal 'free', event.price_range_in_words
+
   end
 
 end
