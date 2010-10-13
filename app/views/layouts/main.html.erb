@@ -38,9 +38,9 @@
   </div>
 
   <% if Rails.env.production? %>
-    <%= get_google_analytics_tag %>
+    <%= javascript_tag google_analytics_javascript %>
   <% else %>
-    <!-- google analytics disabled -->
+    <!-- Google Analytics is disabled for this environment. -->
   <% end %>
 </body>
 </html>
