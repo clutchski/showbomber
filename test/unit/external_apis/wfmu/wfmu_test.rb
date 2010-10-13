@@ -9,7 +9,7 @@ require 'test_helper'
 require 'lib/external_apis/wfmu.rb'
 
 
-class WFMUExtractorTest < ActionController::IntegrationTest
+class WFMUExtractorTest < ActiveSupport::TestCase
 
   def this_dir
     File.dirname(__FILE__)
