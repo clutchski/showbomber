@@ -36,5 +36,11 @@
     <a href="<%= contact_path %>">contact</a>
     <a href="<%= get_uservoice_url() %>">feedback</a>
   </div>
+
+  <% if Rails.env.production? %>
+    <%= get_google_analytics_tag %>
+  <% else %>
+    <!-- google analytics disabled -->
+  <% end %>
 </body>
 </html>
