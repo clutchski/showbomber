@@ -10,13 +10,13 @@ class EventTest < ActiveSupport::TestCase
   test "events without required attributes are invalid" do
     required_attributes = [:venue, :start_date]
     required_attributes.each do |attribute|
-      event = EventGenerator.generate({attribute => nil})
+      event = Factory.build(:event, {attribute => nil})
       assert event.invalid?, "events without #{attribute} are invalid"
     end
   end
 
   test "events with a greator maximum cost than minimum cost are invalid" do
-    event = EventGenerator.generate({:min_cost=>10, :max_cost=>8})
+    event = Factory.build(:event, {:min_cost=>10, :max_cost=>8})
     assert event.invalid?, "no save when max cost is less than min cost"
     assert event.errors.has_key? :max_cost
   end

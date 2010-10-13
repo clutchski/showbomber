@@ -8,12 +8,12 @@ require 'test_helper'
 class EventTest < ActiveSupport::TestCase
 
   test "events can be found with the scope by_venue" do
-    venue = VenueGenerator.persisted
+    venue = Factory.create(:venue)
     assert_not_nil venue.id
     assert Event.by_venue(venue).empty?
 
     num_events = 3
-    num_events.times.each { |i| EventGenerator.persisted({:venue => venue})}
+    num_events.times.each { |i| Factory.create(:event, {:venue => venue})}
 
     events = Event.by_venue(venue)
     assert !events.empty?
@@ -22,14 +22,14 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test "events can be found with the scope by_artist" do
-    artist = ArtistGenerator.persisted
+    artist = Factory.create(:artist)
     assert_not_nil artist.id
 
     assert Event.by_artist(artist).all().empty?
 
     num_events = 3
     num_events.times.each do |i| 
-      event = EventGenerator.persisted({:artists => [artist]})
+      event = Factory.create(:event, {:artists => [artist]})
     end
 
     events = Event.by_artist(artist).all()

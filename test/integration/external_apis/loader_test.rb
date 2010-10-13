@@ -15,7 +15,7 @@ class ExternalAPIArtistLoaderTest < ActiveSupport::TestCase
   test "load new artist" do
 
     # load an artist
-    artist = ArtistGenerator.generate()
+    artist = Factory.build(:artist)
     assert_nil Artist.find_by_name(artist.name)
     Loader.load_artist(artist)
 
@@ -28,7 +28,7 @@ class ExternalAPIArtistLoaderTest < ActiveSupport::TestCase
   test "loading the same artist does not duplicate rows" do
 
     # load an artist
-    artist = ArtistGenerator.generate()
+    artist = Factory.build(:artist)
     assert_nil Artist.find_by_name(artist.name)
     Loader.load_artist(artist)
     assert_not_nil Artist.find_by_name(artist.name)
@@ -51,7 +51,7 @@ end
 class ExternalAPIVenueLoaderTest < ActiveSupport::TestCase
 
   test "load new venue" do
-    venue = VenueGenerator.generate
+    venue = Factory.build(:venue)
 
     # assert no such test data exists
     assert_nil Venue.find_by_name(venue.name)
@@ -69,7 +69,7 @@ class ExternalAPIVenueLoaderTest < ActiveSupport::TestCase
 
   test "loading a venue twice doesn't duplicate rows" do
 
-    venue = VenueGenerator.generate
+    venue = Factory.build(:venue)
 
     # load a venue
     assert_nil Venue.find_by_name(venue.name)
@@ -88,20 +88,18 @@ class ExternalAPIVenueLoaderTest < ActiveSupport::TestCase
   end
 
   test "loading venue with same name in different cities works" do
-    params = VenueGenerator.get_random_attributes()
+    name = "My Test Venue"
+    chicago_venue = Factory.build(:venue, {:name=> name,:city => 'chicago'})
+    toronto_venue = Factory.build(:venue, {:name=> name,:city => 'toronto'})
 
-    chicago_params = params.merge({:city => 'chicago'})
-    toronto_params = params.merge({:city => 'toronto'})
-
-    chicago_venue = VenueGenerator.generate(chicago_params)
-    toronto_venue = VenueGenerator.generate(toronto_params)
-
-    assert_nil Venue.find_by_name(params[:name])
+    [chicago_venue, toronto_venue].each do |v|
+      assert_nil Venue.find_by_name(v.name)
+    end
     
     Loader.load_venue(chicago_venue)
     Loader.load_venue(toronto_venue)
 
-    venues = Venue.where({:name => params[:name]}).all()
+    venues = Venue.where({:name => name}).all()
 
     assert_not_nil venues
     assert_equal 2, venues.size
@@ -116,7 +114,7 @@ end
 class ExternalAPILoaderTest < ActionController::IntegrationTest
 
   test "loading_event_twice_does_not_duplicate_rows" do
-    event = EventGenerator.generate
+    event = Factory.build(:event)
 
     assert Event.by_artist(event.artists).all.empty?
     assert Event.by_venue(event.venue).all.empty?
@@ -146,8 +144,8 @@ class ExternalAPILoaderTest < ActionController::IntegrationTest
 
   test "load_new_event_artists_venues" do
 
-    artists = 4.times.collect{|i| ArtistGenerator.generate }
-    venues = 2.times.collect{|i| VenueGenerator.generate }
+    artists = 4.times.collect{|i| Factory.build(:artist) }
+    venues = 2.times.collect{|i| Factory.build(:venue) }
 
     artist_names = artists.collect{|a| a.name}
     venue_names = venues.collect{|v| v.name}
@@ -165,11 +163,13 @@ class ExternalAPILoaderTest < ActionController::IntegrationTest
 
     num_events = Event.count
 
-    event1 = EventGenerator.generate(
-                {:artists=>artists[0,2], :venue=>venues[0]})
-    event2 = EventGenerator.generate(
-                {:artists=>artists[2,5], :venue=>venues[1]})
-    events = [event1, event2]
+    event1 = Factory.build(:event)
+    event1.venue = venues[0]
+    event1.artists << artists[0,2]
+
+    event2 = Factory.build(:event)
+    event1.venue = venues[1]
+    event2.artists << artists[2, 5]
 
     Loader.load_events(events)
 

@@ -1,5 +1,8 @@
 #
-# This module contains factories for the app's models.
+# This module contains Factory Girl factories for creating model objects in
+# test code.
+#
+# http://github.com/thoughtbot/factory_girl
 #
 
 require 'forgery'  
