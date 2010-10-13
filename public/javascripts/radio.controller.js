@@ -4,14 +4,14 @@ radio.Controller = Class.create({
   initialize : function(videoDivId, playlistDivId) {
 
     var Player = radio.YouTube.Player;
-    this.player = new Player(videoDivId);
+    this._player = new Player(videoDivId);
     $j('#' + videoDivId).live(Player.videoEnded, this.onSongEnded.bind(this));
 
     this.playlist = new radio.Playlist(playlistDivId);
-    this.playlist.onArtistSelected(this.playArtist.bind(this));
+    this.playlist.onArtistSelected(this.onArtistSelected.bind(this));
 
-    //var artist = this.playlist.getNextArtistName();
-    //this.loadArtist(artist);
+    var artist = this.playlist.selectNextArtist();
+    this._loadArtist(artist);
   },
 
   _log: function(message) {
@@ -19,25 +19,30 @@ radio.Controller = Class.create({
   },
 
   onSongEnded : function() {
-    this._log('song ended');
+    var artist = this.playlist.selectNextArtist();
+    this._playArtist(artist);
   },
 
-  playSongById : function(id) {
-    this.player.playById(id);
+  onArtistSelected :function(event, name) {
+    this._playArtist(name);
   },
 
-  loadSongById : function(id) {
-    this.player.loadById(id);
+  _playSongById : function(id) {
+    this._player.playById(id);
   },
 
-  playArtist : function(event, name) {
-    this._log("playing artist: " + name);
+  _loadSongById : function(id) {
+    this._player.loadById(id);
+  },
+
+  _playArtist : function(name) {
+    this._log("Playing artist: " + name);
     radio.YouTube.DataAPI.getVideoIdForArtist(name, 
-                          this.playSongById.bind(this));
+                          this._playSongById.bind(this));
   },
 
-  loadArtist : function(name) {
+  _loadArtist : function(name) {
     radio.YouTube.DataAPI.getVideoIdForArtist(name, 
-                            this.loadSongById.bind(this));
+                            this._loadSongById.bind(this));
   }
 });
