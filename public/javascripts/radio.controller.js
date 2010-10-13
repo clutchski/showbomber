@@ -8,26 +8,18 @@ radio.Controller = Class.create({
     $j('#' + videoDivId).live(Player.videoEnded, this.onSongEnded.bind(this));
 
     this.playlist = new radio.Playlist(playlistDivId);
-    this.playlist.songSelected(this.playSong.bind(this));
-    this.playlist.artistSelected(this.playArtist.bind(this));
+    this.playlist.onArtistSelected(this.playArtist.bind(this));
 
-    var artist = this.playlist.selectFirstArtist();
-    this.loadArtist(artist);
+    //var artist = this.playlist.getNextArtistName();
+    //this.loadArtist(artist);
   },
 
-  log: function(message) {
+  _log: function(message) {
     console.log("radio.Controller: " + message);
   },
 
   onSongEnded : function() {
-    console.log('song ended');
-    this.playlist.next();
-  },
-
-  playSong : function(event, url) {
-    this.log("playing song with url : " + url);
-    //FIXME: assert this is a YouTube video
-    this.player.play(url);
+    this._log('song ended');
   },
 
   playSongById : function(id) {
@@ -39,7 +31,7 @@ radio.Controller = Class.create({
   },
 
   playArtist : function(event, name) {
-    this.log("playing artist: " + name);
+    this._log("playing artist: " + name);
     radio.YouTube.DataAPI.getVideoIdForArtist(name, 
                           this.playSongById.bind(this));
   },

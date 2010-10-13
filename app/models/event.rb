@@ -46,7 +46,7 @@ class Event < ActiveRecord::Base
   def self.get_upcoming_events
     today = DateTime.now.beginning_of_day
     return Event.where('start_date > ?', today).
-              includes([:venue, {:artists => :songs}]).
+              includes([:venue, :artists]).
               all(:order => "start_date ASC")
   end
 end

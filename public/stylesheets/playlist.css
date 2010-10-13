@@ -102,16 +102,14 @@ body {
   vertical-align: top;
   font-weight: bold; }
 
-.artist.playing {
-  background-color: #FCF75E;
+.artist {
   padding: 2px 6px 2px 6px;
+  border: 0;
   border-radius: 4px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px; }
+  .artist:hover {
+    background-color: #eff7f4; }
 
-.song {
-  height: 20px;
-  width: 20px;
-  margin-top: -9px;
-  display: inline-block;
-  background-image: url(/images/70-tv.png); }
+.artist.playing {
+  background-color: #FCF75E; }

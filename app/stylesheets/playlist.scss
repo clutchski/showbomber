@@ -54,16 +54,14 @@ $event_info_color:gray;
   font-weight:bold;
 }
 
-.artist.playing {
-  background-color:#FCF75E;
+
+.artist {
   padding:2px 6px 2px 6px;
+  border: 0;
   @include rounded_corners(4px);
+  @include hover_background_color($site_background_color);
 }
 
-.song {
-  height:20px;
-  width:20px;
-  margin-top:-9px;
-  display:inline-block;
-  background-image:url(/images/70-tv.png)
+.artist.playing {
+  background-color:#FCF75E;
 }
