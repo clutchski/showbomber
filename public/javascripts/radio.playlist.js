@@ -8,6 +8,8 @@ radio.Playlist = Class.create({
     this._container = $j('#' + containerId);
     this._artists = this._container.find('.artist');
     this._artists.click(this._artistClickHandler.bind(this));
+    this._fitPlaylistToWindow();
+    $j(window).resize(this._fitPlaylistToWindow.bind(this));
   },
 
   onArtistSelected: function(callback) {
@@ -18,6 +20,12 @@ radio.Playlist = Class.create({
     var artist = this._getNextArtistLink();
     this._selectArtistLink(artist);
     return $j(artist).html();
+  },
+
+  _fitPlaylistToWindow : function() {
+    var windowHeight = $j(window).height();
+    var playlistHeight = windowHeight - 175;
+    $j('#main').height(playlistHeight);
   },
 
   _log : function(msg) {

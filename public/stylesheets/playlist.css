@@ -63,11 +63,13 @@ body {
     background-color: #36454f; }
 
 #sidebar {
-  position: fixed;
-  width: 500px; }
+  width: 500px;
+  position: absolute; }
 
 #content {
-  margin-left: 520px; }
+  margin-left: 520px;
+  overflow: auto;
+  height: 100%; }
 
 .venue_and_cost td {
   padding-bottom: 10px; }

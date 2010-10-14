@@ -12,12 +12,14 @@ $event_info_color:gray;
 
 
 #sidebar {
-  position:fixed;
   width:$sidebar_width;
+  position:absolute;
 }
 
 #content {
   margin-left:$sidebar_width + 20px;
+  overflow:auto;
+  height:100%;
 }
 
 .venue_and_cost td {
