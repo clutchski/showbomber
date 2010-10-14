@@ -11,10 +11,32 @@ $artist_name_color:black;
 $event_info_color:gray;
 
 
+//
+// Video Sidebar
+//
+
 #sidebar {
   width:$sidebar_width;
   position:absolute;
 }
+
+#previous_song, #next_song {
+  color:black;
+  text-transform:uppercase;
+  font-weight:bold;
+  text-decoration:none;
+  padding:3px;
+  background-color:#eee;
+  @include rounded_corners(3px);
+}
+
+#next_song {
+  float:right;
+}
+
+//
+// Event List
+//
 
 #content {
   margin-left:$sidebar_width + 20px;

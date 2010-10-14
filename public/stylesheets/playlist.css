@@ -66,6 +66,20 @@ body {
   width: 500px;
   position: absolute; }
 
+#previous_song, #next_song {
+  color: black;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 3px;
+  background-color: #eee;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px; }
+
+#next_song {
+  float: right; }
+
 #content {
   margin-left: 520px;
   overflow: auto;
