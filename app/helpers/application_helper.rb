@@ -4,6 +4,10 @@ module ApplicationHelper
     return "http://showbomber.uservoice.com"
   end
 
+  def google_verification_key()
+    return "VADO3qdrZJTstl_fCDNJRyiqb7dTwybKYdtUVLHcwr4"
+  end
+
   def google_analytics_javascript()
     analytics = <<SCRIPT
       var _gaq = _gaq || [];
