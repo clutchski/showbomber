@@ -84,7 +84,16 @@ body {
   text-transform: uppercase;
   font-weight: bold;
   color: black;
-  text-decoration: none; }
+  text-decoration: none;
+  padding: 2px 4px 2px 4px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px; }
+  .artist:hover {
+    background-color: #eff7f4; }
+
+.artist.playing {
+  background-color: #abb9c1; }
 
 .venue, .cost {
   text-transform: capitalize;
@@ -101,15 +110,3 @@ body {
   width: 110px;
   vertical-align: top;
   font-weight: bold; }
-
-.artist {
-  padding: 2px 6px 2px 6px;
-  border: 0;
-  border-radius: 4px;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px; }
-  .artist:hover {
-    background-color: #eff7f4; }
-
-.artist.playing {
-  background-color: #FCF75E; }

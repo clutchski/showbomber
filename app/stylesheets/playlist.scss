@@ -33,6 +33,15 @@ $event_info_color:gray;
   font-weight:bold;
   color:$artist_name_color;
   text-decoration:none;
+  padding:2px 4px 2px 4px;
+  @include rounded_corners(4px);
+  &:hover {
+    background-color:$site_background_color;
+  }
+}
+
+.artist.playing {
+  background-color:$header_background_color;
 }
 
 .venue, .cost {
@@ -52,16 +61,4 @@ $event_info_color:gray;
   width:$date_width;
   vertical-align:top;
   font-weight:bold;
-}
-
-
-.artist {
-  padding:2px 6px 2px 6px;
-  border: 0;
-  @include rounded_corners(4px);
-  @include hover_background_color($site_background_color);
-}
-
-.artist.playing {
-  background-color:#FCF75E;
 }
