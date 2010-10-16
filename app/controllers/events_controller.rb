@@ -6,8 +6,8 @@ class EventsController < ApplicationController
 
   def index
     day_count = nil
-    if params.include? 'when'
-      day_range_name = params['when']
+    day_range_name = params['when']
+    if day_range_name
       day_count = @@NUMBER_OF_DAYS_IN_RANGE[day_range_name]
       Rails.logger.debug("showing events for next n days: #{day_count}")
     end
