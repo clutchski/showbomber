@@ -8,6 +8,12 @@ module ApplicationHelper
     return render(:partial => "venues/venue", :locals => {:venue => venue})
   end
 
+  def time_of_day(date)
+    time_of_day = date.strftime("%I:%M%p")
+    #FIXME: better way to do this?
+    return time_of_day.start_with?("0") ? time_of_day[1..-1] : time_of_day
+  end
+
   def get_uservoice_url()
     return "http://showbomber.uservoice.com"
   end

@@ -32,7 +32,7 @@
     <td>&nbsp;</td>
     <td>
       <%= link_to event.venue.name, event.venue, {:class => "venue"}%>
-      <%= link_to event.start_date.strftime("%I:%M %p"), event, {:class => "time"}%>
+      <%= link_to time_of_day(event.start_date), event, {:class => "time"}%>
       <span class="cost"><%= event.price_range_in_words %></span>
     </td>
   </tr>
