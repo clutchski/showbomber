@@ -1,15 +1,16 @@
 Radio::Application.routes.draw do
   resources :venues
   resources :artists
-  resources :events
 
   root :to => "events#index"
 
   match 'artists/:id/songs' => 'artists#songs', :as => :artist_songs
 
   #FIXME: Prevent collision with on?
-  match 'events/on/:when' => 'events#index', :as => :events_by_date
+  match 'events/today' => 'events#index', :as => :todays_events, :defaults => {:when => 'today'}
+  match 'events/this/:when' => 'events#index', :as => :events_by_date
 
+  resources :events
   # static routes
 
   match 'contact' =>  'static#contact', :as => :contact
