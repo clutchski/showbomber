@@ -8,7 +8,7 @@ $sidebar_width:500px;
 $date_width:110px;
 
 $artist_name_color:black;
-$event_info_color:gray;
+$event_byline_color:gray;
 
 
 //
@@ -47,6 +47,7 @@ $event_info_color:gray;
 
 .artists {
   @include inline_list;
+
 }
 
 .artist {
@@ -65,26 +66,34 @@ $event_info_color:gray;
   background-color:$header_background_color;
 }
 
-.venue_time_and_cost > td {
+.event_byline > td {
+  // HACK: Table rows and cells have no margins. This puts space betwen event
+  // rows.
   padding-bottom:10px;
   padding-top:-2px;
 }
 
-.venue, .cost, .time {
+@mixin event_byline_content {
   text-transform:capitalize;
-  color:$event_info_color;
   font-style:italic;
+  color:$event_byline_color;
   text-decoration:none;
 }
 
+.venue {
+  @include event_byline_content;
+  font-size:105%;
+}
+
 .time, .cost {
+  @include event_byline_content;
   margin-left:1em;
-  font-size:90%;
+  font-size:85%;
 }
 
 .date {
   text-transform:uppercase;
-  color:$event_info_color;
+  color:$event_byline_color;
   width:$date_width;
   vertical-align:top;
   font-weight:bold;

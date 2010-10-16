@@ -16,7 +16,7 @@
 
 <table id="events">
   <% events.each do |event| %>
-  <tr class="event">
+  <tr class="event_headline">
     <td class="date"><%= event.start_date.strftime("%a %b %d") %></td>
     <td>
       <ul class="artists">
@@ -28,7 +28,7 @@
       </ul>
     </td>
   </tr>
-  <tr class="venue_time_and_cost">
+  <tr class="event_byline">
     <td>&nbsp;</td>
     <td>
       <%= link_to event.venue.name, event.venue, {:class => "venue"}%>

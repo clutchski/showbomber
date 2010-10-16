@@ -109,19 +109,24 @@ body {
 .artist.playing {
   background-color: #abb9c1; }
 
-.venue_time_and_cost > td {
+.event_byline > td {
   padding-bottom: 10px;
   padding-top: -2px; }
 
-.venue, .cost, .time {
+.venue {
   text-transform: capitalize;
-  color: gray;
   font-style: italic;
-  text-decoration: none; }
+  color: gray;
+  text-decoration: none;
+  font-size: 105%; }
 
 .time, .cost {
+  text-transform: capitalize;
+  font-style: italic;
+  color: gray;
+  text-decoration: none;
   margin-left: 1em;
-  font-size: 90%; }
+  font-size: 85%; }
 
 .date {
   text-transform: uppercase;
