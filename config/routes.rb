@@ -6,8 +6,8 @@ Radio::Application.routes.draw do
 
   match 'artists/:id/songs' => 'artists#songs', :as => :artist_songs
 
-  #FIXME: Prevent collision with on?
-  match 'events/today' => 'events#index', :as => :todays_events, :defaults => {:when => 'today'}
+  match 'events/today' => 'events#index', :as => :todays_events, 
+                                          :defaults => {:when => 'today'}
   match 'events/this/:when' => 'events#index', :as => :events_by_date
 
   resources :events
