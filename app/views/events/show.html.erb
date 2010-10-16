@@ -1,1 +1,8 @@
 
+<p>
+<%= @event.artists.collect{|a| a.name}.join(', ') %>
+</p>
+
+<p>
+<%= render_venue @event.venue %>
+</p>
