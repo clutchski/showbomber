@@ -69,7 +69,6 @@ body {
 
 #previous_song, #next_song {
   color: black;
-  text-transform: uppercase;
   font-weight: bold;
   text-decoration: none;
   padding: 5px;
@@ -84,31 +83,36 @@ body {
   float: right; }
 
 #filters {
-  margin: 15px;
+  clear: both;
+  padding: 10px;
   text-align: right;
-  display: block;
-  clear: both; }
+  margin-right: 50px;
+  font-size: 80%; }
 
-#time_filters {
+#time_filters, #day_of_week_filters {
+  display: block;
   list-style: none;
   margin: 0;
   padding: 0;
-  display: inline; }
-  #time_filters li {
+  display: inline;
+  margin: 10px;
+  padding: 5px; }
+  #time_filters li, #day_of_week_filters li {
     display: inline; }
+  #time_filters a, #day_of_week_filters a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px;
+    background-color: #eee;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px; }
+    #time_filters a:hover, #day_of_week_filters a:hover {
+      background-color: #abb9c1; }
 
-#time_filters a {
-  color: black;
-  text-transform: uppercase;
-  font-weight: bold;
-  text-decoration: none;
-  padding: 5px;
-  background-color: #eee;
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px; }
-  #time_filters a:hover {
-    background-color: #abb9c1; }
+#day_of_week_filters {
+  display: none; }
 
 #content {
   margin-left: 520px;
