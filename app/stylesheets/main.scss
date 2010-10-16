@@ -6,51 +6,65 @@
 @import "mixins";
 
 
-$site_background_color: #EFF7F4;
+@include remote_font("Museo Slab Sans 500", "/fonts/Museo_Slab_500.otf", "opentype");
+@include remote_font("Museo Slab Sans 900", "/fonts/Museo_Slab_900.otf", "opentype");
+@include remote_font("Museo 300", "/fonts/Museo500-Regular.otf", "opentype");
+@include remote_font("Museo 500", "/fonts/Museo500-Regular.otf", "opentype");
+
+
+$site_background_color: #2b2b2b;
+
+$header_background_color: $site_background_color;
+$header_text_color: #eee;
+$title_text_color: #efefef;
+
+$sidebar_background_color: #eee;
 $main_background_color: white;
-$header_background_color: #ABB9C1;
-$header_text_color: white;
-$header_link_hover_color: #36454F;
-$footer_background_color: $header_background_color;
+$header_link_hover_color: #fc1271;
+$footer_background_color: $site_background_color;
 $footer_text_color: $header_text_color;
 
 
 body {
-  font-family:Courier,Courier New,monospace;
-  margin:12px;
+  font-family:"Museo Slab Sans 500",Helvetica, Arial, sans-serif;
+  font-size:95%;
   background-color: $site_background_color;
+  margin:0;
 }
 
 #main {
-  position:relative;
   background-color:$main_background_color;
-  padding:1em;
+  position:relative;
   min-height:500px;
-  border: 3px solid $header_background_color;
+  padding-left:20px;
+  font-size:85%;
 }
 
 #header {
-  @include rounded_corners_top(10px);
   background-color:$header_background_color;
-  padding:7px;
+  padding:5px;
 }
 
 #tagline {
   font-size:20px;
   display:inline;
-  font-weight:normal;
+  font-weight:bold;
+  padding: 6px 12px;
+  @include rounded_corners(5px);
   color:$header_text_color;
 }
 
 #title {
-  background-image:url(/images/bomb_64-64.png);
+  font-family:"Museo Slab Sans 900";
   background-position:2px 3px;
   background-attachment:relative;
   background-repeat:no-repeat;
-  color:$header_text_color;
+  padding:2px;
+  @include rounded_corners(5px);
+  color:$title_text_color;
   position:relative;
-  font-size:60px;
-  padding:0.1em 0.4em 0.1em 75px;
+  font-size:50px;
+  padding:15px;
   text-decoration:none;
 }
 
@@ -58,8 +72,11 @@ body {
   text-align:center;
   clear:both;
   background-color:$footer_background_color;
-  @include rounded_corners_bottom(10px);
-  padding:5px;
+  padding:8px;
+  position:fixed;
+  bottom:0;
+  width:100%;
+  font-size:80%;
 }
 
 #footer a {
@@ -68,7 +85,7 @@ body {
   text-decoration:none;
   text-transform:lowercase;
   margin-right:2em;
-  padding: 0.1em 0.4em 0.1em 0.4em;
+  padding: 5px;
   @include rounded_corners(5px);
-  @include hover_background_color($header_link_hover_color);
+  @include hover_background_color(#FA1937);
 }

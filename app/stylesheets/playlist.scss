@@ -5,7 +5,7 @@
 @import "main";
 
 $sidebar_width:500px;
-$date_width:110px;
+$date_width:90px;
 
 $artist_name_color:black;
 $event_byline_color:gray;
@@ -15,26 +15,38 @@ $event_byline_color:gray;
 // Video Sidebar
 //
 
+#main {
+  background-color:$sidebar_background_color;
+}
+
 #sidebar {
   width:$sidebar_width;
+  background-color:$sidebar_background_color;
   position:absolute;
   top:20px;
+  overflow:none;
 }
 
 @mixin button {
-  color:black;
+  color:white;
   font-weight:bold;
   text-decoration:none;
   padding:5px;
-  background-color:#eee;
+  background-color:#2b2b2b;
+  margin:2px;
   @include rounded_corners(3px);
   &:hover {
-    background-color:$header_background_color;
+    background-color:#FA1937;
+    color:white;
   }
 }
 
 #previous_song, #next_song {
   @include button;
+}
+
+#previous_song {
+  float:left;
 }
 
 #next_song {
@@ -47,19 +59,18 @@ $event_byline_color:gray;
 
 #filters {
   clear:both;
-  padding:10px;
-  text-align:right;
-  margin-right:50px;
   font-size:80%;
+  margin:20px;
 }
 
 #time_filters, #day_of_week_filters {
   display:block;
   @include inline_list;
-  margin:10px;
   padding:5px;
   a {
    @include button;
+   background-color:#eee;
+   color:black;
   }
 }
 
@@ -75,6 +86,9 @@ $event_byline_color:gray;
   margin-left:$sidebar_width + 20px;
   overflow:auto;
   height:100%;
+  padding-left:10px;
+  border-left:1px solid #B3B3B3;
+  background:$main_background_color;
 }
 
 .artists {
@@ -87,15 +101,16 @@ $event_byline_color:gray;
   font-weight:bold;
   color:$artist_name_color;
   text-decoration:none;
-  padding:2px 4px 2px 4px;
+  padding:6px 8px 6px 8px;
   @include rounded_corners(4px);
   &:hover {
-    background-color:$site_background_color;
+    background-color:#eee;
   }
 }
 
 .artist.playing {
   background-color:$header_background_color;
+  color:white;
 }
 
 .event_byline > td {
@@ -110,11 +125,13 @@ $event_byline_color:gray;
   font-style:italic;
   color:$event_byline_color;
   text-decoration:none;
+  @include monospace;
 }
 
 .venue {
   @include event_byline_content;
   font-size:105%;
+  padding-left:8px;
 }
 
 .time, .cost {
@@ -129,4 +146,5 @@ $event_byline_color:gray;
   width:$date_width;
   vertical-align:top;
   font-weight:bold;
+  @include monospace;
 }

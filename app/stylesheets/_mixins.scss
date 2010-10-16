@@ -46,3 +46,15 @@
     background-color: $color;
   }
 }
+
+@mixin remote_font($family, $file, $format) {
+  @font-face {
+    font-family: $family;
+    src: local($family), local($family),
+      url($file) format($format);
+  }
+}
+
+@mixin monospace {
+  font-family:courier new,monospace;
+}
