@@ -1,3 +1,7 @@
+#
+# This module contains helper functions used by all views.
+#
+
 module ApplicationHelper
 
   def get_uservoice_url()
