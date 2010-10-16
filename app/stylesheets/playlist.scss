@@ -21,18 +21,44 @@ $event_byline_color:gray;
   top:20px;
 }
 
-#previous_song, #next_song {
+@mixin button {
   color:black;
   text-transform:uppercase;
   font-weight:bold;
   text-decoration:none;
-  padding:3px;
+  padding:5px;
   background-color:#eee;
   @include rounded_corners(3px);
+  &:hover {
+    background-color:$header_background_color;
+  }
+}
+
+#previous_song, #next_song {
+  @include button;
 }
 
 #next_song {
   float:right;
+}
+
+//
+// Event Filter Widget
+//
+
+#filters {
+  margin:15px;
+  text-align:right;
+  display:block;
+  clear:both;
+}
+
+#time_filters {
+  @include inline_list;
+}
+
+#time_filters a {
+  @include button;
 }
 
 //

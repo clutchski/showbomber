@@ -26,6 +26,7 @@ class Event < ActiveRecord::Base
     return (n <= 0) ? 'free': "$#{n}"
   end
 
+
   def price_range_in_words
     in_words = ''
     if min_cost.blank? and max_cost.blank?
@@ -43,10 +44,11 @@ class Event < ActiveRecord::Base
     in_words
   end
 
-  def self.get_upcoming_events
-    today = DateTime.now.beginning_of_day
-    return Event.where('start_date > ?', today).
-              includes([:venue, :artists]).
-              all(:order => "start_date ASC")
+  def self.get_upcoming_events(day_count = nil)
+    query = Event.where('start_date > ?', DateTime.now.midnight)
+    if day_count != nil:
+      query = query.where('start_date < ?', day_count.days.from_now.midnight)
+    end
+    return query.includes([:venue, :artists]).all(:order => "start_date ASC")
   end
 end

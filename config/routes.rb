@@ -5,7 +5,10 @@ Radio::Application.routes.draw do
 
   root :to => "events#index"
 
-  match 'artists/:id/songs' => 'artists#songs'
+  match 'artists/:id/songs' => 'artists#songs', :as => :artist_songs
+
+  #FIXME: Prevent collision with on?
+  match 'events/on/:when' => 'events#index', :as => :events_by_date
 
   # static routes
 

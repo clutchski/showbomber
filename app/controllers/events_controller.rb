@@ -2,8 +2,16 @@ class EventsController < ApplicationController
 
   respond_to :html
 
+  @@NUMBER_OF_DAYS_IN_RANGE = {'today' => 1, 'week' => 7, 'month' => 30}
+
   def index
-    @events = Event.get_upcoming_events()
+    day_count = nil
+    if params.include? 'when'
+      day_range_name = params['when']
+      day_count = @@NUMBER_OF_DAYS_IN_RANGE[day_range_name]
+      Rails.logger.debug("showing events for next n days: #{day_count}")
+    end
+    @events = Event.get_upcoming_events(day_count=day_count)
     render :layout => 'playlist'
   end
 
