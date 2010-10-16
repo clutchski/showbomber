@@ -64,7 +64,8 @@ body {
 
 #sidebar {
   width: 500px;
-  position: absolute; }
+  position: absolute;
+  top: 20px; }
 
 #previous_song, #next_song {
   color: black;
