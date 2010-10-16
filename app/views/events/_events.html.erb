@@ -20,10 +20,11 @@
       </ul>
     </td>
   </tr>
-  <tr class="venue_and_cost">
+  <tr class="venue_time_and_cost">
     <td>&nbsp;</td>
     <td>
       <%= link_to event.venue.name, event.venue, {:class => "venue"}%>
+      <span class="time"><%= event.start_date.strftime("%I:%M %p") %></span>
       <span class="cost"><%= event.price_range_in_words %></span>
     </td>
   </tr>

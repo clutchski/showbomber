@@ -85,9 +85,6 @@ body {
   overflow: auto;
   height: 100%; }
 
-.venue_and_cost td {
-  padding-bottom: 10px; }
-
 .artists {
   list-style: none;
   margin: 0;
@@ -111,14 +108,19 @@ body {
 .artist.playing {
   background-color: #abb9c1; }
 
-.venue, .cost {
+.venue_time_and_cost > td {
+  padding-bottom: 10px;
+  padding-top: -2px; }
+
+.venue, .cost, .time {
   text-transform: capitalize;
   color: gray;
   font-style: italic;
   text-decoration: none; }
 
-.cost {
-  margin-left: 1em; }
+.time, .cost {
+  margin-left: 1em;
+  font-size: 90%; }
 
 .date {
   text-transform: uppercase;

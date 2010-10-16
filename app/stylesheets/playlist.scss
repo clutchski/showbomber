@@ -44,10 +44,6 @@ $event_info_color:gray;
   height:100%;
 }
 
-.venue_and_cost td {
-  padding-bottom:10px;
-}
-
 .artists {
   @include inline_list;
 }
@@ -68,15 +64,21 @@ $event_info_color:gray;
   background-color:$header_background_color;
 }
 
-.venue, .cost {
+.venue_time_and_cost > td {
+  padding-bottom:10px;
+  padding-top:-2px;
+}
+
+.venue, .cost, .time {
   text-transform:capitalize;
   color:$event_info_color;
   font-style:italic;
   text-decoration:none;
 }
 
-.cost {
+.time, .cost {
   margin-left:1em;
+  font-size:90%;
 }
 
 .date {
