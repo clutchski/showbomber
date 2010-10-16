@@ -4,6 +4,10 @@
 
 module ApplicationHelper
 
+  def render_venue(venue)
+    return render(:partial => "venues/venue", :locals => {:venue => venue})
+  end
+
   def get_uservoice_url()
     return "http://showbomber.uservoice.com"
   end
