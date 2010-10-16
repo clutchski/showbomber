@@ -16,9 +16,17 @@
 </div>
 
 <table id="events">
+  <% current_date = nil %>
   <% events.each do |event| %>
   <tr class="event_headline">
-    <td class="date"><%= event.start_date.strftime("%a %b %d") %></td>
+    <td class="date">
+      <% if current_date != event.start_date.midnight %>
+        <% current_date = event.start_date.midnight %>
+        <%= event.start_date.strftime("%a %b %d") %>
+      <% else %>
+        &nbsp;
+      <% end %>
+    </td>
     <td>
       <ul class="artists">
       <% event.artists.each do |artist| %>
