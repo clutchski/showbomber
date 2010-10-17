@@ -25,6 +25,9 @@
   <div id="header">
     <%= link_to title, root_path, :id=>'title'%>
     <h1 id="tagline"><%= tagline %></h1>
+    <% if content_for?(:header_links) %>
+      <%= yield(:header_links) %>
+    <% end %>
   </div>
 
   <div id="main">

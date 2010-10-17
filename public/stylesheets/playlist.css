@@ -50,7 +50,7 @@ body {
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
-  color: #efefef;
+  color: white;
   position: relative;
   font-size: 50px;
   padding: 15px;
@@ -89,6 +89,9 @@ body {
   top: 20px;
   overflow: none; }
 
+#video {
+  width: 500px; }
+
 #previous_song, #next_song {
   color: white;
   font-weight: bold;
@@ -110,12 +113,12 @@ body {
   float: right; }
 
 #filters {
-  clear: both;
   font-size: 80%;
-  margin: 20px; }
+  margin-left: 40px;
+  text-align: -10px;
+  display: inline; }
 
 #time_filters, #day_of_week_filters {
-  display: block;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -141,6 +144,9 @@ body {
 
 #day_of_week_filters {
   display: none; }
+
+#event_wrapper {
+  margin-top: 20px; }
 
 #content {
   margin-left: 520px;
@@ -183,7 +189,7 @@ body {
   font-style: italic;
   color: gray;
   text-decoration: none;
-  font-family: courier new;
+  font-family: courier new,monospace;
   font-size: 105%;
   padding-left: 8px; }
 
@@ -192,14 +198,14 @@ body {
   font-style: italic;
   color: gray;
   text-decoration: none;
-  font-family: courier new;
+  font-family: courier new,monospace;
   margin-left: 1em;
   font-size: 85%; }
 
 .date {
   text-transform: uppercase;
-  font-family: courier new,monospace;
   color: gray;
   width: 90px;
   vertical-align: top;
-  font-weight: bold; }
+  font-weight: bold;
+  font-family: courier new,monospace; }

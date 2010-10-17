@@ -27,6 +27,10 @@ $event_byline_color:gray;
   overflow:none;
 }
 
+#video {
+  width:$sidebar_width;
+}
+
 @mixin button {
   color:white;
   font-weight:bold;
@@ -58,13 +62,13 @@ $event_byline_color:gray;
 //
 
 #filters {
-  clear:both;
   font-size:80%;
-  margin:20px;
+  margin-left:40px;
+  text-align:-10px;
+  display:inline;
 }
 
 #time_filters, #day_of_week_filters {
-  display:block;
   @include inline_list;
   padding:5px;
   a {
@@ -81,6 +85,10 @@ $event_byline_color:gray;
 //
 // Event List
 //
+
+#event_wrapper {
+  margin-top:20px;
+}
 
 #content {
   margin-left:$sidebar_width + 20px;

@@ -2,23 +2,28 @@
 <% eventsDivId, videoDivId  = 'events', 'video' %>
 
 <% content_for :sidebar do %>
-  <div id="<%= videoDivId %>"></div>
+  <div id="<%= videoDivId %>">&nbsp;</div>
   <a id="previous_song" href="#">Previous</a><a id="next_song" href="#">Next</a>
 <% end %>
 
-<div id="filters">
-  <ul id="time_filters">
-    <li><a href="<%= todays_events_path %>">Today</a></li>
-    <li><a href="<%= events_by_date_path(:when => 'week') %>">This Week</a></li>
-    <li><a href="<%= events_by_date_path(:when => 'month') %>">This Month</a></li>
-    <li><a href="<%= events_path %>">Anytime</a></li>
-  </ul>
-  <ul id="day_of_week_filters">
-    <% %w{ S M T W Th F S }.each do |day| %>
-      <li><a><%= day %></a></li>
-    <% end %>
-  </ul>
-</div>
+
+<% content_for :header_links do %>
+  <div id="filters">
+    <ul id="time_filters">
+      <li><a href="<%= todays_events_path %>">Today</a></li>
+      <li><a href="<%= events_by_date_path(:when => 'week') %>">This Week</a></li>
+      <li><a href="<%= events_by_date_path(:when => 'month') %>">This Month</a></li>
+      <li><a href="<%= events_path %>">Anytime</a></li>
+    </ul>
+    <ul id="day_of_week_filters">
+      <% %w{ S M T W Th F S }.each do |day| %>
+        <li><a><%= day %></a></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div id="event_wrapper">
 
 <table id="events">
   <% current_date = nil %>
@@ -52,6 +57,8 @@
   </tr>
   <% end %>
 </table><!-- end #events -->
+
+</div>
 
 <script type="text/javascript">
 
