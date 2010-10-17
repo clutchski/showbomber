@@ -4,6 +4,7 @@
 
 
 @import "mixins";
+@import "reset";
 
 
 @include remote_font("Museo Slab Sans 500", "/fonts/Museo_Slab_500.otf", "opentype");
@@ -37,22 +38,17 @@ body {
   position:relative;
   min-height:500px;
   padding-left:20px;
-  font-size:85%;
+  font-size:80%;
 }
+
+
+//
+// Header
+//
 
 #header {
   background-color:$header_background_color;
   padding:5px;
-}
-
-#tagline {
-  font-size:20px;
-  display:inline;
-  font-weight:bold;
-  padding: 6px 12px;
-  margin:0;
-  @include rounded_corners(5px);
-  color:$header_text_color;
 }
 
 #title {
@@ -68,6 +64,20 @@ body {
   padding:15px;
   text-decoration:none;
 }
+
+#tagline {
+  font-size:20px;
+  display:inline;
+  font-weight:bold;
+  padding: 6px 12px;
+  margin:0;
+  @include rounded_corners(5px);
+  color:$header_text_color;
+}
+
+//
+// Footer
+//
 
 #footer {
   text-align:center;
