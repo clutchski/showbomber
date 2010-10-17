@@ -78,11 +78,10 @@ a img {
 body {
   font-family: "Museo Slab Sans 500",Helvetica, Arial, sans-serif;
   font-size: 95%;
-  background-color: #2b2b2b;
+  background-color: #eeeeee;
   margin: 0; }
 
 #main {
-  background-color: white;
   position: relative;
   min-height: 500px;
   padding-left: 20px;

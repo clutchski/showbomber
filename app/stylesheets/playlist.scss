@@ -14,13 +14,8 @@ $event_byline_color:gray;
 // Video Sidebar
 //
 
-#main {
-  background-color:$sidebar_background_color;
-}
-
 #sidebar {
   width:$sidebar_width;
-  background-color:$sidebar_background_color;
   position:absolute;
   top:20px;
   overflow:none;
