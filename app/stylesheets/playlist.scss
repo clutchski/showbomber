@@ -5,7 +5,6 @@
 @import "main";
 
 $sidebar_width:500px;
-$date_width:90px;
 
 $artist_name_color:black;
 $event_byline_color:gray;
@@ -88,6 +87,7 @@ $event_byline_color:gray;
 
 #event_wrapper {
   margin-top:20px;
+  margin-bottom:20px;
 }
 
 #content {
@@ -151,8 +151,9 @@ $event_byline_color:gray;
 .date {
   text-transform:uppercase;
   color:$event_byline_color;
-  width:$date_width;
   vertical-align:top;
   font-weight:bold;
+  padding-left:10px;
+  padding-right:10px;
   @include monospace;
 }
