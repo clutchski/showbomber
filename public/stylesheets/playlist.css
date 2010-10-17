@@ -267,9 +267,11 @@ body {
 
 .date {
   text-transform: uppercase;
+  text-align: center;
   color: gray;
   vertical-align: top;
   font-weight: bold;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 80px;
   font-family: courier new,monospace; }
