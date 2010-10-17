@@ -109,7 +109,7 @@ $event_byline_color:gray;
   font-weight:bold;
   color:$artist_name_color;
   text-decoration:none;
-  padding:6px 8px 6px 8px;
+  padding:4px 8px 4px 8px;
   @include rounded_corners(4px);
   &:hover {
     background-color:#eee;
