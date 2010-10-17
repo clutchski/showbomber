@@ -43,7 +43,6 @@ body {
 #header {
   background-color:$header_background_color;
   padding:5px;
-  height:60px;
 }
 
 #tagline {
@@ -51,6 +50,7 @@ body {
   display:inline;
   font-weight:bold;
   padding: 6px 12px;
+  margin:0;
   @include rounded_corners(5px);
   color:$header_text_color;
 }
