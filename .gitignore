@@ -3,5 +3,4 @@ db/*.sqlite*
 log/*.log
 tmp/**/*
 .*.sw*
-public/stylesheets/*.css
 *~
