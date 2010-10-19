@@ -149,8 +149,6 @@ $event_byline_color:gray;
   color:$event_byline_color;
   vertical-align:top;
   font-weight:bold;
-  padding-left:5px;
-  padding-right:5px;
   width:80px;
   @include monospace;
 }
