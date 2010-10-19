@@ -232,11 +232,11 @@ body {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px; }
   .artist:hover {
-    background-color: #eee; }
+    background-color: #eeeeee; }
 
 .artist.playing {
-  background-color: #2b2b2b;
-  color: white; }
+  background-color: #fbec58;
+  color: black; }
 
 .event_byline > td {
   padding-bottom: 10px;

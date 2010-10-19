@@ -6,7 +6,10 @@
 
 $sidebar_width:500px;
 
-$artist_name_color:black;
+$artist_color:black;
+$artist_playing_background_color:#FBEC58;
+$artist_playing_text_color:black;
+$artist_hover_background_color:#eee;
 $event_byline_color:gray;
 
 
@@ -102,18 +105,18 @@ $event_byline_color:gray;
 .artist {
   text-transform:uppercase;
   font-weight:bold;
-  color:$artist_name_color;
+  color:$artist_color;
   text-decoration:none;
   padding:4px 8px 4px 8px;
   @include rounded_corners(4px);
   &:hover {
-    background-color:#eee;
+    background-color:$artist_hover_background_color;
   }
 }
 
 .artist.playing {
-  background-color:$header_background_color;
-  color:white;
+  background-color:$artist_playing_background_color;
+  color:$artist_playing_text_color;
 }
 
 .event_byline > td {
