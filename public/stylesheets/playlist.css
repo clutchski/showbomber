@@ -174,7 +174,7 @@ body {
   top: -5px;
   display: inline; }
 
-#time_filters, #day_of_week_filters {
+#time_filters {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -182,9 +182,9 @@ body {
   padding: 5px;
   padding-left: 7px;
   padding-right: 7px; }
-  #time_filters li, #day_of_week_filters li {
+  #time_filters li {
     display: inline; }
-  #time_filters a, #day_of_week_filters a {
+  #time_filters a {
     color: white;
     font-weight: bold;
     text-decoration: none;
@@ -196,12 +196,9 @@ body {
     -webkit-border-radius: 3px;
     background-color: #eee;
     color: black; }
-    #time_filters a:hover, #day_of_week_filters a:hover {
+    #time_filters a:hover {
       background-color: #FA1937;
       color: white; }
-
-#day_of_week_filters {
-  display: none; }
 
 #event_wrapper {
   margin-top: 20px;

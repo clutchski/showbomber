@@ -15,11 +15,6 @@
       <li><a href="<%= events_by_date_path(:when => 'month') %>">This Month</a></li>
       <li><a href="<%= events_path %>">Anytime</a></li>
     </ul>
-    <ul id="day_of_week_filters">
-      <% %w{ S M T W Th F S }.each do |day| %>
-        <li><a><%= day %></a></li>
-      <% end %>
-    </ul>
   </div>
 <% end %>
 

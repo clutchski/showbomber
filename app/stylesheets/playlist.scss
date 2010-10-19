@@ -67,7 +67,7 @@ $event_byline_color:gray;
   display:inline;
 }
 
-#time_filters, #day_of_week_filters {
+#time_filters {
   @include inline_list;
   padding:5px;
   padding-left:7px;
@@ -77,10 +77,6 @@ $event_byline_color:gray;
    background-color:#eee;
    color:black;
   }
-}
-
-#day_of_week_filters {
-  display:none;
 }
 
 //
