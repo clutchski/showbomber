@@ -1,0 +1,18 @@
+//
+// This contains styles for the two column layout.
+//
+
+$sidebar_width:540px;
+
+#sidebar {
+  width:$sidebar_width;
+  position:absolute;
+  top:0;
+  left:0;
+  background-color:#eee;
+  height:100%;
+}
+
+#content {
+  margin-left:$sidebar_width;
+}

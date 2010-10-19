@@ -25,21 +25,30 @@ $header_link_hover_color: #fc1271;
 $footer_background_color: $header_background_color;
 $footer_text_color: $header_text_color;
 
+html {
+  height:100%;
+}
 
 body {
   font-family:"Museo Slab Sans 500",Helvetica, Arial, sans-serif;
   font-size:95%;
   background-color: $site_background_color;
-  margin:0;
+  height:100%;
 }
 
 #main {
   position:relative;
   min-height:500px;
-  padding-left:20px;
   font-size:80%;
+  width:100%;
+  height:100%;
+  background:$main_background_color;
 }
 
+#content {
+  background:$main_background_color;
+  padding:10px;
+}
 
 //
 // Header

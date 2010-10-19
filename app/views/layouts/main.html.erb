@@ -5,9 +5,15 @@
   <% tagline = "Hear bands playing in New York." %>
   <title><%= "#{title} - #{tagline}" %></title>
   <link rel="shortcut icon" href="/favicon.ico" />
-  <%= stylesheet_link_tag 'main' %>
-  <%= content_for?(:stylesheets) ? yield(:stylesheets) : '' %>
 
+  <!-- STYLESHEETS -->
+  <% if content_for?(:stylesheets) %>
+    <%= yield(:stylesheets) %>
+  <% else %>
+    <%= stylesheet_link_tag 'main' %>
+  <% end %>
+
+  <!-- 3P JAVASCRIPT -->
   <% %w{prototype jquery-1.4.2.min swfobject parseUri}.each do |lib| %>
     <%= javascript_include_tag "3p/#{lib}" %>
   <% end %>
@@ -15,6 +21,7 @@
      var $j = jQuery.noConflict()
   </script>
 
+  <!-- JAVASCRIPT -->
   <% %w{radio radio.playlist radio.controller radio.youtube radio.youtube.player radio.youtube.data}.each do |lib| %>
     <%= javascript_include_tag lib %>
   <% end %>
@@ -32,8 +39,17 @@
   </div>
 
   <div id="main">
-    <%= content_for?(:main) ? yield(:main) : yield %>
-  </div><!-- end #main -->
+    <div id="content">
+      <%= yield %>
+    </div>
+
+    <% if content_for?(:sidebar) %>
+      <%= stylesheet_link_tag 'columns' %>
+      <div id="sidebar">
+        <%= yield(:sidebar) %>
+      </div>
+    <% end %>
+  </div>
 
   <div id="footer">
     <a href="<%= contact_path %>">contact</a>

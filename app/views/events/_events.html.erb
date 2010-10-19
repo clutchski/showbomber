@@ -1,9 +1,16 @@
 
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'playlist' %>
+<% end %>
+
+
 <% eventsDivId, videoDivId  = 'events', 'video' %>
 
 <% content_for :sidebar do %>
-  <div id="<%= videoDivId %>">&nbsp;</div>
-  <a id="previous_song" href="#">Previous</a><a id="next_song" href="#">Next</a>
+  <div id="player">
+    <div id="<%= videoDivId %>">&nbsp;</div>
+    <a id="previous_song" href="#">Previous</a><a id="next_song" href="#">Next</a>
+  </div>
 <% end %>
 
 
@@ -17,8 +24,6 @@
     </ul>
   </div>
 <% end %>
-
-<div id="event_wrapper">
 
 <table id="events">
   <% current_date = nil %>
@@ -47,8 +52,6 @@
   </tr>
   <% end %>
 </table><!-- end #events -->
-
-</div>
 
 <% content_for(:document_ready) do %>
 

@@ -12,7 +12,7 @@ class EventsController < ApplicationController
       Rails.logger.debug("showing events for next n days: #{day_count}")
     end
     @events = Event.get_upcoming_events(day_count=day_count)
-    render :layout => 'playlist'
+    respond_with(@events)
   end
 
   def show

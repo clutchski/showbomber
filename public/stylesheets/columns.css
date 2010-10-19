@@ -1,0 +1,10 @@
+#sidebar {
+  width: 540px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #eee;
+  height: 100%; }
+
+#content {
+  margin-left: 540px; }

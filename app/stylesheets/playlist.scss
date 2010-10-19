@@ -4,8 +4,6 @@
 
 @import "main";
 
-$sidebar_width:500px;
-
 $artist_color:black;
 $artist_playing_background_color:#FBEC58;
 $artist_playing_text_color:black;
@@ -17,15 +15,8 @@ $event_byline_color:gray;
 // Video Sidebar
 //
 
-#sidebar {
-  width:$sidebar_width;
-  position:absolute;
-  top:20px;
-  overflow:none;
-}
-
-#video {
-  width:$sidebar_width;
+#player {
+  margin:20px;
 }
 
 @mixin button {
@@ -83,18 +74,10 @@ $event_byline_color:gray;
 // Event List
 //
 
-#event_wrapper {
-  margin-top:20px;
-  margin-bottom:20px;
-}
-
 #content {
-  margin-left:$sidebar_width + 20px;
   overflow:auto;
   height:100%;
-  padding-left:10px;
   border-left:1px solid #B3B3B3;
-  background:$main_background_color;
 }
 
 .artists {

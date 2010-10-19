@@ -75,17 +75,26 @@ a img {
   font-family: "Museo 500";
   src: local("Museo 500"), local("Museo 500"), url("/fonts/Museo500-Regular.otf") format("opentype"); }
 
+html {
+  height: 100%; }
+
 body {
   font-family: "Museo Slab Sans 500",Helvetica, Arial, sans-serif;
   font-size: 95%;
   background-color: #eeeeee;
-  margin: 0; }
+  height: 100%; }
 
 #main {
   position: relative;
   min-height: 500px;
-  padding-left: 20px;
-  font-size: 80%; }
+  font-size: 80%;
+  width: 100%;
+  height: 100%;
+  background: white; }
+
+#content {
+  background: white;
+  padding: 10px; }
 
 #header {
   background-color: #2b2b2b;
@@ -137,14 +146,8 @@ body {
   #footer a:hover {
     background-color: #fa1937; }
 
-#sidebar {
-  width: 500px;
-  position: absolute;
-  top: 20px;
-  overflow: none; }
-
-#video {
-  width: 500px; }
+#player {
+  margin: 20px; }
 
 #previous_song, #next_song {
   color: white;
@@ -200,17 +203,10 @@ body {
       background-color: #FA1937;
       color: white; }
 
-#event_wrapper {
-  margin-top: 20px;
-  margin-bottom: 20px; }
-
 #content {
-  margin-left: 520px;
   overflow: auto;
   height: 100%;
-  padding-left: 10px;
-  border-left: 1px solid #B3B3B3;
-  background: white; }
+  border-left: 1px solid #B3B3B3; }
 
 .artists {
   list-style: none;
