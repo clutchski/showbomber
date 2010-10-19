@@ -146,12 +146,12 @@ body {
   #footer a:hover {
     background-color: #fa1937; }
 
-#venue {
+#venue, #artist {
   margin-left: 5px;
   padding-bottom: 5px;
   border-bottom: 1px solid #eee;
   margin-bottom: 10px;
   font-size: 110%; }
-  #venue .name {
+  #venue .name, #artist .name {
     font-weight: bold;
     font-size: 180%; }
