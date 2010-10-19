@@ -3,4 +3,5 @@ db/*.sqlite*
 log/*.log
 tmp/**/*
 .*.sw*
+.sw*
 *~
