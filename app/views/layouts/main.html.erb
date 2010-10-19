@@ -40,6 +40,10 @@
     <a href="<%= get_uservoice_url() %>">feedback</a>
   </div>
 
+  <% if content_for?(:document_ready) %>
+    <%= yield(:document_ready) %>
+  <% end %>
+
   <% if Rails.env.production? %>
     <%= javascript_tag google_analytics_javascript %>
   <% else %>

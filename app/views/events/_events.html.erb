@@ -50,12 +50,14 @@
 
 </div>
 
-<script type="text/javascript">
+<% content_for(:document_ready) do %>
 
-  $j(document).ready( function() {
-    var videoDivId = '<%= videoDivId %>';
-    var playlistDivId = '<%= eventsDivId %>';
-    var controller = new radio.Controller(videoDivId, playlistDivId);
-  });
+  <script type="text/javascript">
+    $j(document).ready( function() {
+      var videoDivId = '<%= videoDivId %>';
+      var playlistDivId = '<%= eventsDivId %>';
+      var controller = new radio.Controller(videoDivId, playlistDivId);
+    });
+  </script>
 
-</script>
+<% end %>
