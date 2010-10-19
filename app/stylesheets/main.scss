@@ -25,6 +25,10 @@ $header_link_hover_color: #fc1271;
 $footer_background_color: $header_background_color;
 $footer_text_color: $header_text_color;
 
+//
+// Layout
+//
+
 html {
   height:100%;
 }
@@ -106,3 +110,21 @@ body {
   @include rounded_corners(5px);
   @include hover_background_color(#FA1937);
 }
+
+//
+// Entities
+//
+
+#venue {
+  margin-left:5px;
+  padding-bottom:5px;
+  border-bottom:1px solid #eee;
+  margin-bottom:10px;
+  font-size:110%;
+  .name {
+    font-weight:bold;
+    font-size:180%;
+  }
+}
+
+
