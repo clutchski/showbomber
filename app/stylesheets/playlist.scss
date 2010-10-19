@@ -62,12 +62,16 @@ $event_byline_color:gray;
   font-size:80%;
   margin-left:40px;
   text-align:-10px;
+  position:relative;
+  top:-5px;
   display:inline;
 }
 
 #time_filters, #day_of_week_filters {
   @include inline_list;
   padding:5px;
+  padding-left:7px;
+  padding-right:7px;
   a {
    @include button;
    background-color:#eee;

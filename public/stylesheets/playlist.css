@@ -89,29 +89,26 @@ body {
 
 #header {
   background-color: #2b2b2b;
-  padding: 5px; }
+  padding-left: 15px; }
 
 #title {
   font-family: "Museo Slab Sans 900";
   background-position: 2px 3px;
   background-attachment: relative;
   background-repeat: no-repeat;
-  padding: 2px;
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   color: #efefef;
   position: relative;
   font-size: 50px;
-  padding: 15px;
   text-decoration: none; }
 
 #tagline {
   font-size: 20px;
   display: inline;
   font-weight: bold;
-  padding: 6px 12px;
-  margin: 0;
+  margin-left: 30px;
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -173,6 +170,8 @@ body {
   font-size: 80%;
   margin-left: 40px;
   text-align: -10px;
+  position: relative;
+  top: -5px;
   display: inline; }
 
 #time_filters, #day_of_week_filters {
@@ -180,7 +179,9 @@ body {
   margin: 0;
   padding: 0;
   display: inline;
-  padding: 5px; }
+  padding: 5px;
+  padding-left: 7px;
+  padding-right: 7px; }
   #time_filters li, #day_of_week_filters li {
     display: inline; }
   #time_filters a, #day_of_week_filters a {
