@@ -25,12 +25,13 @@
   </div>
 <% end %>
 
+
 <table id="events">
   <% current_date = nil %>
   <% events.each do |event| %>
   <tr class="event_headline">
     <td class="date">
-        <%= event.start_date.strftime("%a %b %d") %>
+        <%= readable_date(event.start_date) %>
     </td>
     <td>
       <ul class="artists">

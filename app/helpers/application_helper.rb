@@ -8,6 +8,10 @@ module ApplicationHelper
     return render(:partial => "venues/venue", :locals => {:venue => venue})
   end
 
+  def readable_date(date)
+    return date.strftime("%a %b %d")
+  end
+
   def time_of_day(date)
     time_of_day = date.strftime("%I:%M%p")
     #FIXME: better way to do this?
