@@ -22,6 +22,10 @@ module ApplicationHelper
     return "http://showbomber.uservoice.com"
   end
 
+  def get_twitter_url()
+    "http://twitter.com/showbomber"
+  end
+
   def google_verification_key()
     return "VADO3qdrZJTstl_fCDNJRyiqb7dTwybKYdtUVLHcwr4"
   end
