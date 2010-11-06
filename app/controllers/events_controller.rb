@@ -17,6 +17,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.where('id = ?', params[:id]).includes([:venue]).first()
+    raise ActiveRecord::RecordNotFound unless @event
     respond_with(@event)
   end
 end
