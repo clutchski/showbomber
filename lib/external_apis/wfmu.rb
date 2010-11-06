@@ -199,6 +199,8 @@ module WFMU
   #
   class Transformer
 
+    @@IGNORE_VENUES = ['THE STONE']
+
     def self.transform_venue(venue_data)
       Venue.new do |v|
         v.name = venue_data[:name]
@@ -223,7 +225,15 @@ module WFMU
     end
 
     def self.transform(events_data)
-      events_data.collect{|e| self.transform_event(e)}
+      events = events_data.collect{|e| self.transform_event(e)}
+      return events.select{|e| self.include_event(e)}
+    end
+
+    def self.include_event(event)
+      if @@IGNORE_VENUES.include? event.venue.name.upcase
+        return false
+      end
+      return true
     end
 
   end
