@@ -1,0 +1,28 @@
+
+@import "main";
+
+#content, #main {
+  background-color:#eee;
+}
+
+#contact {
+
+  background-color:white;
+  @include rounded_corners(10px);
+
+  font-size:200%;
+  width:600px;
+  padding:30px;
+  border:2px solid #aaa;
+  margin-top:30px;
+  margin-right:auto;
+  margin-left:auto;
+  text-align:center;
+
+  a {
+    color:black;
+  }
+  h3 {
+    font-size:150%;
+  }
+}
