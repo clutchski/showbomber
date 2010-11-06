@@ -4,7 +4,7 @@ radio.YouTube.DataAPI = {
   format : 'jsonc',
 
   getSearchQuery : function(name) {
-    return 'music ' + name;
+    return name + ' live music';
   },
 
   getVideoIdForArtist : function(name, callback) {
