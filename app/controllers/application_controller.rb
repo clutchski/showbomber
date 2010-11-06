@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
   private
 
   def record_not_found
-    render :text => "Uh oh. This page doens't exist.", :status => 404
+    render :text => "Uh oh. This page doesn't exist.", :status => 404
   end
 end
