@@ -51,4 +51,10 @@ class Event < ActiveRecord::Base
     end
     return query.includes([:venue, :artists]).all(:order => "start_date ASC")
   end
+
+  def self.get_event(id)
+    event = Event.where({:id => id}).includes(:venue).first()
+    raise ActiveRecord::RecordNotFound if event.nil?
+    return event
+  end
 end
