@@ -7,6 +7,8 @@
 
 require 'forgery'  
 
+
+
 Factory.define :artist do |a|
   a.name "The #{Forgery::Name.full_name} Band"
 end
@@ -16,6 +18,7 @@ Factory.define :tag do |t|
   t.name Forgery::Basic.color
 end
 
+
 Factory.define :venue do |v|
   v.name        "The #{Forgery::Name.company_name} Club"
   v.address     Forgery::Address.street_address
@@ -24,6 +27,7 @@ Factory.define :venue do |v|
   v.postal_code Forgery::Address.zip
   v.phone       Forgery::Address.phone
 end
+
 
 Factory.define :event do |event|
   event.start_date { 4.days.from_now }
