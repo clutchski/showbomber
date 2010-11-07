@@ -47,12 +47,19 @@ class Event < ActiveRecord::Base
     in_words
   end
 
-  def self.get_upcoming_events(day_count = nil)
+  def self.get_upcoming_events(day_count = nil, tags = [])
     query = Event.where('start_date > ?', DateTime.now.midnight)
+    query.includes(:venue, :artists => [:tags])
     if day_count != nil:
       query = query.where('start_date < ?', day_count.days.from_now.midnight)
     end
-    return query.includes([:venue, :artists]).all(:order => "start_date ASC")
+    if tags != []:
+      query = query.joins(:artists).
+                    joins({:artists => :tags}).
+                    where('tags.name in (?)', tags)
+    end
+      
+    return query.all(:order => "start_date ASC")
   end
 
   def self.get_event(id)

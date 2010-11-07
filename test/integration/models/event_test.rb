@@ -29,7 +29,6 @@ class EventTest < ActiveSupport::TestCase
     end
   end
 
-
   test "events can be found with the scope by_venue" do
     venue = Factory.create(:venue)
     assert_not_nil venue.id
@@ -60,6 +59,39 @@ class EventTest < ActiveSupport::TestCase
     assert_equal num_events, events.size
     events.each do |e| 
       assert e.artists.include?(artist)
+    end
+  end
+
+  test "We can filter upcoming events by tags." do
+    folk_name = '__folk_test_filter_upcoming__'
+    rock_name = '__rock_test_filter_upcoming__'
+    folk = Factory.create(:tag, {:name => folk_name})
+    rock = Factory.create(:tag, {:name => rock_name})
+
+    stones = Factory.create(:artist, {:name => 'Stones', :tags => [rock]})
+    joni = Factory.create(:artist, {:name => 'Joni', :tags => [folk]})
+    odb = Factory.create(:artist, {:name => 'ODB'})
+
+    joni_event = Factory.create(:event, {:artists => [joni]})
+    stones_event = Factory.create(:event, {:artists => [stones]})
+    odb_event = Factory.create(:event, {:artists => [odb]})
+    all_events = [joni_event, stones_event, odb_event]
+
+    # Assert all are in upcoming events
+    upcoming_events = Event.get_upcoming_events()
+    all_events.each do |e|
+      assert upcoming_events.include?(e)
+    end
+
+    folk_events = Event.get_upcoming_events(day_count=nil, tags => [folk_name])
+    assert folk_events.include?(joni_event)
+    [stones_event, odb_event].each do |e|
+      assert !folk_events.include?(e), "Folk events shouldnt include #{e}"
+    end
+
+    hip_hop_events = Event.get_upcoming_events(day_count=nil, tags => ['hip-hop'])
+    all_events.each do |e|
+      assert !hip_hop_events.include?(e)
     end
   end
 
