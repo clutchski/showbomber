@@ -25,6 +25,12 @@
   </div>
 <% end %>
 
+<ul id="tags">
+  <% get_tags(events).each do |t| %>
+    <li><a href="?tag=<%= t.name %>"><%= t.name %></a></li>
+  <% end %>
+</ul>
+
 
 <table id="events">
   <% current_date = nil %>

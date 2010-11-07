@@ -7,11 +7,14 @@ class EventsController < ApplicationController
   def index
     day_count = nil
     day_range_name = params['when']
+    #FIXME: add support for multiple tags
+    tag = params['tag']
+    tags = tag ? [tag] : []
     if day_range_name
       day_count = @@NUMBER_OF_DAYS_IN_RANGE[day_range_name]
       Rails.logger.debug("showing events for next n days: #{day_count}")
     end
-    @events = Event.get_upcoming_events(day_count=day_count)
+    @events = Event.get_upcoming_events(day_count=day_count, tags=tags)
     respond_with(@events)
   end
 

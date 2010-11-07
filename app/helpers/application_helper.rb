@@ -8,6 +8,10 @@ module ApplicationHelper
     return render(:partial => "venues/venue", :locals => {:venue => venue})
   end
 
+  def get_tags(events)
+    return events.collect{|e| e.tags}.flatten.uniq
+  end
+
   def readable_date(date)
     return date.strftime("%a %b %d")
   end

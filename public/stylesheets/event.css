@@ -374,7 +374,11 @@ body {
 #content {
   overflow: auto;
   height: 100%;
-  border-left: 1px solid #B3B3B3; }
+  border-left: 1px solid #B3B3B3;
+  padding: 20px; }
+
+#events {
+  margin-top: 20px; }
 
 .artists {
   list-style: none;
@@ -430,6 +434,27 @@ body {
   font-weight: bold;
   width: 80px;
   font-family: courier new,monospace; }
+
+#tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline; }
+  #tags li {
+    display: inline; }
+  #tags a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px;
+    background-color: #2b2b2b;
+    margin: 2px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px; }
+    #tags a:hover {
+      background-color: #FA1937;
+      color: white; }
 
 #artists {
   list-style: none;

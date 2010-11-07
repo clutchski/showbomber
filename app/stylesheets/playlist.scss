@@ -78,6 +78,11 @@ $event_byline_color:gray;
   overflow:auto;
   height:100%;
   border-left:1px solid #B3B3B3;
+  padding:20px;
+}
+
+#events {
+  margin-top:20px;
 }
 
 .artists {
@@ -137,4 +142,11 @@ $event_byline_color:gray;
   font-weight:bold;
   width:80px;
   @include monospace;
+}
+
+#tags {
+  @include inline_list;
+  a {
+    @include button;
+  }
 }
