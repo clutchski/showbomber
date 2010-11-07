@@ -13,4 +13,8 @@ class Artist < ActiveRecord::Base
     "Artist<#{name}>"
   end
 
+  def self.get_artists(tags)
+    return Artist.joins(:tags).where('tags.name IN (?)', tags)
+  end
+
 end

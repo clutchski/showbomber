@@ -1,4 +1,4 @@
 
 <%= render @venue %>
 <%= render( :partial => "events/events",
-            :locals => {:events => @venue.events}) %>
+            :locals => {:events => @venue.events, :tags => get_tags(@venue.events)}) %>
