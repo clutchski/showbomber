@@ -7,6 +7,18 @@ class InitialMigration < ActiveRecord::Migration
     end
     add_index(:artists, :name)
 
+    create_table :tags do |t|
+      t.string :name
+      t.timestamps
+    end
+    add_index(:tags, :name)
+
+    create_table :artists_tags do |t|
+      t.integer :artist_id
+      t.integer :tag_id
+    end
+    add_index(:artists_tags, [:artist_id, :tag_id], {:unique=>true})
+
     create_table :venues do |t|
       t.string :name
       t.string :phone
@@ -47,6 +59,8 @@ class InitialMigration < ActiveRecord::Migration
     drop_table :songs
     drop_table :artists_events
     drop_table :events
+    drop_table :artists_tags
+    drop_table :tags
     drop_table :artists
     drop_table :venues
 

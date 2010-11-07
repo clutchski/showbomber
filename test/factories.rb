@@ -11,6 +11,11 @@ Factory.define :artist do |a|
   a.name "The #{Forgery::Name.full_name} Band"
 end
 
+
+Factory.define :tag do |t|
+  t.name Forgery::Basic.color
+end
+
 Factory.define :venue do |v|
   v.name        "The #{Forgery::Name.company_name} Club"
   v.address     Forgery::Address.street_address
