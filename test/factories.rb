@@ -15,7 +15,7 @@ end
 
 
 Factory.define :tag do |t|
-  t.name Forgery::Basic.color
+  t.name Forgery::Basic.color # This will do.
 end
 
 
