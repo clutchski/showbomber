@@ -7,6 +7,29 @@ require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
 
+  test "Artist tags roll up to the event." do
+    # Create tags.
+    folk = Factory.create(:tag, {:name => 'folk'})
+    rock = Factory.create(:tag, {:name => 'rock'})
+    indie = Factory.create(:tag, {:name => 'indie'})
+
+    # Create artists.
+    joe = Factory.create(:artist, {:name => 'Joe', :tags => [folk, rock]})
+    jim = Factory.create(:artist, {:name => 'Jim', :tags => [indie, rock]})
+
+    # Create event.
+    event = Factory.create(:event, {:artists => [joe, jim]})
+
+
+    # Assert the event has the expected tags.
+    expected_tags = [folk, rock, indie]
+    assert_equal expected_tags.length, event.tags.length
+    expected_tags.each do |t|
+      assert event.tags.include?(t)
+    end
+  end
+
+
   test "events can be found with the scope by_venue" do
     venue = Factory.create(:venue)
     assert_not_nil venue.id

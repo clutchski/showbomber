@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20100329031415) do
 
   add_index "artists_events", ["event_id", "artist_id"], :name => "index_artists_events_on_event_id_and_artist_id", :unique => true
 
-  create_table "artists_tags", :force => true do |t|
+  create_table "artists_tags", :id => false, :force => true do |t|
     t.integer "artist_id"
     t.integer "tag_id"
   end

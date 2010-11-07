@@ -3,7 +3,7 @@ class Artist < ActiveRecord::Base
 
   has_and_belongs_to_many :events
   has_many :songs
-  has_many :tags
+  has_and_belongs_to_many :tags
 
   def get_song
     songs.first

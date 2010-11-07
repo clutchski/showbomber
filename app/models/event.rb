@@ -26,6 +26,9 @@ class Event < ActiveRecord::Base
     return (n <= 0) ? 'free': "$#{n}"
   end
 
+  def tags
+    return artists.collect{|a| a.tags}.flatten.uniq
+  end
 
   def price_range_in_words
     in_words = ''

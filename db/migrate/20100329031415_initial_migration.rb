@@ -13,7 +13,7 @@ class InitialMigration < ActiveRecord::Migration
     end
     add_index(:tags, :name)
 
-    create_table :artists_tags do |t|
+    create_table :artists_tags, :id => false do |t|
       t.integer :artist_id
       t.integer :tag_id
     end
