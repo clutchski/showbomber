@@ -2,34 +2,45 @@
 
 bob_dylan:
   name: Bob Dylan
+  tags: folk, rock
 
 neil_young:
   name: Neil Young
+  tags: folk, rock
 
 levon_helm:
   name: Levon Helm
+  tags: folk, rock, country
 
 handsome_furs:
   name: The Handsome Furs
+  tags: indie
 
 wolf_parade:
   name: Wolf Parade
+  tags: indie
 
 ohbijou:
   name: Ohbijou
+  tags: indie, folk
 
 richard_laviolette:
   name: Richard Laviolette
+  tags: indie, folk
 
 holy_fuck:
   name: Holy Fuck
+  tags: indie
 
 johnny_cash:
   name: Johnny Cash
+  tags: country
 
 radiohead:
   name: Radiohead
+  tags: rock
 
 wu_tang:
   name: Wu-Tang Clan
+  tags: hip_hop
 

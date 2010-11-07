@@ -1,0 +1,14 @@
+rock:
+  name: rock
+
+folk:
+  name: folk
+
+indie:
+  name: indie
+
+country:
+  name: country
+
+hip_hop:
+  name: hip-hop
