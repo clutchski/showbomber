@@ -6,7 +6,7 @@
 require 'test_helper'
 
 # project
-require 'lib/external_apis/live_nation.rb'
+require 'lib/apis/live_nation.rb'
 
 class LiveNationExtractorTest < ActionController::IntegrationTest
 

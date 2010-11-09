@@ -3,7 +3,7 @@
 #
 
 
-require 'lib/external_apis/wfmu.rb'
+require 'lib/apis/wfmu.rb'
 
 
 desc "This task is called by the Heroku cron add-on"
