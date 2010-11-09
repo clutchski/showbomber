@@ -64,9 +64,9 @@ module WFMU
 
       return nil if address.nil? or address.empty?
 
-      # wfmu stores addresses very informally, including cross streets,
-      # neighbourhoods, etc. try to strip everthing else away, to just 
-      # get the street address
+      # WFMU stores addresses very informally, including cross streets,
+      # neighbourhoods, etc. try to strip everything but the street
+      # address.
       splits = [" at ", ",", " b/t", " btwn", " --", " ("]
 
       return splits.inject(address) do |m, s|
@@ -82,7 +82,7 @@ module WFMU
       if content.downcase.starts_with?("(le) poisson rouge")
         return "Le Poisson Rouge"
       end
-      # ignore the "(website)" link
+      # Ignore the "(website)" link.
       name = content.split('(', 2)[0]
       return self.normalize(name).strip
     end
@@ -126,10 +126,10 @@ module WFMU
 
       return str_to_date(date, date_format) if time.blank?
 
-      # yes, this is real.   
+      # Yes, this is real.
       time = time.downcase.include?("noon") ? "12 PM" : time
       
-      # for ranges, just show the start time for now
+      # For ranges, just show the start time for now.
       time = (time.split("-", 2)[0]).strip
 
       date_no_mins = "#{date_format} %I %p"
