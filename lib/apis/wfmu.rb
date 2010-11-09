@@ -9,14 +9,12 @@ require 'active_support/core_ext'
 require 'open-uri'
 require 'nokogiri'
 
-require 'lib/etl/loader.rb'
-
 module WFMU
 
-  def self.run
+  def self.get_events
     data = Extractor.extract
     events = Transformer.transform data
-    Loader.load_events(events)
+    return events
   end
 
   class Extractor
@@ -190,7 +188,8 @@ module WFMU
 
     def self.extract
       html = open(@@URL)
-      self.parse(html)
+      events = self.parse(html)
+      return events
     end
   end
 
