@@ -15,6 +15,14 @@ class Loader < ActiveRecord::Base
   end
 
 
+  def self.load_tag(tag)
+    transaction do 
+      tag = Tag.find_or_create_by_name(tag.attributes)
+      tag.save!
+    end
+    tag
+  end
+
   def self.load_venue(venue)
     transaction do
       venue = Venue.find_or_create_by_name_and_city_and_state(venue.attributes)

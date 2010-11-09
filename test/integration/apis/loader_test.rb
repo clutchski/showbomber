@@ -12,6 +12,24 @@ require 'lib/apis/loader.rb'
 
 class ExternalAPIArtistLoaderTest < ActiveSupport::TestCase
 
+  test "load new tag" do
+    name = '__test__tag__'
+    assert_nil Tag.find_by_name(name)
+    tag = Factory.build(:tag, {:name => name})
+    Loader.load_tag(tag)
+    assert_not_nil Tag.find_by_name(name)
+  end
+  
+  test "Loading the same tag twice doens't duplicate rows" do
+    tag = Factory.create(:tag)
+    assert_not_nil Tag.find_by_name(tag.name)
+
+    duplicate_tag = Factory.build(:tag, {:name => tag.name})
+    Loader.load_tag(duplicate_tag)
+    assert_equal 1, Tag.where({:name => tag.name}).all().length
+
+  end
+
   test "load new artist" do
 
     # load an artist
