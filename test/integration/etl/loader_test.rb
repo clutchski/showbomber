@@ -54,11 +54,11 @@ class ExternalAPIArtistLoaderTest < ActiveSupport::TestCase
     # load a duplicate artist
     duplicate_artist = artist.clone
     #assert_nil duplicate_artist.id
-    #Loader.load_artist(duplicate_artist)
+    Loader.load_artist(duplicate_artist)
 
-    ## assert only one artist with the given name exists
-    #artists = Artist.where({:name=>artist.name}).all()
-    #assert_equal 1, artists.size
+    # assert only one artist with the given name exists
+    artists = Artist.where({:name=>artist.name}).all()
+    assert_equal 1, artists.size
   end
 end
 
