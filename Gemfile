@@ -5,6 +5,7 @@ gem "rails", "3.0.0"
 
 gem "haml", "3.0.18"
 gem "httparty"
+gem "ken"
 gem "pg"
 gem "nokogiri"
 
