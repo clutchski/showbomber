@@ -42,7 +42,7 @@ module WFMU
 
     def self.parse_artist(artist_cell)
       # sometimes WFMU includes miscellaneous information in other information
-      # in parents, like "Pavement (Reunion!)" or "Joe Blow (From Some Band)"
+      # in parens, like "Pavement (Reunion!)" or "Joe Blow (From Some Band)"
       # so get rid of that
       artist = artist_cell.split('(', 2)[0]
       self.normalize(artist)
