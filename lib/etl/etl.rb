@@ -42,6 +42,7 @@ class ETL < ActiveRecord::Base
       rescue => e
         @logger.error("Couldn't fetch genre for #{a.name}: #{e.backtrace}")
       end
+      tags = Tag.normalize_tags(tags)
       tags.each do |t|
         tag = Tag.new(:name => t)
         transaction do 

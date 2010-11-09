@@ -14,7 +14,7 @@ class EventsController < ApplicationController
       day_count = @@NUMBER_OF_DAYS_IN_RANGE[day_range_name]
       Rails.logger.debug("showing events for next n days: #{day_count}")
     end
-    @tags = Tag.all()
+    @tags = Tag.get_approved_tags()
     @events = Event.get_upcoming_events(day_count=day_count, tags=tags)
     respond_with(@events)
   end
