@@ -3,7 +3,7 @@
 #
 
 require 'test_helper'
-require 'lib/apis/loader.rb'
+require 'lib/etl/loader.rb'
 
 
 #

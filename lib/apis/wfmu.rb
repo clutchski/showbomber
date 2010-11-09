@@ -9,7 +9,7 @@ require 'active_support/core_ext'
 require 'open-uri'
 require 'nokogiri'
 
-require 'lib/apis/loader.rb'
+require 'lib/etl/loader.rb'
 
 module WFMU
 
