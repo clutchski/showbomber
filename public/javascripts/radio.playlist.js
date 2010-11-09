@@ -35,7 +35,7 @@ radio.Playlist = Class.create({
 
   _fitPlaylistToWindow : function() {
     var windowHeight = $j(window).height();
-    var playlistHeight = windowHeight - 108;
+    var playlistHeight = windowHeight - 125;
     $j('#main').height(playlistHeight);
   },
 
