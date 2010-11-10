@@ -50,12 +50,7 @@ module ETL
         tags = ETL::Transformer::Tags.transform_tags(tags)
         tags.each do |t|
           tag = Tag.new(:name => t)
-          transaction do 
-            tag = Loader.load_tag(tag)
-            if !a.tags.include?(tag)
-              a.tags << tag
-            end
-          end
+          Loader.add_tag(a, tag)
         end
       end
       @logger.info "Done loading artist tags"

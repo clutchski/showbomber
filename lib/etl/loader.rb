@@ -15,6 +15,16 @@ class Loader < ActiveRecord::Base
   end
 
 
+  def self.add_tag(artist, tag)
+    transaction do 
+      tag = Loader.load_tag(tag)
+      if !artist.tags.include?(tag)
+        artist.tags << tag
+      end
+    end
+  end
+
+
   def self.load_tag(tag)
     transaction do 
       tag = Tag.find_or_create_by_name(tag.attributes)
