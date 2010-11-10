@@ -21,6 +21,8 @@ module Freebase
   end
 
   def self.to_resource(name)
+    #FIXME: This is a naive implementation. It's working for most artist names
+    # but it's failing for all with non-letter characters like " and '.
     while name.include?(' ')
       name.sub!(' ', '_')
     end
