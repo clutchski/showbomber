@@ -9,7 +9,8 @@ module Freebase
 
   def self.music_genres(artist)
     genre = '/music/artist/genre'
-    return self.get(artist).attribute(genre).values.collect{|g| g.name}
+    genres = self.get(artist).attribute(genre).values.collect{|g| g.name}
+    return genres[0 .. 3]
   end
 
   private
