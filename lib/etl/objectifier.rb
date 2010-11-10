@@ -1,12 +1,12 @@
 
 module ETL
 
-  # 
-  # This class transforms the feed data into business objects.
   #
-  class Transformer
+  # This module transforms hashes into business objects.
+  #
+  module Objectifier
 
-    def self.transform_venue(venue_data)
+    def self.objectify_venue(venue_data)
       Venue.new do |v|
         v.name = venue_data[:name]
         v.address = venue_data[:address]
@@ -17,8 +17,8 @@ module ETL
       end
     end
 
-    def self.transform_event(event_data)
-      venue = transform_venue(event_data[:venue])
+    def self.objectify_event(event_data)
+      venue = objectify_venue(event_data[:venue])
       artists = event_data[:artists].collect{|name| Artist.new(:name=>name)}
 
       Event.new do |e|
@@ -29,8 +29,8 @@ module ETL
       end
     end
 
-    def self.transform(events_data)
-      return events_data.collect{|e| self.transform_event(e)}
+    def self.objectify_events(events_data)
+      return events_data.collect{|e| self.objectify_event(e)}
     end
   end
 end

@@ -6,7 +6,7 @@
 require 'lib/apis/wfmu.rb'
 require 'lib/apis/freebase.rb'
 require 'lib/etl/loader.rb'
-require 'lib/etl/transformer.rb'
+require 'lib/etl/objectifier.rb'
 
 
 module ETL 
@@ -31,7 +31,7 @@ module ETL
     def self.load_events
       @logger.info "Loading WFMU events"
       event_data = WFMU::Extractor.extract
-      events = Transformer.transform(event_data)
+      events = Objectifier.objectify_events(event_data)
       Loader.load_events(events)
       @logger.info "Finished loading WFMU events"
     end
