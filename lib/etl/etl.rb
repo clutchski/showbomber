@@ -7,6 +7,7 @@ require 'lib/apis/wfmu.rb'
 require 'lib/apis/freebase.rb'
 require 'lib/etl/loader.rb'
 require 'lib/etl/objectifier.rb'
+require 'lib/etl/transformer/tags.rb'
 
 
 module ETL 
@@ -46,7 +47,7 @@ module ETL
         rescue => e
           @logger.error("Couldn't fetch genre for #{a.name}: #{e.backtrace}")
         end
-        tags = Tag.normalize_tags(tags)
+        tags = ETL::Transformer::Tags.transform_tags(tags)
         tags.each do |t|
           tag = Tag.new(:name => t)
           transaction do 
