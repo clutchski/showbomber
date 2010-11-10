@@ -27,8 +27,7 @@ class WFMUExtractorTest < ActiveSupport::TestCase
   test "assert we don't show events playing at 'The Stone'. Case 34" do
     html = read_sample_data("wfmu_case_34_omit_venue_the_stone.html")
     event_data = WFMU::Extractor.parse(html)
-    events = WFMU::Transformer.transform(event_data)
-    assert_equal 1, events.length
+    assert_equal 1, event_data.length
   end
 
   test "assert venue names starting with parens can be parsed. Case 31" do

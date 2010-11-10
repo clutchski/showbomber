@@ -11,12 +11,6 @@ require 'nokogiri'
 
 module WFMU
 
-  def self.get_events
-    data = Extractor.extract
-    events = Transformer.transform data
-    return events
-  end
-
   class Extractor
 
     @@URL = "http://www.wfmu.org/arbguide.php"
@@ -183,58 +177,18 @@ module WFMU
       doc = Nokogiri::HTML(html)
       rows = doc.css('table tr')
       rows.shift # drop the header row
-      rows.collect {|row| self.parse_row row}
+      rows.collect {|row| self.parse_row row}.reject{|e| self.ignore_event(e)}
+    end
+
+    def self.ignore_event(event)
+      venue_name = event[:venue][:name].upcase
+      return venue_name == 'THE STONE'
     end
 
     def self.extract
       html = open(@@URL)
-      events = self.parse(html)
-      return events
+      self.parse(html)
     end
-  end
-
-  # 
-  # This class transforms the feed data into business objects.
-  #
-  class Transformer
-
-    @@IGNORE_VENUES = ['THE STONE']
-
-    def self.transform_venue(venue_data)
-      Venue.new do |v|
-        v.name = venue_data[:name]
-        v.address = venue_data[:address]
-        v.city = venue_data[:city]
-        v.state = venue_data[:state]
-        v.phone = venue_data[:phone]
-        #FIXME: add website
-      end
-    end
-
-    def self.transform_event(event_data)
-      venue = transform_venue(event_data[:venue])
-      artists = event_data[:artists].collect{|name| Artist.new(:name=>name)}
-
-      Event.new do |e|
-        e.min_cost = event_data[:cost]
-        e.start_date = event_data[:date]
-        e.artists = artists
-        e.venue = venue
-      end
-    end
-
-    def self.transform(events_data)
-      events = events_data.collect{|e| self.transform_event(e)}
-      return events.select{|e| self.include_event(e)}
-    end
-
-    def self.include_event(event)
-      if @@IGNORE_VENUES.include? event.venue.name.upcase
-        return false
-      end
-      return true
-    end
-
   end
 end
 
