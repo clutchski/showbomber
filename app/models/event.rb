@@ -1,9 +1,5 @@
 class Event < ActiveRecord::Base
 
-  scope :by_venue, lambda { |venue|
-    joins(:venue).where({"venues.id" => venue.id})
-  }
-
   scope :by_artist, lambda { |artist|
     joins(:artists).where({"artists.id" => artist.id})
   }

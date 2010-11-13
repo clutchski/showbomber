@@ -29,20 +29,6 @@ class EventTest < ActiveSupport::TestCase
     end
   end
 
-  test "events can be found with the scope by_venue" do
-    venue = Factory.create(:venue)
-    assert_not_nil venue.id
-    assert Event.by_venue(venue).empty?
-
-    num_events = 3
-    num_events.times.each { |i| Factory.create(:event, {:venue => venue})}
-
-    events = Event.by_venue(venue)
-    assert !events.empty?
-    assert_equal num_events, events.size
-    events.each{ |e| assert_equal venue, e.venue }
-  end
-
   test "events can be found with the scope by_artist" do
     artist = Factory.create(:artist)
     assert_not_nil artist.id
