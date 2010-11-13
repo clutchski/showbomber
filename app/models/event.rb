@@ -62,9 +62,7 @@ class Event < ActiveRecord::Base
     if day_count != nil:
       query = query.where('start_date < ?', day_count.days.from_now.midnight)
     end
-    #if tags != []:
-    #  query = query.where('tags.name in (?)', tags)
-    #end
+
     return query.all(:order => "start_date ASC")
   end
 
