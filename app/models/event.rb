@@ -16,6 +16,12 @@ class Event < ActiveRecord::Base
   validates_numericality_of :max_cost, :allow_nil=>true
   validate :validate_cost
 
+  def to_param
+    keys = artists.collect{|a| a.name} + ['at', venue.name]
+    key = keys.join('-')
+    "#{id}-#{key.downcase.gsub(/[^a-z0-9']+/i, '-')}"
+  end
+
   def validate_cost
     if !min_cost.blank? and !max_cost.blank? and max_cost < min_cost
       errors.add(:max_cost, "The maximum cost is lower than the minimum.")

@@ -5,6 +5,10 @@ class Artist < ActiveRecord::Base
   has_many :songs
   has_and_belongs_to_many :tags
 
+  def to_param
+    "#{id}-#{name.downcase.gsub(/[^a-z0-9']+/i, '-')}"
+  end
+
   def get_song
     songs.first
   end
