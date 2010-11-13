@@ -18,6 +18,7 @@ class Event < ActiveRecord::Base
 
   def to_param
     keys = artists.collect{|a| a.name} + ['at', venue.name]
+    keys << venue.city if !venue.city.nil?
     key = keys.join('-')
     "#{id}-#{key.downcase.gsub(/[^a-z0-9']+/i, '-')}"
   end
