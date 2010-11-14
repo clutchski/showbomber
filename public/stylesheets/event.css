@@ -396,14 +396,12 @@ body {
   padding: 4px 8px 4px 8px;
   border-radius: 4px;
   -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border: 1px solid white; }
+  -webkit-border-radius: 4px; }
   .artist:hover {
     background-color: #f9f0f4; }
 
 .artist.playing {
-  background-color: #eaccd9;
-  border-color: #f9f0f4, 10%; }
+  background-color: #eaccd9; }
 
 .event_byline > td {
   padding-bottom: 10px;

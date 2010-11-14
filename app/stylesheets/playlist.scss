@@ -97,7 +97,6 @@ $event_byline_color:gray;
   text-decoration:none;
   padding:4px 8px 4px 8px;
   @include rounded_corners(4px);
-  border:1px solid white;
   &:hover {
     background-color:$artist_hover_background_color;
   }
@@ -105,7 +104,6 @@ $event_byline_color:gray;
 
 .artist.playing {
     background-color:darken($artist_hover_background_color, 10%);
-    border-color:($artist_hover_background_color, 10%);
 }
 
 .event_byline > td {
