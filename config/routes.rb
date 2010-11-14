@@ -9,6 +9,7 @@ Radio::Application.routes.draw do
   match 'events/today' => 'events#index', :as => :todays_events, 
                                           :defaults => {:when => 'today'}
   match 'events/this/:when' => 'events#index', :as => :events_by_date
+  match 'events/service' => 'events#service'
 
   resources :events
   # static routes

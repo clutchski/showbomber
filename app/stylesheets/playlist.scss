@@ -148,5 +148,9 @@ $event_byline_color:gray;
   @include inline_list;
   a {
     @include button;
+    &.selected {
+      background-color:yellow;
+      color:black;
+    }
   }
 }

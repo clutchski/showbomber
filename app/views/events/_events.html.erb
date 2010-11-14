@@ -27,7 +27,9 @@
 
 <ul id="tags">
   <% tags.each do |t| %>
-    <li><a href="?tag=<%= t.name %>"><%= t.name %></a></li>
+    <% active = active_tags.include?(t.name) ? 'selected' : '' %>
+    <li><a href="#" class="tag <%= active %>"><%= t.name %></a></li>
+
   <% end %>
 </ul>
 

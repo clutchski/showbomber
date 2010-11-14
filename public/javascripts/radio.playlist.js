@@ -15,6 +15,7 @@ radio.Playlist = Class.create({
     $j(window).resize(this._fitPlaylistToWindow.bind(this));
     var songNavSelector = '#' + this.nextSongLinkId + ',#' + this.prevSongLinkId;
     $j(songNavSelector).click(this._songNavClickHandler.bind(this));
+    $j('.tag').live('click', this._filterClickHandler.bind(this));
   },
 
   onArtistSelected: function(callback) {
@@ -41,6 +42,30 @@ radio.Playlist = Class.create({
 
   _log : function(msg) {
     console.log("radio.Playlist: " + msg);
+  },
+
+  _filterPlaylist : function() {
+    params = {};
+    params.tags = $j('#tags').find('.selected').map( function(e) {
+        return this.text;
+    });
+
+    $j.ajax({
+      type : 'GET',
+      url : '/events/service',
+      data : params,
+      dataType : 'html',
+      success : function (response) {
+        $j('#content').empty();
+        $j('#content').append(response);
+      }
+    });
+  },
+
+  _filterClickHandler : function(event) {
+    event.preventDefault();
+    $j(event.target).toggleClass('selected');
+    this._filterPlaylist();
   },
 
   _artistClickHandler : function(event) {

@@ -297,3 +297,6 @@ body {
     #tags a:hover {
       background-color: #FA1937;
       color: white; }
+    #tags a.selected {
+      background-color: yellow;
+      color: black; }

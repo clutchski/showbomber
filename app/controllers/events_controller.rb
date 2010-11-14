@@ -16,7 +16,19 @@ class EventsController < ApplicationController
     end
     @tags = Tag.get_approved_tags()
     @events = Event.get_upcoming_events(day_count=day_count, tags=tags)
+    @active_tags = []
     respond_with(@events)
+  end
+
+  def service
+    tag_hash = params['tags']
+    tags = tag_hash ? tag_hash.values : []
+
+    @events = Event.get_upcoming_events(day_count=nil, tags=tags)
+
+    @tags = Tag.get_approved_tags()
+    @active_tags = tags
+    render "events/index", :layout => false
   end
 
   def show
