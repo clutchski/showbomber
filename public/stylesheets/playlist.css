@@ -79,7 +79,7 @@ html {
   height: 100%; }
 
 body {
-  font-family: "Museo Slab Sans 500",Helvetica, Arial, sans-serif;
+  font-family: "Museo Slab Sans 500", Helvetica, Arial, sans-serif;
   font-size: 95%;
   background-color: #eeeeee;
   height: 100%; }
@@ -238,13 +238,14 @@ body {
   padding: 4px 8px 4px 8px;
   border-radius: 4px;
   -moz-border-radius: 4px;
-  -webkit-border-radius: 4px; }
+  -webkit-border-radius: 4px;
+  border: 1px solid white; }
   .artist:hover {
-    background-color: #eeeeee; }
+    background-color: #f9f0f4; }
 
 .artist.playing {
-  background-color: #fbec58;
-  color: black; }
+  background-color: #eaccd9;
+  border-color: #f9f0f4, 10%; }
 
 .event_byline > td {
   padding-bottom: 10px;

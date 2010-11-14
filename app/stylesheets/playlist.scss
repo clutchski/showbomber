@@ -7,7 +7,7 @@
 $artist_color:black;
 $artist_playing_background_color:#FBEC58;
 $artist_playing_text_color:black;
-$artist_hover_background_color:#eee;
+$artist_hover_background_color:#f9f0f4;
 $event_byline_color:gray;
 
 
@@ -97,14 +97,15 @@ $event_byline_color:gray;
   text-decoration:none;
   padding:4px 8px 4px 8px;
   @include rounded_corners(4px);
+  border:1px solid white;
   &:hover {
     background-color:$artist_hover_background_color;
   }
 }
 
 .artist.playing {
-  background-color:$artist_playing_background_color;
-  color:$artist_playing_text_color;
+    background-color:darken($artist_hover_background_color, 10%);
+    border-color:($artist_hover_background_color, 10%);
 }
 
 .event_byline > td {
