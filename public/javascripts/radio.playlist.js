@@ -8,14 +8,20 @@ radio.Playlist = Class.create({
 
   initialize : function(containerId) {
     this._container = $j('#' + containerId);
-    this._artists = this._container.find('.artist');
     this._fitPlaylistToWindow();
-    
-    this._artists.click(this._artistClickHandler.bind(this));
+
     $j(window).resize(this._fitPlaylistToWindow.bind(this));
+
+    this._init();
+
+  },
+
+  _init : function () {
+    this._artists = this._container.find('.artist');
+    this._artists.click(this._artistClickHandler.bind(this));
     var songNavSelector = '#' + this.nextSongLinkId + ',#' + this.prevSongLinkId;
     $j(songNavSelector).click(this._songNavClickHandler.bind(this));
-    $j('.tag').live('click', this._filterClickHandler.bind(this));
+    $j('.tag').click(this._filterClickHandler.bind(this));
   },
 
   onArtistSelected: function(callback) {
@@ -50,14 +56,17 @@ radio.Playlist = Class.create({
         return this.text;
     });
 
+    var self = this;
+
     $j.ajax({
       type : 'GET',
       url : '/events/service',
       data : params,
       dataType : 'html',
       success : function (response) {
-        $j('#content').empty();
-        $j('#content').append(response);
+        $j('#playlist').empty();
+        $j('#playlist').append(response);
+        self._init();
       }
     });
   },

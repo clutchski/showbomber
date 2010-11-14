@@ -25,6 +25,8 @@
   </div>
 <% end %>
 
+<div id="playlist">
+
 <ul id="tags">
   <% tags.each do |t| %>
     <% active = active_tags.include?(t.name) ? 'selected' : '' %>
@@ -62,12 +64,14 @@
   <% end %>
 </table><!-- end #events -->
 
+</div>
+
 <% content_for(:document_ready) do %>
 
   <script type="text/javascript">
     $j(document).ready( function() {
       var videoDivId = '<%= videoDivId %>';
-      var playlistDivId = '<%= eventsDivId %>';
+      var playlistDivId = 'playlist';
       var controller = new radio.Controller(videoDivId, playlistDivId);
     });
   </script>

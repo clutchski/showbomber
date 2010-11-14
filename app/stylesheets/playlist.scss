@@ -146,11 +146,21 @@ $event_byline_color:gray;
 
 #tags {
   @include inline_list;
+  width:100%;
   a {
     @include button;
+    background-color: #eee;
+    color:#2b2b2b;
+    border:solid 1px #ccc;
+    &:hover {
+      background-color: #eee;
+      color:#2b2b2b;
+    }
     &.selected {
-      background-color:yellow;
+      background-color:$artist_playing_background_color;
       color:black;
+      font-size:150%;
+      border-color:darken($artist_playing_background_color, 20%);
     }
   }
 }
