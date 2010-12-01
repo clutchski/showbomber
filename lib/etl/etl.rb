@@ -21,7 +21,7 @@ module ETL
       begin
         @logger.info "ETL import started."
         self.load_events
-        self.load_artist_tags
+        self.load_artist_info
       rescue => e
         @logger.error "Fatal ETL Error: #{e.message}: #{e.backtrace}"
         raise e
@@ -37,16 +37,20 @@ module ETL
       @logger.info "Finished loading WFMU events"
     end
 
-    def self.load_artist_tags
+    def self.load_artist_info
       @logger.info "Loading artist tags"
       artists = Artist.includes(:tags).all()
       artists.each do |a|
         tags = []
+        description = ''
         begin
-          tags = Freebase.music_genres(a.name)
+          info = Freebase.artist(a.name)
+          tags = info[:genres] || []
+          description = info[:description] || ''
         rescue => e
-          @logger.error("Couldn't fetch genre for #{a.name}: #{e.backtrace}")
+          @logger.error("Couldn't fetch artist nfo for #{a.name}: #{e.backtrace}")
         end
+
         tags = ETL::Transformer::Tags.transform_tags(tags)
         tags.each do |t|
           tag = Tag.new(:name => t)

@@ -7,17 +7,28 @@ require 'ken'
 
 module Freebase
 
-  def self.music_genres(artist)
+  def self.artist(artist)
+    topic = self.get(artist)
+    { :description => topic.description,
+      :genres => self.music_genres(topic)
+    }
+  end
+
+  def self.music_genres(topic)
     genre = '/music/artist/genre'
-    genres = self.get(artist).attribute(genre).values.collect{|g| g.name}
+    genres = topic.attribute(genre).values.collect{|g| g.name}
     return genres[0 .. 3]
+  end
+
+  def self.description(artist)
+    return self.get(artist).attribute('description')
   end
 
   private
 
   def self.get(resource)
     url = '/en/' + self.to_resource(resource)
-    return Ken.get(url)
+    return Ken::Topic.get(url)
   end
 
   def self.to_resource(name)
