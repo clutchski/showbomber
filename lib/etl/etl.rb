@@ -51,6 +51,11 @@ module ETL
           @logger.error("Couldn't fetch artist nfo for #{a.name}: #{e.backtrace}")
         end
 
+        if description != a.description
+          a.description = description
+          a.save!
+        end
+
         tags = ETL::Transformer::Tags.transform_tags(tags)
         tags.each do |t|
           tag = Tag.new(:name => t)
