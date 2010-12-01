@@ -163,3 +163,16 @@ $event_byline_color:gray;
     }
   }
 }
+
+.notice {
+  @include rounded_corners(10px);
+  padding:20px;
+  text-align:center;
+  width:300px;
+  margin-top:30px;
+  margin-left:100px;
+  background-color:lighten(#124fff, 40%);
+  border: 1px solid;
+  border-color:lighten(#124fff, 20%);
+  font-size:150%;
+}

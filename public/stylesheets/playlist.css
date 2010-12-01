@@ -308,3 +308,17 @@ body {
       color: white;
       font-weight: bold;
       border-color: #454545; }
+
+.notice {
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  width: 300px;
+  margin-top: 30px;
+  margin-left: 100px;
+  background-color: #dee6ff;
+  border: 1px solid;
+  border-color: #789bff;
+  font-size: 150%; }

@@ -22,6 +22,12 @@ radio.Playlist = Class.create({
     var songNavSelector = '#' + this.nextSongLinkId + ',#' + this.prevSongLinkId;
     $j(songNavSelector).click(this._songNavClickHandler.bind(this));
     $j('.tag').click(this._filterClickHandler.bind(this));
+    if (this._artists.length < 1) {
+      var t = this._getSelectedTags().toArray().join(' or ');
+      var notice = $j('<div class="notice">Alas! We don\'t know about any ' + t
+          + ' shows.</div>');
+      this._container.append(notice);
+    }
   },
 
   onArtistSelected: function(callback) {
@@ -52,9 +58,7 @@ radio.Playlist = Class.create({
 
   _filterPlaylist : function() {
     params = {};
-    params.tags = $j('#tags').find('.selected').map( function(e) {
-        return this.text;
-    });
+    params.tags = this._getSelectedTags();
 
     var self = this;
 
@@ -139,5 +143,12 @@ radio.Playlist = Class.create({
   _selectArtistLink : function(artistLink) {
     this._artists.removeClass(this.nowPlayingClass);
     $j(artistLink).addClass(this.nowPlayingClass);
+  },
+
+  _getSelectedTags : function() {
+    return $j('#tags').find('.selected').map( function(e) {
+        return this.text;
+    });
   }
+
 });
