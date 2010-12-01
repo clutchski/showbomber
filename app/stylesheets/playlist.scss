@@ -149,17 +149,17 @@ $event_byline_color:gray;
   a {
     @include button;
     background-color: #eee;
-    color:#2b2b2b;
+    color:#bbb;
     border:solid 1px #ccc;
     &:hover {
       background-color: #eee;
-      color:#2b2b2b;
+      color:lighten(#2b2b2b, 30%);
     }
     &.selected {
-      background-color:$artist_playing_background_color;
-      color:black;
-      font-size:150%;
-      border-color:darken($artist_playing_background_color, 20%);
+      background-color:lighten(#2b2b2b, 30%);
+      color:white;
+      font-weight:bold;
+      border-color:lighten(#2b2b2b, 10%);
     }
   }
 }

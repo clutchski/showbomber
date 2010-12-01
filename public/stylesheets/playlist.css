@@ -295,16 +295,16 @@ body {
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     background-color: #eee;
-    color: #2b2b2b;
+    color: #bbb;
     border: solid 1px #ccc; }
     #tags a:hover {
       background-color: #FA1937;
       color: white; }
     #tags a:hover {
       background-color: #eee;
-      color: #2b2b2b; }
+      color: #777777; }
     #tags a.selected {
-      background-color: #fbec58;
-      color: black;
-      font-size: 150%;
-      border-color: #e7d306; }
+      background-color: #777777;
+      color: white;
+      font-weight: bold;
+      border-color: #454545; }
