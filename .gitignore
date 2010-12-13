@@ -5,3 +5,4 @@ tmp/**/*
 .*.sw*
 .sw*
 *~
+public/javascripts/*.js
