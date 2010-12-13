@@ -18,4 +18,10 @@ Radio::Application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   config.active_support.deprecation = :log
+
 end
+
+
+# Disable timestamp asset caching in dev, so closure compiler works 
+# in deps mode.
+ENV['RAILS_ASSET_ID'] = ''
