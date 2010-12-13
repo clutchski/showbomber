@@ -13,22 +13,10 @@
     <%= stylesheet_link_tag 'main' %>
   <% end %>
 
-  <!-- 3P JAVASCRIPT -->
-  <% %w{prototype jquery-1.4.2.min swfobject parseUri}.each do |lib| %>
-    <%= javascript_include_tag "3p/#{lib}" %>
-  <% end %>
-  <script>
-     var $j = jQuery.noConflict()
-  </script>
-
-  <!-- JAVASCRIPT -->
-  <% %w{radio radio.playlist radio.controller radio.youtube radio.youtube.player radio.youtube.data}.each do |lib| %>
-    <%= javascript_include_tag lib %>
-  <% end %>
   <%= csrf_meta_tag %>
+
   <%# google and bing webmaster verification keys. %>
-  <meta name="google-site-verification"
-     content="VADO3qdrZJTstl_fCDNJRyiqb7dTwybKYdtUVLHcwr4" />
+  <meta name="google-site-verification" content="VADO3qdrZJTstl_fCDNJRyiqb7dTwybKYdtUVLHcwr4" />
   <meta name="msvalidate.01" content="BBB3BE1D9FEE3FEF28850686054AA067" />
 </head>
 <body>
@@ -59,8 +47,23 @@
     <a href="<%= get_twitter_url() %>">twitter</a>
   </div>
 
+  <!-- JAVASCRIPT -->
+  <%= javascript_include_tag 'vendor/goog/base.js' %>
+  <%= javascript_include_tag 'vendor/jquery-1.4.4.min.js' %>
+  <%= javascript_include_tag 'vendor/underscore-min.js' %>
+  <%= javascript_include_tag 'vendor/backbone-min.js' %>
+
+  <%= javascript_include_tag 'app.js' %>
+  <script type="text/javascript">
+    goog.require('showbomber.ready');
+  </script>
+
   <% if content_for?(:document_ready) %>
-    <%= yield(:document_ready) %>
+    <%= javascript_tag do %>
+      $(document).ready( function() {
+        <%= yield(:document_ready) %>
+      });
+    <% end %>
   <% end %>
 
   <% if Rails.env.production? %>
@@ -68,5 +71,6 @@
   <% else %>
     <!-- Google Analytics is disabled for this environment. -->
   <% end %>
+
 </body>
 </html>

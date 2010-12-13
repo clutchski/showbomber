@@ -67,13 +67,5 @@
 </div>
 
 <% content_for(:document_ready) do %>
-
-  <script type="text/javascript">
-    $j(document).ready( function() {
-      var videoDivId = '<%= videoDivId %>';
-      var playlistDivId = 'playlist';
-      var controller = new radio.Controller(videoDivId, playlistDivId);
-    });
-  </script>
-
+  showbomber.ready.playlist();
 <% end %>
