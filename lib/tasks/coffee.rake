@@ -3,7 +3,7 @@ namespace "coffee" do
 
   def coffee(watch=false)
     opts = (watch) ? '--watch' : ''
-    sh("coffee #{opts} -o public/javascripts -c app/scripts")
+    sh("coffee #{opts} -b -o public/javascripts -c app/scripts")
   end
 
   desc "Compile coffeescripts."
