@@ -21,10 +21,10 @@ class showbomber.controllers.PlaylistController
 
         @playerView = new showbomber.views.PlayerView('video')
 
-        @view = new showbomber.views.PlaylistView('playlist')
-        @view.bind 'artist_selected', $.proxy(@loadArtist, this)
+        @playlistView = new showbomber.views.PlaylistView('playlist')
+        @playlistView.bind 'artist_selected', $.proxy(@loadArtist, this)
 
-        artist = @view.getNextArtist()
+        artist = @playlistView.getNextArtist()
         @loadArtist(artist)
 
     getSongForArtist: (name) ->
