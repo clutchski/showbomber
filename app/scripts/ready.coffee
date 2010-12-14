@@ -9,6 +9,7 @@ goog.provide 'showbomber.ready'
 goog.require 'showbomber'
 goog.require 'showbomber.controllers.PlaylistController'
 
+
 showbomber.ready =
 
     playlist: () ->
