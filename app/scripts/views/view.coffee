@@ -14,6 +14,7 @@ class showbomber.views.View
     constructor: (divId) ->
         @divId = divId
         @$div = $('#' + divId)
+        @log 'Creating view'
 
     log: (message) ->
         showbomber.log "#{@constructor.name}: #{message}"

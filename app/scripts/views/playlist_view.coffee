@@ -17,6 +17,9 @@ class showbomber.views.PlaylistView extends showbomber.views.View
         @$artists = @$div.find '.artist'
         @$artists.click $.proxy(@_artistClickHandler, this)
 
+    getNextArtist: () ->
+        @$artists.first().html()
+
     _artistClickHandler: (event) ->
         event.preventDefault()
         link = $(event.target)

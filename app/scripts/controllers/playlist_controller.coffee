@@ -8,6 +8,7 @@ goog.provide 'showbomber.controllers.PlaylistController'
 
 goog.require 'showbomber'
 goog.require 'showbomber.services.SongService'
+goog.require 'showbomber.views.PlayerView'
 goog.require 'showbomber.views.PlaylistView'
 
 
@@ -18,15 +19,24 @@ class showbomber.controllers.PlaylistController
 
         @songService = new showbomber.services.SongService()
 
+        @playerView = new showbomber.views.PlayerView('video')
+
         @view = new showbomber.views.PlaylistView('playlist')
-        @view.bind 'artist_selected', $.proxy(@playArtist, this)
+        @view.bind 'artist_selected', $.proxy(@loadArtist, this)
 
-    playArtist: (artistName) ->
+        artist = @view.getNextArtist()
+        @loadArtist(artist)
+
+    getSongForArtist: (name) ->
+        @songService.getArtistVideo(name)
+
+    loadArtist: (artistName) ->
         @log "Playing artist #{artistName}"
-        @songService.getArtistVideo(artistName, $.proxy(@playSong, this))
+        @songService.getArtistVideo(artistName, $.proxy(@loadSong, this))
 
-    playSong: (songId) ->
+    loadSong: (songId) ->
         @log "Playing song #{songId}"
+        @playerView.loadSong(songId)
     
     log: (message) ->
         showbomber.log "#{@constructor.name}: #{message}"
