@@ -13,5 +13,5 @@ showbomber =
     # If a browser console is loaded, log the given message.
     log : (message) ->
         if console?
-            now = new Date().toUTCString()
-            console.log "#{now}: #{message}"
+            now = new Date().toLocaleTimeString()
+            console.log "#{now} #{message}"
