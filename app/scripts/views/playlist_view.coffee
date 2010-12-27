@@ -20,6 +20,11 @@ class showbomber.views.PlaylistView extends showbomber.views.View
     getNextArtist: () ->
         @$artists.first().html()
 
+    highlightArtist: (name) ->
+        cls = 'playing'
+        @$artists.removeClass(cls)
+        @$artists.filter(":contains(#{name})").addClass(cls)
+
     _artistClickHandler: (event) ->
         event.preventDefault()
         link = $(event.target)

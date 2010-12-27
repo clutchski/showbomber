@@ -32,7 +32,10 @@ class showbomber.controllers.PlaylistController
 
     loadArtist: (artistName) ->
         @log "Playing artist #{artistName}"
-        @songService.getArtistVideo(artistName, $.proxy(@loadSong, this))
+        @songService.getArtistVideo(artistName, (songId) =>
+            @playlistView.highlightArtist(artistName)
+            @loadSong(songId)
+        )
 
     loadSong: (songId) ->
         @log "Playing song #{songId}"
