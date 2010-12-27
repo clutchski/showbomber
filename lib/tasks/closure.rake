@@ -24,5 +24,9 @@ namespace "javascript" do
     closurize('compiled')
   end
 
+  desc "Clean compiled javascript"
+  task "clean" do
+    sh 'find public/javascripts -name "*.js" | grep -v vendor | xargs rm -f'
+  end
 
 end
