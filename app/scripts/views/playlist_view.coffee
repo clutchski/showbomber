@@ -13,9 +13,14 @@ class showbomber.views.PlaylistView extends showbomber.views.View
 
     constructor: (divId) ->
         super divId
+        @_initializeBehaviours()
 
-        @$artists = @$div.find '.artist'
-        @$artists.click $.proxy(@_artistClickHandler, this)
+    # Load the playlist with the given html.
+    load: (html) ->
+        @log("Reloading the playlist")
+        @$div.empty()
+        @$div.append(html)
+        @_initializeBehaviours()
 
     getNextArtist: () ->
         @$artists.first().html()
@@ -24,6 +29,10 @@ class showbomber.views.PlaylistView extends showbomber.views.View
         cls = 'playing'
         @$artists.removeClass(cls)
         @$artists.filter(":contains(#{name})").addClass(cls)
+
+    _initializeBehaviours: () ->
+        @$artists = @$div.find '.artist'
+        @$artists.click $.proxy(@_artistClickHandler, this)
 
     _artistClickHandler: (event) ->
         event.preventDefault()
