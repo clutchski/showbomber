@@ -9,8 +9,7 @@ namespace "javascript" do
     cmd << "-p #{js_dir}"
     cmd << "-c #{closure_dir}/compiler.jar"
     cmd << "-o #{format}"
-    cmd << "--output_file=#{js_dir}/app.js"
-
+    cmd << "--output_file=#{js_dir}/app.js" if format != 'list'
     sh cmd.join(' ')
   end
 
@@ -22,6 +21,11 @@ namespace "javascript" do
   desc "Minify javascripts."
   task "minify" do
     closurize('compiled')
+  end
+
+  desc "List javascript files ordered by dependency."
+  task "list" do
+    closurize('list')
   end
 
   desc "Clean compiled javascript"
