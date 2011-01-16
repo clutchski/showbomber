@@ -19,7 +19,7 @@ class showbomber.views.FilterView extends showbomber.views.View
     reload: () ->
         @$div = $("##{@divId}")
         @$tags = @$div.find('.tag')
-        @$tags.click, $.proxy(@_genreFilterClickHandler, this)
+        @$tags.click  $.proxy(@_genreFilterClickHandler, this)
 
     _genreFilterClickHandler: (event) ->
         $(event.target).toggleClass(@selected)
@@ -29,4 +29,3 @@ class showbomber.views.FilterView extends showbomber.views.View
     _getSelectedTags: () ->
         selected = @$tags.filter('.selected')
         return selected.map( () -> this.text).toArray()
-
