@@ -27,42 +27,42 @@
 
 <div id="playlist">
 
-<ul id="tags">
-  <% tags.each do |t| %>
-    <% active = active_tags.include?(t.name) ? 'selected' : '' %>
-    <li><a href="#" class="tag <%= active %>"><%= t.name %></a></li>
-
-  <% end %>
-</ul>
-
-
-<table id="events">
-  <% current_date = nil %>
-  <% events.each do |event| %>
-  <tr class="event_headline">
-    <td class="date">
-        <%= readable_date(event.start_date) %>
-    </td>
-    <td>
-      <ul class="artists">
-      <% event.artists.each do |artist| %>
-        <li>
-          <%= link_to artist.name, artist, {:class=> "artist"} %>
-        </li>
-      <% end %>
-      </ul>
-    </td>
-  </tr>
-  <tr class="event_byline">
-    <td>&nbsp;</td>
-    <td>
-      <%= link_to event.venue.name, event.venue, {:class => "venue"}%>
-      <%= link_to time_of_day(event.start_date), event, {:class => "time"}%>
-      <span class="cost"><%= event.price_range_in_words %></span>
-    </td>
-  </tr>
-  <% end %>
-</table><!-- end #events -->
+  <ul id="tags">
+    <% tags.each do |t| %>
+      <% active = active_tags.include?(t.name) ? 'selected' : '' %>
+      <li><a href="#" class="tag <%= active %>"><%= t.name %></a></li>
+  
+    <% end %>
+  </ul>
+  
+  
+  <table id="events">
+    <% current_date = nil %>
+    <% events.each do |event| %>
+    <tr class="event_headline">
+      <td class="date">
+          <%= readable_date(event.start_date) %>
+      </td>
+      <td>
+        <ul class="artists">
+        <% event.artists.each do |artist| %>
+          <li>
+            <%= link_to artist.name, artist, {:class=> "artist"} %>
+          </li>
+        <% end %>
+        </ul>
+      </td>
+    </tr>
+    <tr class="event_byline">
+      <td>&nbsp;</td>
+      <td>
+        <%= link_to event.venue.name, event.venue, {:class => "venue"}%>
+        <%= link_to time_of_day(event.start_date), event, {:class => "time"}%>
+        <span class="cost"><%= event.price_range_in_words %></span>
+      </td>
+    </tr>
+    <% end %>
+  </table><!-- end #events -->
 
 </div>
 
