@@ -34,6 +34,12 @@
   
     <% end %>
   </ul>
+
+  <% if events.empty? %>
+    <div class="notice">
+      Alas! We don't know about any <%= active_tags.join(' or ') =%> shows.
+    </div>
+  <% end %>
   
   
   <table id="events">
