@@ -9,21 +9,23 @@ goog.provide 'showbomber.repos.SongRepo'
 class showbomber.repos.SongRepo
 
     constructor: () ->
-        @apiUrl = 'http://gdata.youtube.com/feeds/api/videos'
 
-    getArtistVideo: (artistName, callback) ->
+    getArtistVideo: (artist, callback) ->
 
-        query = "#{artistName} live music"
-        @log "Searching for song with [#{query}]"
+        @log "Fetching song info for artist [#{artist.name}]"
 
         params =
             type: 'GET'
-            url: "#{@apiUrl}?format=5&max-results=5&v=2&alt=jsonc&q=#{query}"
-            dataType: 'jsonp'
+            url: "/artists/#{artist.id}"
+            dataType: 'json'
             success: (response, status, request) ->
-                items = response.data.items
-                videoId = if items then items[0].id else null
-                callback(videoId)
+                song = _.first(response.artist.songs)
+                if not song
+                    callback(null)
+                else
+                    url = song.url
+                    id = if url? then parseUri(url).queryKey.v else null
+                    callback(id)
 
         $.ajax(params)
 
