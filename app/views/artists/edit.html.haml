@@ -1,0 +1,27 @@
+-#
+-# This module contains the edit artist template.
+-#
+
+
+= form_for(@artist, :url => {:action => :update}) do |f|
+  - if @artist.errors.any?
+    #error_explanation
+      %h2
+        #{pluralize(@artist.errors.count, "error")} prohibited thisa artist from being saved:
+
+      %ul
+      - @artist.errors.full_messages.each do |msg|
+        %li #{msg}
+
+
+  = f.fields_for :songs do |sf|
+    .field
+      = sf.label :url
+      .br/
+      = sf.text_field :url 
+
+  %input(name="new_song")
+
+  .actions
+    = f.submit
+
