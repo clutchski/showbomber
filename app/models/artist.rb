@@ -5,6 +5,8 @@ class Artist < ActiveRecord::Base
   has_many :songs
   has_and_belongs_to_many :tags
 
+  accepts_nested_attributes_for :songs
+
   def to_param
     "#{id}-#{name.downcase.gsub(/[^a-z0-9']+/i, '-')}"
   end
