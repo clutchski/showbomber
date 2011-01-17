@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
     @artists = Artist.all(:order => :name)
@@ -9,7 +9,10 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find(params[:id])
-    respond_with(@artist)
+    respond_to do |format|
+      format.html { respond_with(@artist) }
+      format.json { render :json => @artist.to_json(:include => :songs) }
+    end
   end
 
   def edit
