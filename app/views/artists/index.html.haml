@@ -1,0 +1,9 @@
+
+%h1 Artists
+
+#artists
+- @artists.each do |artist|
+  %li.artist
+    = link_to artist.name, artist, :class=>"name"
+
+%p= link_to 'New artist', new_artist_path
