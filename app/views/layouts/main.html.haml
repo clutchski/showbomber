@@ -1,0 +1,65 @@
+!!! 5
+%html
+  %head
+    - title = "Showbomber"
+    - tagline = 'Hear bands playing in New York.'
+
+    %title #{title} - #{tagline}
+
+    %link(rel="shortcut icon" href="/favicon.ico")
+
+    = csrf_meta_tag
+    %meta(name="google-site-verification" content="VADO3qdrZJTstl_fCDNJRyiqb7dTwybKYdtUVLHcwr4")
+    %meta(name="msvalidate.01" content="BBB3BE1D9FEE3FEF28850686054AA067")
+
+    - if content_for? :stylesheets
+      = yield :stylesheets
+    - else
+      = stylesheet_link_tag :main
+
+  %body
+
+    #header
+      %a#title(href=root_path)= title
+      %h1#tagline= tagline
+
+    #main
+      #content
+        = yield
+
+      - if content_for? :sidebar
+        = stylesheet_link_tag 'columns'
+        #sidebar
+          = yield :sidebar
+
+    #footer
+      - links = [[contact_path, 'contact'], [get_uservoice_url, 'feedback'],
+                                                  [get_twitter_url, 'twitter']]
+      - links.each do |url, text|
+        %a(href=url)= text
+
+
+    -#
+    -# Javascript
+    -#
+
+    = javascript_include_tag 'vendor/goog/base.js'
+    = javascript_include_tag 'vendor/jquery-1.4.4.min.js'
+    = javascript_include_tag 'vendor/underscore-min.js'
+    = javascript_include_tag 'vendor/backbone-min.js'
+    = javascript_include_tag 'vendor/swfobject.js'
+    = javascript_include_tag 'vendor/parseUri.js'
+
+    = javascript_include_tag 'app.js'
+
+    - if content_for? :document_ready
+      :javascript
+        $(document).ready( function() {
+          #{yield :document_ready}
+        });
+
+    - if Rails.env.production?
+      = javascript_tag google_analytics_javascript
+    - else
+      / Google analytics is disabled for this environment.
+
