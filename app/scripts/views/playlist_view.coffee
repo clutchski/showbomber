@@ -15,6 +15,8 @@ class showbomber.views.PlaylistView extends showbomber.views.View
     constructor: (divId) ->
         super divId
         @_initializeBehaviours()
+        @_resizeContentToPage()
+        $(window).resize( $.proxy(@_resizeContentToPage, this))
 
     # Load the playlist with the given html.
     load: (html) ->

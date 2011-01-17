@@ -16,6 +16,16 @@ class showbomber.views.View
         @$div = $('#' + divId)
         @log 'Creating view'
 
+    _resizeContentToPage: () ->
+        $content = $('#main')
+        $header = $('#header')
+        $footer = $('#footer')
+        $window = $(window)
+
+        height = $window.height() - $footer.height() - $header.height() - 25
+        @log("Resizing content to #{height}")
+        $content.height(height)
+
     log: (message) ->
         showbomber.log "#{@constructor.name}: #{message}"
 
