@@ -1,0 +1,12 @@
+-#
+-# This module contains the contact page template.
+-#
+
+- content_for :stylesheets do
+  = stylesheet_link_tag 'static'
+
+#contact
+  %p Get in touch. We'd love to hear from you.
+  %a(href="mailto:info@showbomber.com") email
+  %a{:href => get_uservoice_url()} feedback
+  %a{:href => get_twitter_url()} twitter

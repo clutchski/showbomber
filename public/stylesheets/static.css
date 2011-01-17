@@ -172,6 +172,6 @@ body {
   margin-left: auto;
   text-align: center; }
   #contact a {
-    color: black; }
-  #contact h3 {
+    color: black;
+    display: block;
     font-size: 150%; }
