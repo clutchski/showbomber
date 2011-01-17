@@ -6,6 +6,4 @@ tmp/**/*
 .sw*
 *~
 public/javascripts/*.js
-public/javascripts/views/*.js
-public/javascripts/controllers/*.js
-public/javascripts/services/*.js
+public/javascripts/*/*.js
