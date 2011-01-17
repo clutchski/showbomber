@@ -15,6 +15,6 @@ class showbomber.services.SongService
     constructor: () ->
         @youtubeRepo = new showbomber.repos.YouTubeSongRepo()
 
-    getArtistVideo: (artistName, callback) ->
-        @youtubeRepo.getArtistVideo(artistName, callback)
+    getArtistVideo: (artist, callback) ->
+        @youtubeRepo.getArtistVideo(artist.name, callback)
 

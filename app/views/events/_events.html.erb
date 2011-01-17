@@ -55,7 +55,8 @@
         <ul class="artists">
         <% event.artists.each do |artist| %>
           <li>
-            <%= link_to artist.name, artist, {:class=> "artist"} %>
+            <% attrs = {:class => 'artist', :artist_id => "#{artist.id}"} %>
+            <%= link_to artist.name, artist, attrs %>
           </li>
         <% end %>
         </ul>

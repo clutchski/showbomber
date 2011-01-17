@@ -33,13 +33,10 @@ class showbomber.controllers.PlaylistController
         artist = @playlistView.getNextArtist()
         @loadArtist(artist)
 
-    getSongForArtist: (name) ->
-        @songService.getArtistVideo(name)
-
-    loadArtist: (artistName) ->
-        @log "Playing artist #{artistName}"
-        @songService.getArtistVideo(artistName, (songId) =>
-            @playlistView.highlightArtist(artistName)
+    loadArtist: (artist) ->
+        @log "Playing artist #{artist.name}"
+        @songService.getArtistVideo(artist, (songId) =>
+            @playlistView.highlightArtist(artist)
             @loadSong(songId)
         )
 
