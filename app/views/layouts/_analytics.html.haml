@@ -1,0 +1,5 @@
+
+- if Rails.env.production?
+  = javascript_tag google_analytics_javascript
+- else
+  / Google analytics is disabled for this environment.
