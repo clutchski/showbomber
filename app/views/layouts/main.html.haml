@@ -9,8 +9,7 @@
     %link(rel="shortcut icon" href="/favicon.ico")
 
     = csrf_meta_tag
-    %meta(name="google-site-verification" content="VADO3qdrZJTstl_fCDNJRyiqb7dTwybKYdtUVLHcwr4")
-    %meta(name="msvalidate.01" content="BBB3BE1D9FEE3FEF28850686054AA067")
+    = render 'layouts/webmaster'
 
     - if content_for? :stylesheets
       = yield :stylesheets
