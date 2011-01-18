@@ -1,0 +1,5 @@
+
+= render @venue
+
+= render( :partial => "events/events",
+     :locals => {:events => @venue.events, :tags => [], :active_tags => []})
