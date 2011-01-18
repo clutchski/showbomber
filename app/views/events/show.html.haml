@@ -1,0 +1,15 @@
+
+- content_for :stylesheets do
+  = stylesheet_link_tag 'event' 
+
+- content_for :sidebar do 
+  #player
+    #video &nbsp;
+
+#date= readable_date(@event.start_date)
+
+#artists
+- @event.artists.each do |artist| 
+  %li.artists= link_to artist.name, artist, {:class=> "artist"} 
+
+= render_venue @event.venue 

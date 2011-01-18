@@ -1,0 +1,41 @@
+
+- content_for :stylesheets do 
+  = stylesheet_link_tag 'playlist' 
+
+
+- content_for :sidebar do 
+  #player
+    #video &nbsp;
+
+#playlist
+  
+  %ul#tags
+    - tags.each do |t| 
+      - active = active_tags.include?(t.name) ? 'selected' : '' 
+      %li
+        %a(href="#" class="tag #{active}")= t.name
+
+  - if events.empty? 
+    .notice
+      Alas! We don't know about any #{active_tags.join(' or ')} shows.
+
+  %table#events
+    - current_date = nil
+    - events.each do |event| 
+      %tr.event_headline
+        %td.date= readable_date(event.start_date) 
+        %td
+          %ul.artists
+            - event.artists.each do |artist| 
+              %li
+                - attrs = {:class => 'artist', :artist_id => "#{artist.id}"} 
+                = link_to artist.name, artist, attrs 
+      %tr.event_byline
+        %td &nbsp;
+        %td
+          = link_to event.venue.name, event.venue, {:class => "venue"}
+          = link_to time_of_day(event.start_date), event, {:class => "time"}
+          %span.cost= event.price_range_in_words
+
+- content_for(:document_ready) do
+  showbomber.ready.playlist();
