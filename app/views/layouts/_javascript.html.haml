@@ -1,0 +1,21 @@
+-#
+-# This module includes javascripts into the layout.
+-# 
+
+- vendor_js = ['goog/base', 'jquery-1.4.4.min', 'underscore-min',
+                              'backbone-min', 'swfobject', 'parseUri']
+
+- vendor_js.each do |path|
+  = javascript_include_tag "vendor/#{path}.js"
+
+= javascript_include_tag 'app.js'
+
+:javascript
+  // Enable Google Closure in development mode.
+  goog.require('showbomber.ready')
+
+- if content_for? :document_ready
+  :javascript
+    $(document).ready( function() {
+      #{yield :document_ready}
+    });

@@ -38,24 +38,5 @@
       - links.each do |url, text|
         %a(href=url)= text
 
-
-    -#
-    -# Javascript
-    -#
-
-    = javascript_include_tag 'vendor/goog/base.js'
-    = javascript_include_tag 'vendor/jquery-1.4.4.min.js'
-    = javascript_include_tag 'vendor/underscore-min.js'
-    = javascript_include_tag 'vendor/backbone-min.js'
-    = javascript_include_tag 'vendor/swfobject.js'
-    = javascript_include_tag 'vendor/parseUri.js'
-
-    = javascript_include_tag 'app.js'
-
-    - if content_for? :document_ready
-      :javascript
-        $(document).ready( function() {
-          #{yield :document_ready}
-        });
-
+    = render 'layouts/javascript'
     = render 'layouts/analytics'
