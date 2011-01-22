@@ -14,6 +14,11 @@ class EventsControllerTest < ActionController::TestCase
     get :show, {:id => event.id}
     assert_response :success
   end
+
+  test "Service page works with no tags. Case #57" do
+    get :service, {:tags => ""}
+    assert_response :success
+  end
 end
 
 

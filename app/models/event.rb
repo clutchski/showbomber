@@ -54,7 +54,7 @@ class Event < ActiveRecord::Base
     query = Event.where('start_date > ?', DateTime.now.midnight).
                   includes(:venue, :artists)
 
-    if tags != []:
+    if !tags.blank?
       ids = Artist.get_artists(tags).collect{|a| a.id}
       query = query.where('artists.id IN (?)',ids)
     end

@@ -21,8 +21,7 @@ class EventsController < ApplicationController
   end
 
   def service
-    tag_hash = params['tags']
-    tags = tag_hash ? tag_hash : []
+    tags = params['tags'] || []
 
     @events = Event.get_upcoming_events(day_count=nil, tags=tags)
 
