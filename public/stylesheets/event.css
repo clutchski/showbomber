@@ -312,6 +312,9 @@ body {
     font-weight: bold;
     font-size: 180%; }
 
+#playlist {
+  max-width: 650px; }
+
 #player {
   margin: 20px; }
 
@@ -391,7 +394,12 @@ body {
   font-weight: bold;
   color: black;
   text-decoration: none;
-  padding: 4px 8px 4px 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 2px;
+  padding-left: 2px;
+  clear: right;
+  margin-right: 5px;
   border-radius: 4px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px; }
@@ -411,8 +419,7 @@ body {
   color: gray;
   text-decoration: none;
   font-family: courier new,monospace;
-  font-size: 105%;
-  padding-left: 8px; }
+  font-size: 105%; }
 
 .time, .cost {
   text-transform: capitalize;
@@ -425,11 +432,11 @@ body {
 
 .date {
   text-transform: uppercase;
-  text-align: center;
+  text-align: left;
   color: gray;
   vertical-align: top;
   font-weight: bold;
-  width: 80px;
+  width: 83px;
   font-family: courier new,monospace; }
 
 #tags {
