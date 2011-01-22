@@ -16,18 +16,20 @@ class showbomber.views.View
         @$div = $('#' + divId)
         @log 'Creating view'
 
-    _resizeContentToPage: () ->
-        $content = $('#main')
-        $header = $('#header')
-        $footer = $('#footer')
-        $window = $(window)
+        # jQuery objects for common elements.
+        @$header = $('#header')
+        @$main = $('#main')
+        @$footer = $('#footer')
+        @$window = $(window)
 
-        height = $window.height() - $footer.height() - $header.height() - 25
-        @log("Resizing content to #{height}")
-        $content.height(height)
+    _resizeContentToPage: () ->
+        height = @$window.height() - @$footer.height() - @$header.height() - 25
+        @log("Resizing main div to #{height}")
+        @$main.height(height)
 
     log: (message) ->
         showbomber.log "#{@constructor.name}: #{message}"
 
 
 $.extend(showbomber.views.View::, Backbone.Events)
+
