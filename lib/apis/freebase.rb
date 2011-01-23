@@ -7,32 +7,41 @@ require 'ken'
 
 module Freebase
 
-  def self.artist(artist)
-    topic = self.get(artist)
+  def self.artist(artist_name)
+    topic = self.get_artist_topic(artist_name)
     { :description => topic.description,
-      :genres => self.music_genres(topic)
+      :genres => self.music_genres(topic),
+      :topic_id => nil
     }
-  end
-
-  def self.music_genres(topic)
-    genre = '/music/artist/genre'
-    genres = topic.attribute(genre).values.collect{|g| g.name}
-    return genres[0 .. 3]
   end
 
   private
 
-  def self.get(resource)
-    url = '/en/' + self.to_resource(resource)
-    return Ken::Topic.get(url)
+  def self.music_genres(artist_topic)
+    genre = '/music/artist/genre'
+    genres = artist_topic.attribute(genre).values.collect{|g| g.name}
+    return genres[0 .. 3]
   end
 
-  def self.to_resource(name)
-    #FIXME: This is a naive implementation. It's working for most artist names
-    # but it's failing for all with non-letter characters like " and '.
-    while name.include?(' ')
-      name.sub!(' ', '_')
-    end
-    return name.downcase
+  def self.get_artist_topic(artist_name)
+    id = self.get_artist_topic_id(artist_name)
+    return Ken::Topic.get(id)
   end
+
+  def self.get_artist_topic_id(artist_name)
+    type = '/music/artist'
+    params = {:id=> nil, :name => artist_name, :type => type, :limit => 2}
+    results = Ken.session.mqlread([params]).select do |topic_info|
+      # Only care about english results
+      topic_info['id'].starts_with? '/en'
+    end
+    if results.empty?
+      raise Exception("No artist found with name [#{artist_name}]")
+    elsif results.length > 1
+      raise Exception("Multiple artists [#{type}] found with name [#{artist_name}]")
+    else
+      return results.first['id']
+    end
+  end
+
 end
