@@ -48,7 +48,7 @@ module ETL
           tags = info[:genres] || []
           description = info[:description] || ''
         rescue => e
-          @logger.error("Couldn't fetch artist nfo for #{a.name}: #{e.backtrace}")
+          @logger.error("Couldn't fetch artist info for #{a.name}: #{e.backtrace}")
         end
 
         if description != a.description
