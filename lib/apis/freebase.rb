@@ -20,10 +20,6 @@ module Freebase
     return genres[0 .. 3]
   end
 
-  def self.description(artist)
-    return self.get(artist).attribute('description')
-  end
-
   private
 
   def self.get(resource)
