@@ -11,6 +11,7 @@ module Freebase
     topic = self.get_artist_topic(artist_name)
     { :description => topic.description,
       :genres => self.music_genres(topic),
+      :songs => self.get_songs(topic),
       :topic_id => nil
     }
   end
@@ -18,9 +19,16 @@ module Freebase
   private
 
   def self.music_genres(artist_topic)
-    genre = '/music/artist/genre'
-    genres = artist_topic.attribute(genre).values.collect{|g| g.name}
-    return genres[0 .. 3]
+    return self.get_attributes(artist_topic, '/music/artist/genre', 3)
+  end
+
+  def self.get_songs(artist_topic)
+    return self.get_attributes(artist_topic, '/music/artist/track', 3)
+  end
+
+  def self.get_attributes(topic, attribute, count)
+    attrs = topic.attribute(attribute).values.collect{|a| a.name}
+    return attrs[0 .. count-1]
   end
 
   def self.get_artist_topic(artist_name)

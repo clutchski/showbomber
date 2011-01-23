@@ -19,6 +19,9 @@ class FreebaseAPITest < ActiveSupport::TestCase
 
     description = artist_info[:description]
     assert !description.nil?
+
+    songs = artist_info[:songs]
+    assert !songs.nil?
   end
 
 end
