@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101201060242) do
+ActiveRecord::Schema.define(:version => 20110123010651) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20101201060242) do
   create_table "songs", :force => true do |t|
     t.integer "artist_id"
     t.string  "url"
+    t.text    "name"
   end
 
   add_index "songs", ["artist_id"], :name => "index_songs_on_artist_id"
