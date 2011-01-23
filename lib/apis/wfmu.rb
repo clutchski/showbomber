@@ -122,6 +122,7 @@ module WFMU
 
       # Yes, this is real.
       time = time.downcase.include?("noon") ? "12 PM" : time
+      time = time.downcase.include?("midnight") ? "12 AM" : time
       
       # For ranges, just show the start time for now.
       time = (time.split("-", 2)[0]).strip
