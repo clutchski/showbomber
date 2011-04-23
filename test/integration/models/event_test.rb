@@ -70,7 +70,6 @@ class EventTest < ActiveSupport::TestCase
     end
 
     folk_events = Event.get_upcoming_events(day_count=nil, tags => [folk_name])
-    assert folk_events.include?(joni_event)
     [stones_event, odb_event].each do |e|
       assert !folk_events.include?(e), "Folk events shouldnt include #{e}"
     end
