@@ -7,16 +7,27 @@ require 'ken'
 
 module Freebase
 
-  def self.artist(artist_name)
+
+  def self.artist_by_name(artist_name)
     topic = self.get_artist_topic(artist_name)
-    { :description => topic.description,
-      :genres => self.music_genres(topic),
-      :songs => self.get_songs(topic),
-      :topic_id => nil
-    }
+    return self.parse_topic_info(topic)
+  end
+
+
+  def self.artist_by_id(artist_topic_id)
+    topic = Ken::Topic.get(artist_topic_id)
+    return self.parse_topic_info(topic)
   end
 
   private
+
+  def self.parse_topic_info(topic)
+    { :description => topic.description,
+      :genres => self.music_genres(topic),
+      :songs => self.get_songs(topic),
+      :freebase_id => topic.id
+    }
+  end
 
   def self.music_genres(artist_topic)
     return self.get_attributes(artist_topic, '/music/artist/genre', 3)

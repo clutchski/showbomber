@@ -49,11 +49,15 @@ module ETL
         tags = []
         description = ''
         songs = []
+        freebase_id = nil
         begin
-          info = Freebase.artist(a.name)
+          info = (a.freebase_id) ? Freebase.artist_by_id(a.freebase_id) :
+                                   Freebase.artist_by_name(a.name)
+
           tags = info[:genres] || []
           description = info[:description] || ''
           songs = info[:songs] || []
+          freebase_id = info[:freebase_id] || nil
 
         rescue => e
           no_info_artists << a.name
@@ -62,8 +66,13 @@ module ETL
 
         if description != a.description
           a.description = description
-          a.save!
         end
+
+        if freebase_id && freebase_id != a.freebase_id
+          a.freebase_id = freebase_id
+        end
+
+        a.save!
 
         tags = ETL::Transformer::Tags.transform_tags(tags)
         tags.each do |t|
@@ -85,6 +94,15 @@ module ETL
 
   def self.run
     return Controller.run
+  end
+
+
+  private 
+
+
+  def self.get_freebase_topic(artist)
+
+
   end
 
 end

@@ -7,9 +7,7 @@ require 'lib/apis/freebase.rb'
 
 class FreebaseAPITest < ActiveSupport::TestCase
 
-  test "Can fetch artist information." do
-    artist_info = Freebase.artist('Bob Dylan')
-
+  def verify_bob_dylan(artist_info)
     genres = artist_info[:genres]
     assert !genres.nil?
     expected_genres = ['Folk music', 'Rock music', 'Country']
@@ -22,6 +20,16 @@ class FreebaseAPITest < ActiveSupport::TestCase
 
     songs = artist_info[:songs]
     assert !songs.nil?
+  end
+
+  test "Can fetch artist information by name." do
+    artist_info = Freebase.artist_by_name('Bob Dylan')
+    verify_bob_dylan(artist_info)
+  end
+
+  test "Can fetch artist info by id" do
+    artist_info = Freebase.artist_by_id('/en/bob_dylan')
+    verify_bob_dylan(artist_info)
   end
 
 end
