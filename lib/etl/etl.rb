@@ -74,5 +74,6 @@ end
 
 
 if __FILE__ == $0
+  Rails.logger = Logger.new(STDOUT)
   ETL::Controller.run
 end
