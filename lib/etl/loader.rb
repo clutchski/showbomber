@@ -33,6 +33,25 @@ class Loader < ActiveRecord::Base
     tag
   end
 
+
+  def self.add_song(artist, song)
+    transaction do
+      song = Loader.load_song(song)
+      if !artist.songs.include? song
+        artist.songs << song
+      end
+    end
+  end
+
+
+  def self.load_song(song)
+    transaction do
+      song = Song.find_or_create_by_name(song.attributes)
+      song.save!
+    end
+    song
+  end
+
   def self.load_venue(venue)
     transaction do
       venue = Venue.find_or_create_by_name_and_city_and_state(venue.attributes)

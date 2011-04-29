@@ -38,17 +38,23 @@ module ETL
     end
 
     def self.load_artist_info
-      @logger.info "Loading artist tags"
       artists = Artist.includes(:tags).all()
 
+      @logger.info "Loading artist tags for #{artists.length} artists"
+
       no_info_artists = []
+
       artists.each do |a|
+        @logger.info "loading info for #{a.name}"
         tags = []
         description = ''
+        songs = []
         begin
           info = Freebase.artist(a.name)
           tags = info[:genres] || []
           description = info[:description] || ''
+          songs = info[:songs] || []
+
         rescue => e
           no_info_artists << a.name
           @logger.debug("Couldn't fetch artist info for #{a.name}: #{e.backtrace}")
@@ -64,6 +70,13 @@ module ETL
           tag = Tag.new(:name => t)
           Loader.add_tag(a, tag)
         end
+
+
+        songs.each do |s|
+          song = Song.new(:name => s)
+          Loader.add_song(a, song)
+        end
+
       end
       @logger.info "Done loading artist tags"
       @logger.warn "Couldn't log info for artists: #{no_info_artists.join('|')}"
