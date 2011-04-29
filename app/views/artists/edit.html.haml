@@ -7,7 +7,7 @@
   - if @artist.errors.any?
     #error_explanation
       %h2
-        #{pluralize(@artist.errors.count, "error")} prohibited thisa artist from being saved:
+        #{pluralize(@artist.errors.count, "error")} prohibited this artist from being saved:
 
       %ul
       - @artist.errors.full_messages.each do |msg|
