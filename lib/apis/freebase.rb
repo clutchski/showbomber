@@ -27,7 +27,7 @@ module Freebase
   end
 
   def self.get_attributes(topic, attribute, count)
-    attrs = topic.attribute(attribute).values.collect{|a| a.name}
+    attrs = topic.attribute(attribute).values.collect{|a| a.name}.uniq
     return attrs[0 .. count-1]
   end
 
