@@ -40,6 +40,8 @@ module ETL
     def self.load_artist_info
       @logger.info "Loading artist tags"
       artists = Artist.includes(:tags).all()
+
+      no_info_artists = []
       artists.each do |a|
         tags = []
         description = ''
@@ -48,7 +50,8 @@ module ETL
           tags = info[:genres] || []
           description = info[:description] || ''
         rescue => e
-          @logger.error("Couldn't fetch artist info for #{a.name}: #{e.backtrace}")
+          no_info_artists << a.name
+          @logger.debug("Couldn't fetch artist info for #{a.name}: #{e.backtrace}")
         end
 
         if description != a.description
@@ -63,6 +66,7 @@ module ETL
         end
       end
       @logger.info "Done loading artist tags"
+      @logger.warn "Couldn't log info for artists: #{no_info_artists.join('|')}"
     end
   end
 
@@ -75,5 +79,7 @@ end
 
 if __FILE__ == $0
   Rails.logger = Logger.new(STDOUT)
+  Rails.logger.level = Logger::INFO
+
   ETL::Controller.run
 end
