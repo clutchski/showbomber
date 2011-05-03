@@ -40,6 +40,9 @@ johnny_cash_at_mercury_lounge:
   min_cost: 0
   max_cost: 0
 
-
-
-
+johnny_cash_in_the_past:
+  venue: mercury_lounge
+  start_date: <%= 6.days.ago.to_s :db %>
+  artists: johnny_cash
+  min_cost: 0
+  max_cost: 0
