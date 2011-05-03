@@ -9,6 +9,8 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find(params[:id])
+    @events = Event.get_upcoming_events(nil, [], nil, @artist.id)
+
     respond_to do |format|
       format.html { respond_with(@artist) }
       format.json { render :json => @artist.to_json(:include => :songs) }
