@@ -64,15 +64,15 @@ class Event < ActiveRecord::Base
       query = query.where('artists.id IN (?)',ids)
     end
 
-    if day_count != nil:
+    if day_count != nil
       query = query.where('start_date < ?', day_count.days.from_now.midnight)
     end
 
-    if venue_id != nil:
+    if venue_id != nil
       query = query.where('venue_id = ?', venue_id)
     end
 
-    if artist_id != nil:
+    if artist_id != nil
       query = query.where('artists.id = ?', artist_id)
     end
 

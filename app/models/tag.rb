@@ -55,7 +55,7 @@ class Tag < ActiveRecord::Base
     return [] if self.ignore?(tag)
 
     music_suffix = ' music'
-    if tag.ends_with?(music_suffix):
+    if tag.ends_with?(music_suffix)
       tag = tag[0 .. -(music_suffix.length+1)]
     end
 
