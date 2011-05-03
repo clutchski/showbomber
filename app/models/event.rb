@@ -50,7 +50,7 @@ class Event < ActiveRecord::Base
     in_words
   end
 
-  def self.get_upcoming_events(day_count = nil, tags = [])
+  def self.get_upcoming_events(day_count = nil, tags = [], venue_id = nil)
     query = Event.where('start_date > ?', DateTime.now.midnight).
                   includes(:venue, :artists)
 
@@ -61,6 +61,10 @@ class Event < ActiveRecord::Base
 
     if day_count != nil:
       query = query.where('start_date < ?', day_count.days.from_now.midnight)
+    end
+
+    if venue_id != nil:
+      query = query.where('venue_id = ?', venue_id)
     end
 
     return query.all(:order => "start_date ASC")

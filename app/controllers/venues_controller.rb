@@ -8,5 +8,6 @@ class VenuesController < ApplicationController
 
   def show
     @venue = Venue.find(params[:id])
+    @events = Event.get_upcoming_events(nil, [], @venue.id)
   end
 end
