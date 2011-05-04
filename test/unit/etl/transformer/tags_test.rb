@@ -1,6 +1,6 @@
 
 require 'test_helper'
-require 'lib/etl/transformer/tags.rb'
+require './lib/etl/transformer/tags.rb'
 
 class ETLTransformerTagTest < ActiveSupport::TestCase
 

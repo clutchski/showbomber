@@ -3,7 +3,7 @@
 #
 
 
-require 'lib/etl/etl.rb'
+require './lib/etl/etl.rb'
 
 
 desc "This task is called by the Heroku cron add-on"

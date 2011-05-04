@@ -3,11 +3,11 @@
 #
 
 
-require 'lib/apis/wfmu.rb'
-require 'lib/apis/freebase.rb'
-require 'lib/etl/loader.rb'
-require 'lib/etl/objectifier.rb'
-require 'lib/etl/transformer/tags.rb'
+require './lib/apis/wfmu.rb'
+require './lib/apis/freebase.rb'
+require './lib/etl/loader.rb'
+require './lib/etl/objectifier.rb'
+require './lib/etl/transformer/tags.rb'
 
 
 module ETL 

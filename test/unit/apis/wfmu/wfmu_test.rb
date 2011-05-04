@@ -6,7 +6,7 @@
 require 'test_helper'
 
 # project
-require 'lib/apis/wfmu.rb'
+require './lib/apis/wfmu.rb'
 
 
 class WFMUExtractorTest < ActiveSupport::TestCase

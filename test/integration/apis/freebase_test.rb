@@ -3,7 +3,7 @@
 #
 
 require 'test_helper.rb'
-require 'lib/apis/freebase.rb'
+require './lib/apis/freebase.rb'
 
 class FreebaseAPITest < ActiveSupport::TestCase
 
