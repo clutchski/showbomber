@@ -8,6 +8,7 @@ gem "httparty"
 gem "ken"
 gem "pg"
 gem "nokogiri"
+gem "heroku"
 
 group :test do
   gem "crack"
