@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110429061705) do
+ActiveRecord::Schema.define(:version => 20110503044407) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -43,8 +43,10 @@ ActiveRecord::Schema.define(:version => 20110429061705) do
     t.integer  "max_cost"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active",     :default => true, :null => false
   end
 
+  add_index "events", ["active"], :name => "index_events_on_active"
   add_index "events", ["start_date"], :name => "index_events_on_start_date"
   add_index "events", ["venue_id"], :name => "index_events_on_venue_id"
 
