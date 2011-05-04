@@ -46,3 +46,11 @@ johnny_cash_in_the_past:
   artists: johnny_cash
   min_cost: 0
   max_cost: 0
+
+johnny_cash_inactive:
+  venue: mercury_lounge
+  start_date: <%= 2.days.from_now.to_s :db %>
+  artists: johnny_cash
+  min_cost: 0
+  max_cost: 0
+  active: false
