@@ -103,7 +103,7 @@ module ETL
       
       def self.strip_music_suffix(tag)
         suffix = ' music'
-        if tag.ends_with?(suffix):
+        if tag.ends_with?(suffix)
           tag = tag[0 .. -(suffix.length+1)]
         end
         return tag
