@@ -57,6 +57,7 @@ class Event < ActiveRecord::Base
 
     #FIXME: this is getting ugly. clean this up.
     query = Event.where('start_date > ?', DateTime.now.midnight).
+                  where('active = true').
                   includes(:venue, :artists)
 
     if !tags.blank?

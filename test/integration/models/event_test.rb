@@ -108,4 +108,15 @@ class EventTest < ActiveSupport::TestCase
       assert upcoming_events.include?(e)
     end
   end
+
+  test "inactive events are filtered from upcoming events" do
+      inactive_event = Factory.create(:event, :active => false)
+      active_event = Factory.create(:event)
+
+      upcoming_events = Event.get_upcoming_events()
+
+      assert upcoming_events.include? active_event
+      assert !upcoming_events.include?(inactive_event), "no inactive events"
+  end
+
 end
